@@ -36,14 +36,14 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			$scope.warning.ip = sender_ip;
 			$scope.warning.device = deviceDetector.device;
 			$scope.warning.raw = deviceDetector.raw.userAgent;
-			console.log($scope.warning);
+			
 			var warnService = WarningService.send($scope.warning);
 			warnService.then(function() {
                 $scope.warning.contact = null;
                 $scope.warning.id_contact_type = null;
                 $scope.warning.id_message = null;
                 $scope.error = null;
-                $scope.done = 'true';
+                $scope.done = 'true';                
         	}, function(error) {
 		       $scope.error = 'error';
 		       $scope.done = null;
