@@ -2,30 +2,30 @@
 
 /* Services */
 
-warnabrodaApp.factory('AvisoService', ['$resource', '$q', '$http',
+warnabrodaApp.factory('WarningService', ['$resource', '$q', '$http',
    function ($resource, $q, $http) {
 	return {
-		getTipoAvisos : function() {
+		getMessages : function() {
 			var deferred = $q.defer();
-            $http.get('http://localhost/servico/app/rest/aviso/allaviso').success(function(data) {
+            $http.get('warnabroda/messages').success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
             	deferred.reject(status);
             });
             return deferred.promise;
 		},
-		getTipoNotificacoes : function() {
+		getContactTypes : function() {
 			var deferred = $q.defer();
-            $http.get('http://localhost/servico/app/rest/aviso/allnotificacao').success(function(data) {
+            $http.get('warnabroda/contact_types').success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
             	deferred.reject(status);
             });
             return deferred.promise;
 		},
-		enviar : function(aviso){
+		send : function(warn){
 			var deferred = $q.defer();
-            $http.post('http://localhost/servico/app/rest/aviso/enviar', aviso).success(function(data) {
+            $http.post('warnabroda/warnings', warn).success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
             	deferred.reject(status);

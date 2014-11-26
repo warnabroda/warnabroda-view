@@ -17,11 +17,11 @@ module.exports = function (grunt) {
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
-      dist: 'src/main/webapp/dist'
+      dist: 'dist'
     },
     watch: {
     styles: {
-        files: ['src/main/webapp/styles/{,*/}*.css'],
+        files: ['styles/{,*/}*.css'],
         tasks: ['copy:styles', 'autoprefixer']
       },
     livereload: {
@@ -29,10 +29,10 @@ module.exports = function (grunt) {
           livereload: 35729
         },
         files: [
-          'src/main/webapp/{,*/}*.html',
+          '{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
-          '{.tmp/,}src/main/webapp/scripts/{,*/}*.js',
-          'src/main/webapp/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '{.tmp/,}scripts/{,*/}*.js',
+          'images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -50,37 +50,9 @@ module.exports = function (grunt) {
     connect: {
       proxies: [
         {
-          context: '/app',
+          context: '/warnabroda',
           host: 'localhost',
-          port: 8080,
-          https: false,
-          changeOrigin: false
-        },
-        {
-          context: '/metrics',
-          host: 'localhost',
-          port: 8080,
-          https: false,
-          changeOrigin: false
-        },
-        {
-        context: '/dump',
-        host: 'localhost',
-        port: 8080,
-        https: false,
-        changeOrigin: false
-        },
-        {
-        context: '/api-docs',
-        host: 'localhost',
-        port: 8080,
-        https: false,
-        changeOrigin: false
-        },
-        {
-          context: '/oauth/token',
-          host: 'localhost',
-          port: 8080,
+          port: 3000,
           https: false,
           changeOrigin: false
         }
@@ -88,7 +60,7 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to 'localhost' to deny access to the server from outside or '0.0.0.0'.
-        hostname: 'localhost',
+        hostname: '0.0.0.0',
         livereload: 35729
       },
       livereload: {
@@ -96,12 +68,12 @@ module.exports = function (grunt) {
           open: true,
           base: [
             '.tmp',
-            'src/main/webapp'
+            ''
           ],
           middleware: function (connect) {
             return [
               proxySnippet,
-              connect.static(require('path').resolve('src/main/webapp'))
+              connect.static(require('path').resolve(''))
             ];
           }
         }
@@ -112,7 +84,7 @@ module.exports = function (grunt) {
           base: [
             '.tmp',
             'test',
-            'src/main/webapp'
+            ''
           ]
         }
       },
@@ -141,7 +113,7 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        'src/main/webapp/scripts/{,*/}*.js'
+        'scripts/{,*/}*.js'
       ]
     },
     coffee: {
@@ -152,7 +124,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'src/main/webapp/scripts',
+          cwd: 'scripts',
           src: '{,*/}*.coffee',
           dest: '.tmp/scripts',
           ext: '.js'
@@ -186,7 +158,7 @@ module.exports = function (grunt) {
       }
     },
     useminPrepare: {
-      html: 'src/main/webapp/{,*/}*.html',
+      html: '{,*/}*.html',
       options: {
         dest: '<%= yeoman.dist %>'
       }
@@ -202,7 +174,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'src/main/webapp/images',
+          cwd: 'images',
           src: '{,*/}*.{jpg,jpeg}', // we don't optimize PNG files as it doesn't work on Linux. If you are not on Linux, feel free to use '{,*/}*.{png,jpg,jpeg}'
           dest: '<%= yeoman.dist %>/images'
         }]
@@ -212,7 +184,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'src/main/webapp/images',
+          cwd: 'images',
           src: '{,*/}*.svg',
           dest: '<%= yeoman.dist %>/images'
         }]
@@ -246,7 +218,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'src/main/webapp',
+          cwd: '',
           src: ['*.html', 'views/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
@@ -258,7 +230,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: 'src/main/webapp',
+          cwd: '',
           dest: '<%= yeoman.dist %>',
           src: [
             '*.{ico,png,txt}',
@@ -277,7 +249,7 @@ module.exports = function (grunt) {
       },
       styles: {
         expand: true,
-        cwd: 'src/main/webapp/styles',
+        cwd: 'styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       }
@@ -298,7 +270,7 @@ module.exports = function (grunt) {
     },
     karma: {
       unit: {
-        configFile: 'src/test/javascript/karma.conf.js',
+        configFile: 'test/javascript/karma.conf.js',
         singleRun: true
       }
     },
@@ -353,13 +325,6 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    'autoprefixer',
-    'connect:test'
-  ]);
-
   grunt.registerTask('build', [
     'clean:dist',
     'useminPrepare',
@@ -376,7 +341,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'test',
     'build'
   ]);
 };
