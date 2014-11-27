@@ -12,6 +12,10 @@
 				translate="aviso.error">
 				<strong>Ups algum erro ocorreu!</strong>
 			</div>
+			<div class="alert alert-danger" ng-show="email_error"
+				translate="aviso.email_error">
+				<strong>Ups algum erro ocorreu!</strong>
+			</div>
 			<form name="form" role="form" novalidate
 				class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
 				ng-submit="send()">

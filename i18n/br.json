@@ -425,14 +425,15 @@
         "title": "Página de erro!",
         "403": "Você não está autorizado a acessar a página."
     },
-    "footer": "©2014-2014 Dá um toque / Warn a Broda S.A. Todos os direitos reservados. ",
+    "footer": "©2014-2014 [Dá um toque / Warn a Broda] Todos os direitos reservados. ",
     "aviso" : {
     	"amigo_voce": "Amigo você: ",
     	"tipo_notificacao": "Notificar amigo via: ",
     	"contato": "Contato do amigo à ser notificado: ",
     	"amigo_avisado": "Amigo avisado com sucesso.",
     	"error": "Ups! Algum erro ocorreu.",
-    	"notificacao_envio" : "Apenas a notificação via e-mail é imediata."
+    	"notificacao_envio" : "Apenas a notificação via e-mail é imediata.",
+        "email_error": "E-mail invalido. Favor verificar."
     		
     }
     

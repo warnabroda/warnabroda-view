@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector', 'WarningService', 
-    function ($scope, $window, deviceDetector, WarningService) {
+warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP',
+    function ($scope, $window, deviceDetector, WarningService, EMAIL_REGEXP) {
 		
 		var listMessage = WarningService.getMessages();
 		var listContactType = WarningService.getContactTypes();
@@ -36,18 +36,25 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			$scope.warning.ip = sender_ip;
 			$scope.warning.device = deviceDetector.device;
 			$scope.warning.raw = deviceDetector.raw.userAgent;
+			$scope.email_error = null;
+			if (($scope.warning.id_contact_type === 1) && (EMAIL_REGEXP.test($scope.warning.contact))){
+				var warnService = WarningService.send($scope.warning);
+				warnService.then(function() {
+	                $scope.warning.contact = null;
+	                $scope.warning.id_contact_type = null;
+	                $scope.warning.id_message = null;
+	                $scope.error = null;
+	                $scope.done = 'true';                
+	        	}, function(error) {
+			       $scope.error = 'error';
+			       $scope.done = null;
+			    });
+			    $scope.email_error = null;
+			} else {
+				$scope.email_error = true;
+			}
 			
-			var warnService = WarningService.send($scope.warning);
-			warnService.then(function() {
-                $scope.warning.contact = null;
-                $scope.warning.id_contact_type = null;
-                $scope.warning.id_message = null;
-                $scope.error = null;
-                $scope.done = 'true';                
-        	}, function(error) {
-		       $scope.error = 'error';
-		       $scope.done = null;
-		    });
+			
 		}
 		
 		$scope.showAvisoNotificacao = function(){
