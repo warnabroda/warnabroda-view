@@ -50,8 +50,10 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			       $scope.done = null;
 			    });
 			    $scope.email_error = null;
+			    $scope.error = null;
 			} else {
 				$scope.email_error = true;
+				$scope.done = null;
 			}
 			
 			
