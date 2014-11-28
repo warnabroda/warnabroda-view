@@ -58,11 +58,26 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 		}
 		
 		$scope.showAvisoNotificacao = function(){
-			if ($scope.warning.id_contact_type === 1){
-				$scope.notification_alert = null;        
-			} else {
-				$scope.notification_alert = true;
+			
+			$scope.notification_alert = true;
+
+			switch($scope.warning.id_contact_type) {
+			    case 1:
+			        $scope.notification_alert = null;			        
+					$scope.warning.contact_placeholder = "Ex: warnabroda@gmail.com";
+			        break;
+			    case 2:					
+					$scope.warning.contact_placeholder = "Ex: 12123456789";
+			        break;
+		        case 3:					
+					$scope.warning.contact_placeholder = "https://www.facebook.com/nome_do_usuario";
+			        break;
+			    default:					
+					$scope.warning.contact_placeholder = "";
+			        break;
 			}
+
+
 		}
 		
     }]);
