@@ -131,6 +131,7 @@ angular.module('warnabrodaApp')
             scope: {
                 phonenumberPlaceholder: '=placeholder',
                 phonenumberModel: '=model',
+                change: '=change',                
             },
             //templateUrl: '/static/phonenumberModule/template.html',
             template: '<input ng-model="inputValue" type="tel" class="form-control" placeholder="{{phonenumberPlaceholder}}" title="Informe seu celular">',

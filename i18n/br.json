@@ -433,7 +433,10 @@
     	"amigo_avisado": "Amigo avisado com sucesso.",
     	"error": "Ups! Algum erro ocorreu.",
     	"notificacao_envio" : "Apenas a notificação via e-mail é imediata.",
-        "email_error": "E-mail invalido. Favor verificar."
+        "invalid_email": "O E-mail informado é invalido.",
+        "invalid_ddd" : "O DDD informado é invalido.", 
+        "invalid_facebook_link" : "O Endereço do Facebook informado é invalido.",
+        "invalid_phone_number" : "O Número do telefone é invalido."
     		
     }
     

@@ -13,9 +13,23 @@
 				<strong>Ups algum erro ocorreu!</strong>
 			</div>
 			<div class="alert alert-danger" ng-show="email_error"
-				translate="warning.email_error">
+				translate="warning.invalid_email">
 				<strong>Ups algum erro ocorreu!</strong>
 			</div>
+			<div class="alert alert-danger" ng-show="invalid_ddd"
+				translate="warning.invalid_ddd">
+				<strong>Ups algum erro ocorreu!</strong>
+			</div>
+			<div class="alert alert-danger" ng-show="invalid_facebook"
+				translate="warning.invalid_facebook_link">
+				<strong>Ups algum erro ocorreu!</strong>
+			</div>
+			<div class="alert alert-danger" ng-show="invalid_phone_number"
+				translate="warning.invalid_phone_number">
+				<strong>Ups algum erro ocorreu!</strong>
+			</div>
+
+
 			<form name="form" role="form" novalidate
 				class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
 				ng-submit="send()">
@@ -44,16 +58,14 @@
 				</div>
 
 				<div class="form-group">
-
 					<label translate="warning.contato">Contato do amigo</label> 
-					<input type="email" class="form-control" name="email_contact" placeholder="Ex: warnabroda@gmail.com" 
-						ng-model="email" ng-minlength=1 ng-maxlength=100 ng-show="show_email" onkeypress="teste()">
+					<input type="text" class="form-control" name="email" placeholder="Ex: warnabroda@gmail.com" 
+						ng-model="email" ng-minlength=1 ng-maxlength=100 ng-show="show_email">
 
-					<input type="facebook" class="form-control" name="facebook_contact" placeholder="https://www.facebook.com/nome_do_usuario" 
+					<input type="text" class="form-control" name="facebook" placeholder="https://www.facebook.com/nome_do_usuario" 
 						ng-model="facebook" ng-minlength=1 ng-maxlength=100 ng-show="show_facebook">
 
-					<phonenumber-directive placeholder="phone_placeholder" ng-show="show_phone" model="phone_contact"></phonenumber-directive>								
-
+					<phonenumber-directive placeholder="phone_placeholder" ng-show="show_phone" model="phone_contact" change="updateContact(phone_contact)"></phonenumber-directive>
 				</div>
 				
 
@@ -67,15 +79,13 @@
 					</button>
 					<div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 				</div>
-				<input ng-model="warning.browser" type="hidden">
-				<input ng-model="warning.ip" type="hidden" id="sender_ip">
-				<input ng-model="warning.contact" type="hidden" id="contact" required>
+				<input ng-model="warning.browser" type="hidden" id="sender_browser">
+				<input ng-model="warning.ip" type="hidden" id="sender_ip">										
 			</form>
 		</div>
 	</div>
 </div>
-{{warning}}
-{{form}}
+
 <div class="modal fade" id="saibaMaisModal" tabindex="-1" role="dialog"
 	aria-labelledby="myAvisoLabel" aria-hidden="true">
 	<div class="modal-dialog">
