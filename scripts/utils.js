@@ -139,4 +139,3 @@ angular.module('warnabrodaAppUtils', [])
 
             return service;
         }]);
-

@@ -95,7 +95,7 @@
         }
     },
     "main": {
-        "title": "Dê um toque num amigo...",
+        "title": "Dá um toque...",
         "subtitle": "porque quem avisa, amigo é!",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."

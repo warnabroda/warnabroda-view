@@ -4,6 +4,9 @@
 
 warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP',
     function ($scope, $window, deviceDetector, WarningService, EMAIL_REGEXP) {
+    	$scope.phone_contact = {};    	
+    	$scope.phone_placeholder = "Ex: (12) 12345-1234";
+    	$scope.warning = {contact:null}
 		
 		var listMessage = WarningService.getMessages();
 		var listContactType = WarningService.getContactTypes();
@@ -29,6 +32,10 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 	    		$scope.contactTypes = result;
 	        }
 	    });
+
+	    $scope.teste = function(){
+			console.log('teste');
+		};
 		
 		$scope.send = function(){
 			$scope.warning.browser = deviceDetector.browser;
@@ -37,6 +44,17 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			$scope.warning.device = deviceDetector.device;
 			$scope.warning.raw = deviceDetector.raw.userAgent;
 			$scope.email_error = null;
+			$scope.showAvisoNotificacao();
+
+			if ($scope.warning.contact){
+				console.log($scope.warning.contact);
+			} else {
+				console.log("VAZIO");
+			}
+
+
+			
+			return;
 			if (($scope.warning.id_contact_type === 1) && (EMAIL_REGEXP.test($scope.warning.contact))){
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function() {
@@ -57,7 +75,17 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			}
 			
 			
-		}
+		}	
+
+		$scope.contactEmpty = function(){
+			if ($scope.warning.contact){
+				return null;
+			} else {
+				return true;
+			}
+		}	
+
+		
 		
 		$scope.showAvisoNotificacao = function(){
 			
@@ -66,20 +94,37 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			switch($scope.warning.id_contact_type) {
 			    case 1:
 			        $scope.notification_alert = null;			        
-					$scope.warning.contact_placeholder = "Ex: warnabroda@gmail.com";
+					$scope.show_email = true;
+					$scope.show_facebook = null;
+					$scope.show_phone = null;
+					//for the first time, clean contact field, at send sets the contact field
+					$scope.warning.contact = $scope.email;
+					
 			        break;
 			    case 2:					
-					$scope.warning.contact_placeholder = "Ex: 12123456789";
+					$scope.show_email = null;
+					$scope.show_facebook = null;
+					$scope.show_phone = true;
+					//for the first time, clean contact field, at send sets the contact field
+					$scope.warning.contact = $scope.phone_contact;
+					
 			        break;
 		        case 3:					
-					$scope.warning.contact_placeholder = "https://www.facebook.com/nome_do_usuario";
+					$scope.show_email = null;
+					$scope.show_facebook = true;
+					$scope.show_phone = null;
+					//for the first time, clean contact field, at send sets the contact field
+					$scope.warning.contact = $scope.facebook;
+					
 			        break;
 			    default:					
-					$scope.warning.contact_placeholder = "";
+					
 			        break;
 			}
 
 
 		}
+
+
 		
     }]);
