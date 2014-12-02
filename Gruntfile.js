@@ -34,6 +34,10 @@ module.exports = function (grunt) {
           '{.tmp/,}scripts/{,*/}*.js',
           'images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      },
+      i18n: {
+        files: ['i18n/{,*/}*.json'],
+        tasks: ['copy:i18n']
       }
     },
     autoprefixer: {
@@ -236,7 +240,9 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'images/{,*/}*.{png,gif,webp}',
-            'fonts/*'
+            'fonts/*',
+            'i18n/*',
+            'bower_components/angular-i18n/angular-locale_br.js'
           ]
         }, {
           expand: true,
@@ -252,6 +258,12 @@ module.exports = function (grunt) {
         cwd: 'styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      i18n: {
+        expand: true,
+        cwd: 'i18n',
+        dest: '.tmp/i18n/',
+        src: '{,*/}*.json'
       }
     },
     concurrent: {
