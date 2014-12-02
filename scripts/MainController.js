@@ -42,13 +42,14 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			$scope.warning.ip = sender_ip;
 			$scope.warning.device = deviceDetector.device;
 			$scope.warning.raw = deviceDetector.raw.userAgent;
-			$scope.email_error = null;			
-			var ok = $scope.validateContact();
-
+			$scope.email_error = null;
+			$scope.showAvisoNotificacao();			
+			var ok = $scope.validateContact();			
 			
 			if (ok){
 				var warnService = WarningService.send($scope.warning);
-				warnService.then(function() {
+				warnService.then(function(data) {
+					console.log(data);
 	                $scope.warning.contact = null;
 	                $scope.warning.id_contact_type = null;
 	                $scope.warning.id_message = null;
@@ -114,7 +115,40 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			}
 
 			return true;				
-		}						
+		}
+
+		$scope.showAvisoNotificacao = function(){
+			
+			// $scope.notification_alert = true;
+
+			switch($scope.warning.id_contact_type) {
+			    case 1:
+			    	$scope.warning.contact = $scope.email;
+			        // $scope.notification_alert = null;			        
+					$scope.show_email = true;
+					$scope.show_facebook = null;
+					$scope.show_phone = null;					
+					
+			        break;
+			    case 2:								    	
+					$scope.show_email = null;
+					$scope.show_facebook = null;
+					$scope.show_phone = true;
+										
+			        break;
+		        case 3:					
+		        	$scope.warning.contact = $scope.facebook;
+					$scope.show_email = null;
+					$scope.show_facebook = true;
+					$scope.show_phone = null;
+										
+			        break;
+			    default:					
+					
+			        break;
+			}
+
+		}										
 		
     }]);
 

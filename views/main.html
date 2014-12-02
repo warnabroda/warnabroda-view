@@ -1,8 +1,8 @@
 <div ng-cloak>
 	<div class="row">
 		<div class="col-md-6">
-			<h1 translate="main.title">Welcome, Warn A Broda!</h1>
-			<p class="lead" translate="main.subtitle">Let your friend know
+			<h1 translate="warning.title">Welcome, Warn A Broda!</h1>
+			<p class="lead" translate="warning.subtitle">Let your friend know
 				something secretly</p>				
 			<div class="alert alert-success" ng-show="done"
 				translate="warning.amigo_avisado">
@@ -45,7 +45,8 @@
 				<div class="form-group">
 					<label translate="warning.tipo_notificacao">Notificar amigo
 						via: </label> <select class="form-control"
-						ng-model="warning.id_contact_type"					
+						ng-model="warning.id_contact_type"	
+						ng-change="showAvisoNotificacao()"				
 						ng-options="ct.id as ct.name for ct  in contactTypes"
 						required>
 					</select>
@@ -59,7 +60,7 @@
 				<div class="form-group">
 					<label translate="warning.contato">Contato do amigo</label> 
 					<input type="text" class="form-control" name="email" placeholder="Ex: warnabroda@gmail.com" 
-						ng-model="email" ng-minlength=1 ng-maxlength=100 ng-show="show_email">
+						ng-model="email" ng-minlength=1 ng-maxlength=100 ng-show="show_email" ng-change="updateContact(phone_contact)">
 
 					<input type="text" class="form-control" name="facebook" placeholder="https://www.facebook.com/nome_do_usuario" 
 						ng-model="facebook" ng-minlength=1 ng-maxlength=100 ng-show="show_facebook">
@@ -96,26 +97,29 @@
 				<h4 class="modal-title" id="myAvisoLabel">Sobre o Warn a Broda</h4>
 			</div>
 			<div class="modal-body">
-				<div class="well">
-
-					<h1>Sobre o Warn A Broda:</h1>
-					<p>
+				<div class="well">					
+					<p class="h5">
 						O Aplicativo "Warn A Broda" visa ajudar você a dar aquele toque, em um(a) amigo(a), anonimamente de forma que não fique chato pra quem avisa e pra quem recebe o aviso.
 
 					</p>
-					<ul>						
-						<li>Envio de Mensagens por Facebook</li>
-						<li>Envio de Mensagens por WhatsApp</li>
-						<li>Envio de Mensagens por Twitter Direct Message</li>
-						<li>Declarações secretas de Amor</li>
-						<li>Feedback de recebimento de mensagem pelo amigo
-							notificado.</li>
-					</ul>
-					<br>
-					<div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 					
-					<BR>
-					<p>
+					<h4>Regras basicas para o uso do Warn A Broda:</h3>
+					<ul class="h6">
+						<li>Um número de telefone só pode receber 1 SMS por dia do Warn A Broda;</li>
+						<li>Um mesmo IP só pode enviar 1 SMS por dia pelo Warn A Broda;</li>
+						<li>O Serviço é grátis, mas a responsabilidade é de quem.</li>						
+					</ul>					
+					<h4>Em Breve:</h3>
+					<ul class="h6">
+						<li>Declarações secretas de Amor;</li>
+						<li>Você manda a mensagem e se quiser é notificado quando o(a) amigo(a) receber o aviso.</li>						
+					</ul>
+
+					<br>
+					<div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>					
+					<br>
+
+					<p class="h6">
 						<i>Este aplicativo foi feito por <a
 							href="https://www.linkedin.com/in/hbtsmith">Herbert</a> e <a
 							href="https://www.linkedin.com/in/ademarizu">Ademar</a>,

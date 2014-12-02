@@ -427,6 +427,8 @@
     },
     "footer": "©2014-2014 [Dá um toque / Warn a Broda] Todos os direitos reservados. ",
     "warning" : {
+        "title": "Warn A Broda | Dá um toque",
+        "subtitle": "Porque quem avisa, amigo é!",
     	"amigo_voce": "Amigo(a) você: ",
     	"tipo_notificacao": "Notificar amigo(a) via: ",
     	"contato": "Contato do(a) amigo(a) à ser notificado(a): ",
