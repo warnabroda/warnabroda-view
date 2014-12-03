@@ -4,9 +4,9 @@
 
 warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 
     function ($scope, $window, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
-    	$scope.phone_contact = {};    	
+    		
     	$scope.phone_placeholder = "Ex: (12) 12345-1234";    	
-    	$scope.warning = {contact:null}
+    	$scope.warning = {}
     	
 		
 		var listMessage = WarningService.getMessages();
@@ -17,10 +17,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 				sender_ip = data.ip;
 			});
 			
-		$scope.error = null;	
-		$scope.done = null;
 		
-		$scope.notificacao_envio = null;   
 		
 		listMessage.then(function(result) {
 	    	if (result) {
@@ -42,29 +39,22 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			$scope.warning.ip = sender_ip;
 			$scope.warning.device = deviceDetector.device;
 			$scope.warning.raw = deviceDetector.raw.userAgent;
-			$scope.email_error = null;
-			$scope.showAvisoNotificacao();			
+			
+			$scope.handleContactTypeSelect();			
 			var ok = $scope.validateContact();			
 			
 			if (ok){
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {
-					$scope.handleServerResponse(data);
-	                $scope.warning.contact = null;
-	                $scope.warning.id_contact_type = null;
-	                $scope.warning.id_message = null;
-	                
-	                $scope.email = null;	                
-	                $scope.inputValue = null;       
+					$scope.handleServerResponse(data);	                
 	        	}, function(error) {
 			       $scope.error = error;
 			       $scope.done = null;
 			    });
-			} else {
-				$scope.email_error = null;
+			} else {				
 		    	$scope.error = null;
 			}
-			
+			console.log($scope.warning);
 		}
 
 		$scope.handleServerResponse = function (data){
@@ -74,6 +64,17 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 				case 200:
 					$scope.server_msg_danger = null;
 					$scope.server_msg_sucess = data.name;
+
+					
+					
+	                $scope.warning.id_contact_type = null;
+	                $scope.warning.id_message = null;	                
+	                $scope.sms = null;
+	                $scope.email = null;	
+	                $scope.facebook = null;
+	                
+	                $scope.handleContactTypeSelect();                         
+	                					
 				break;
 
 				case 403:
@@ -113,7 +114,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 						return false;
 					}
 
-					if (contact.length > 0 && VALID_DDD.indexOf(contact.substring(0,2)) > 0){
+					if (contact.length > 0 && VALID_DDD.indexOf(contact.substring(0,2)) > -1){
 						$scope.invalid_ddd = null;				
 					} else {
 						$scope.invalid_ddd = true;	
@@ -135,7 +136,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			return true;				
 		}
 
-		$scope.showAvisoNotificacao = function(){
+		$scope.handleContactTypeSelect = function(){
 			
 			// $scope.notification_alert = true;
 
@@ -162,7 +163,9 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 										
 			        break;
 			    default:					
-					
+					$scope.show_email = null;
+					$scope.show_facebook = null;
+					$scope.show_phone = null;
 			        break;
 			}
 
