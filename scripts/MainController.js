@@ -49,14 +49,13 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			if (ok){
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {
-					console.log(data);
+					$scope.handleServerResponse(data);
 	                $scope.warning.contact = null;
 	                $scope.warning.id_contact_type = null;
 	                $scope.warning.id_message = null;
-	                $scope.error = null;
-	                $scope.done = true;  
-	                $scope.email = null;
-	                $scope.phone_contact = {};       
+	                
+	                $scope.email = null;	                
+	                $scope.inputValue = null;       
 	        	}, function(error) {
 			       $scope.error = error;
 			       $scope.done = null;
@@ -66,6 +65,25 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 		    	$scope.error = null;
 			}
 			
+		}
+
+		$scope.handleServerResponse = function (data){
+			$scope.error = null;
+            $scope.done = null;  	
+			switch(data.id){
+				case 200:
+					$scope.server_msg_danger = null;
+					$scope.server_msg_sucess = data.name;
+				break;
+
+				case 403:
+					$scope.server_msg_sucess = null;
+					$scope.server_msg_danger = data.name;
+				break;
+				default:
+
+				break;
+			}
 		}		
 
 

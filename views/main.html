@@ -2,8 +2,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<h1 translate="warning.title">Welcome, Warn A Broda!</h1>
-			<p class="lead" translate="warning.subtitle">Let your friend know
-				something secretly</p>				
+			<p class="lead" translate="warning.subtitle">Let your friend know something secretly</p>		
 			<div class="alert alert-success" ng-show="done"
 				translate="warning.amigo_avisado">
 				<strong>Amigo avisado com sucesso!</strong>
@@ -11,6 +10,12 @@
 			<div class="alert alert-danger" ng-show="error"
 				translate="warning.error">
 				<strong>Ups algum erro ocorreu!</strong>
+			</div>
+			<div class="alert alert-danger" ng-show="server_msg_danger">
+				<strong>{{server_msg_danger}}</strong>
+			</div>
+			<div class="alert alert-success" ng-show="server_msg_sucess">
+				<strong>{{server_msg_sucess}}</strong>
 			</div>
 			<div class="alert alert-danger" ng-show="email_error"
 				translate="warning.invalid_email">
@@ -85,7 +90,7 @@
 		</div>
 	</div>
 </div>
-
+{{form}}
 <div class="modal fade" id="saibaMaisModal" tabindex="-1" role="dialog"
 	aria-labelledby="myAvisoLabel" aria-hidden="true">
 	<div class="modal-dialog">
