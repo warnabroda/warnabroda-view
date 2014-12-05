@@ -57,6 +57,10 @@ body {
     cursor: pointer;
 }
 
+.main-well {
+    width: 600px;
+}
+
 #threadDump .popover, #healthCheck .popover {
     top: inherit;
     display: block;
