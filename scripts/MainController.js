@@ -11,6 +11,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 		
 		var listMessage = WarningService.getMessages();
 		var listContactType = WarningService.getContactTypes();
+		var countWarnings = WarningService.countWarnings();
 		var browser = $window.navigator.userAgent;
 		var sender_ip = ''; 
 			$.getJSON("http://jsonip.com?callback=?", function (data) {
@@ -28,6 +29,12 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 		listContactType.then(function(result) {
 	    	if (result) {
 	    		$scope.contactTypes = result;
+	        }
+	    });
+
+	    countWarnings.then(function(result) {
+	    	if (result) {
+	    		$scope.countWarnings = result;
 	        }
 	    });
 
