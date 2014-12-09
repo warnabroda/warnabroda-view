@@ -61,7 +61,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			} else {				
 		    	$scope.error = null;
 			}
-			console.log($scope.warning);
+			
 		}
 
 		$scope.handleServerResponse = function (data){
@@ -178,18 +178,18 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 
 		}
 
-		$scope.ignoreContact = function(){
+		$scope.ignoreContact = function(contact){
+			
 			var ignore = {};
 			ignore.browser = deviceDetector.browser;			
 			ignore.operating_system = deviceDetector.os;
 			ignore.ip = sender_ip;
 			ignore.device = deviceDetector.device;
 			ignore.raw = deviceDetector.raw.userAgent;
-			ignore.contact = $scope.ignore_contact.contact;
+			ignore.contact = contact;
 			$scope.ignore_contact_error = null;
 			$scope.server_response = null;
-
-
+			
 			if (EMAIL_REGEXP.test(ignore.contact) || (ignore.contact.length === 10 || ignore.contact.length === 11)){
 				if (modalDialog.confirm("Você tem certeza que deseja adicionar o contato '"+ignore.contact+"' na Lista de Ignorados?") == true) {
 					var warnService = WarningService.ignoreContact(ignore);
