@@ -1,6 +1,6 @@
 {
     "global": {
-        "title": "Dá um toque",
+        "title": "Warn A Broda",
         "browsehappy": "Você está usando um browser <strong> desatualizados </ strong>. Por favor <a href=\"http://browsehappy.com/?locale=en\"> atualizar </a> seu navegador para melhorar sua experiência.",
         "loading": "Carregando...",
         "no": "Não",
@@ -95,7 +95,7 @@
         }
     },
     "main": {
-        "title": "Dá um toque...",
+        "title": "Warn A Broda...",
         "subtitle": "porque quem avisa, amigo é!",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
@@ -425,9 +425,9 @@
         "title": "Página de erro!",
         "403": "Você não está autorizado a acessar a página."
     },
-    "footer": "©2014-2014 [Dá um toque / Warn a Broda] Todos os direitos reservados. ",
+    "footer": "©2014-2014 Warn a Broda. Todos os direitos reservados. ",
     "warning" : {
-        "title": "Warn A Broda | Dá um toque",
+        "title": "Warn A Broda",
         "subtitle": "Porque quem avisa, amigo é!",
     	"amigo_voce": "Amigo(a) você: ",
     	"tipo_notificacao": "Notificar amigo(a) via: ",
