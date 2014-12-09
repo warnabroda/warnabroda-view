@@ -40,6 +40,15 @@ warnabrodaApp.factory('WarningService', ['$resource', '$q', '$http',
                 deferred.reject(status);
             });
             return deferred.promise;
+        }, 
+        ignoreContact : function(contact){
+            var deferred = $q.defer();
+            $http.post('warnabroda/ignore-list', contact).success(function(data) {
+                deferred.resolve(data);
+            }).error(function(data, status, headers, config) {
+                deferred.reject(status);
+            });
+            return deferred.promise;
         }
 	};
 }]);

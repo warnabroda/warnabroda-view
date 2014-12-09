@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 
-    function ($scope, $window, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
+warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 'modalDialog', 
+    function ($scope, $window, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD, modalDialog) {
     		
     	$scope.phone_placeholder = "Ex: (12) 12345-1234";    	
     	$scope.warning = {}
@@ -176,6 +176,37 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			        break;
 			}
 
+		}
+
+		$scope.ignoreContact = function(){
+			var ignore = {};
+			ignore.browser = deviceDetector.browser;			
+			ignore.operating_system = deviceDetector.os;
+			ignore.ip = sender_ip;
+			ignore.device = deviceDetector.device;
+			ignore.raw = deviceDetector.raw.userAgent;
+			ignore.contact = $scope.ignore_contact.contact;
+			$scope.ignore_contact_error = null;
+			$scope.server_response = null;
+
+
+			if (EMAIL_REGEXP.test(ignore.contact) || (ignore.contact.length === 10 || ignore.contact.length === 11)){
+				if (modalDialog.confirm("Você tem certeza que deseja adicionar o contato '"+ignore.contact+"' na Lista de Ignorados?") == true) {
+					var warnService = WarningService.ignoreContact(ignore);
+					warnService.then(function(data) {							                
+						$scope.server_response = data.name;
+		        	}, function(error) {
+				       $scope.error = error;
+				       $scope.done = null;
+				    });			      
+			      
+			    }
+				
+			} else {
+				$scope.ignore_contact_error = true;
+			}
+
+			
 		}										
 		
     }]);

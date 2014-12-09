@@ -25,3 +25,11 @@ warnabrodaApp.factory('LanguageService', ['$http', '$translate',
             }
         };
     }]);
+
+warnabrodaApp.factory('modalDialog', ['$window', function($window) {
+    return {
+        confirm: function(message) {
+            return $window.confirm(message);
+        }
+    }
+}]);

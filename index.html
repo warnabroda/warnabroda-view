@@ -32,7 +32,45 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div class=""></div>        
-        <br  ng-show="!isAuthorized(userRoles.admin)">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                  <a class="navbar-brand" href="#"><span translate="warning.title">Warn A Broda </span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="authenticated">
+                    <ul class="nav navbar-nav nav-pills navbar-right">                        
+
+                        <li>
+                            <a href="#"  data-toggle="modal" data-target="#contato">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                <span translate="warning.contact_label">Contato</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#ignoreContactModal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                <span translate="warning.ignore_me_label">Me Ignorar</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#"  data-toggle="modal" data-target="#saibaMaisModal">
+                                <span class="glyphicon glyphicon-flash"></span>
+                                <span translate="warning.about_label">Sobre o Warna A Broda</span>
+                            </a>
+                        </li>
+                         
+                    </ul>
+                </div>
+            </div>
+        </nav>        
         <div class="container">
             <div class="well main-well" ng-view=""></div>
 
