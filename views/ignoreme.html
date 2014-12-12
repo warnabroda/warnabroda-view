@@ -3,13 +3,11 @@
 		<div class="col-md-10">
 			<!-- h1 translate="warning.title">Welcome, Warn A Broda!</h1-->
 			<p class="lead" translate="warning.ignoreme.title">Let your friend know something secretly</p>
-			<div class="alert alert-success" ng-show="done"
-				translate="warning.amigo_avisado">
-				<strong>Contato Bloqueado com Sucesso!</strong>
+			<div class="alert alert-success" ng-show="server_msg_sucess">
+				<strong>{{server_msg_sucess}}</strong>
 			</div>
-			<div class="alert alert-danger" ng-show="error"
-				translate="warning.error">
-				<strong>Ups algum erro ocorreu!</strong>
+			<div class="alert alert-danger" ng-show="server_msg_danger">
+				<strong>{{server_msg_danger}}</strong>
 			</div>			
 
 
@@ -21,10 +19,12 @@
 				<div class="form-group">
 					<label translate="warning.ignoreme.code">Contato do amigo</label> 
 					<input type="text" class="form-control" name="code" placeholder="A1B2C3D4E5F6" 
-						ng-model="ignore.code" ng-minlength="6" ng-maxlength="6">					
-				</div>
+						ng-model="ignore.Confirmation_code" ng-minlength="4" required>					
+				</div>			
 				
-				<div class="g-recaptcha" data-sitekey="6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB"></div>
+				<!--div re-captcha class="g-recaptcha" ng-model="ignore.captcha"></div -->
+				<!-- div class="g-recaptcha" data-sitekey="6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB"></div -->
+				<div vc-recaptcha key="'6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB'" theme="clean"></div>
 
 				<div class="modal-footer">
 					<button type="submit" ng-disabled="form.$invalid" class="btn btn-success">

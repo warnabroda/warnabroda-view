@@ -4,11 +4,11 @@
 var httpHeaders;
 
 var warnabrodaApp = angular.module('warnabrodaApp', ['http-auth-interceptor', 'tmh.dynamicLocale',
-    'ngResource', 'ngRoute', 'ngCookies', 'warnabrodaAppUtils', 'pascalprecht.translate', 'truncate', 'ng.deviceDetector']);
+    'ngResource', 'ngRoute', 'ngCookies', 'warnabrodaAppUtils', 'pascalprecht.translate', 'truncate', 'ng.deviceDetector', 'reCAPTCHA', 'vcRecaptcha']);
 
 warnabrodaApp
-    .config(['$routeProvider', '$httpProvider', '$translateProvider',  'tmhDynamicLocaleProvider', 'USER_ROLES',
-        function ($routeProvider, $httpProvider, $translateProvider, tmhDynamicLocaleProvider, USER_ROLES) {
+    .config(['$routeProvider', '$httpProvider', '$translateProvider',  'tmhDynamicLocaleProvider', 'USER_ROLES', 'reCAPTCHAProvider',
+        function ($routeProvider, $httpProvider, $translateProvider, tmhDynamicLocaleProvider, USER_ROLES, reCAPTCHAProvider) {
             $routeProvider              
                 .when('/login', {
                     templateUrl: 'views/login.html',
@@ -52,4 +52,11 @@ warnabrodaApp
             tmhDynamicLocaleProvider.useCookieStorage('NG_TRANSLATE_LANG_KEY');
             
             httpHeaders = $httpProvider.defaults.headers;
+
+            reCAPTCHAProvider.setPublicKey('6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB');
+
+            // optional: gets passed into the Recaptcha.create call
+            reCAPTCHAProvider.setOptions({
+                theme: 'clean'
+            });
         }]);
