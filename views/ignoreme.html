@@ -1,0 +1,38 @@
+<div ng-cloak>
+	<div class="row">
+		<div class="col-md-10">
+			<!-- h1 translate="warning.title">Welcome, Warn A Broda!</h1-->
+			<p class="lead" translate="warning.ignoreme.title">Let your friend know something secretly</p>
+			<div class="alert alert-success" ng-show="done"
+				translate="warning.amigo_avisado">
+				<strong>Contato Bloqueado com Sucesso!</strong>
+			</div>
+			<div class="alert alert-danger" ng-show="error"
+				translate="warning.error">
+				<strong>Ups algum erro ocorreu!</strong>
+			</div>			
+
+
+			<form name="form" role="form" novalidate
+				class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+				ng-submit="send()">
+
+				
+				<div class="form-group">
+					<label translate="warning.ignoreme.code">Contato do amigo</label> 
+					<input type="text" class="form-control" name="code" placeholder="A1B2C3D4E5F6" 
+						ng-model="ignore.code" ng-minlength="6" ng-maxlength="6">					
+				</div>
+				
+				<div class="g-recaptcha" data-sitekey="6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB"></div>
+
+				<div class="modal-footer">
+					<button type="submit" ng-disabled="form.$invalid" class="btn btn-success">
+						<span class="glyphicon glyphicon-ok"></span> Confirmar Bloqueio de contato
+					</button>										
+				</div>				
+				
+			</form>			
+		</div>
+	</div>
+</div>

@@ -443,7 +443,12 @@
         "ignore_contact_error" : "O Contato informado é invalido.",
         "contact_label" : "Contato",
         "about_label" : "Sobre",
-        "ignore_me_label" : "Me Ignore!"
+        "ignore_me_label" : "Me Ignore!",
+        "ignoreme" : {
+            "title" : "Me Ignore pra sempre!",
+            "code" : "Código enviado por SMS/E-mail:"
+
+            }
     		
     }
     

@@ -23,6 +23,13 @@ warnabrodaApp
                         authorizedRoles: [USER_ROLES.all]
                     }
                 })
+                .when('/ignoreme', {
+                    templateUrl: 'views/ignoreme.html',
+                    controller: 'IgnoremeController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
                 .otherwise({
                     templateUrl: 'views/main.html',
                     controller: 'MainController',
