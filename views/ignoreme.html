@@ -7,11 +7,20 @@
 				<strong>{{server_msg_sucess}}</strong>
 			</div>
 			<div class="alert alert-danger" ng-show="server_msg_danger">
-				<strong>{{server_msg_danger}}</strong>
+				{{server_msg_danger}}
 			</div>			
+			<div class="alert alert-warning" ng-show="captcha_invalid"
+				translate="warning.ignoreme.captcha_invalid">
+				<strong>Ups algum erro ocorreu!</strong>
+			</div>			
+			<div class="alert alert-danger" ng-show="confirmation_code_invalid"
+				translate="warning.ignoreme.invalid_confirmation_code">
+				<strong>Ups algum erro ocorreu!</strong>
+			</div>
+			
 
 
-			<form name="form" role="form" novalidate
+			<form name="formIgnore" role="form" novalidate
 				class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
 				ng-submit="send()">
 
@@ -22,16 +31,17 @@
 						ng-model="ignore.Confirmation_code" ng-minlength="4" required>					
 				</div>			
 				
-				<!--div re-captcha class="g-recaptcha" ng-model="ignore.captcha"></div -->
-				<!-- div class="g-recaptcha" data-sitekey="6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB"></div -->
-				<div vc-recaptcha key="'6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB'" theme="clean"></div>
+				<no-captcha
+				    g-recaptcha-response="gRecaptchaResponse"
+				    theme="clean"
+				    site-key="6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB">
+				</no-captcha>
 
 				<div class="modal-footer">
-					<button type="submit" ng-disabled="form.$invalid" class="btn btn-success">
+					<button type="submit" ng-disabled="formIgnore.$invalid" class="btn btn-success">
 						<span class="glyphicon glyphicon-ok"></span> Confirmar Bloqueio de contato
 					</button>										
-				</div>				
-				
+				</div>
 			</form>			
 		</div>
 	</div>

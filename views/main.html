@@ -3,10 +3,7 @@
 		<div class="col-md-10">
 			<!-- h1 translate="warning.title">Welcome, Warn A Broda!</h1-->
 			<p class="lead" translate="warning.subtitle">Let your friend know something secretly</p>
-			<div class="alert alert-success" ng-show="done"
-				translate="warning.amigo_avisado">
-				<strong>Amigo avisado com sucesso!</strong>
-			</div>
+			
 			<div class="alert alert-danger" ng-show="error"
 				translate="warning.error">
 				<strong>Ups algum erro ocorreu!</strong>
@@ -80,18 +77,12 @@
 					</button>					
 					<div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">	
 				</div>
-				</div>
-				<input ng-model="warning.browser" type="hidden" id="sender_browser">
-				<input ng-model="warning.ip" type="hidden" id="sender_ip">										
+				</div>														
 				<input ng-model="warning.contact" type="hidden" id="dest_contact">	
 				
 			</form>			
 		</div>
 	</div>
 </div>
-
-<div ng-include src="'views/modal-contactus.html'"></div>
-<div ng-include src="'views/modal-about.html'"></div>
-<div ng-include="'views/modal-ignore.html'" ng-controller="MainController"></div>
 
 

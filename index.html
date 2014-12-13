@@ -23,8 +23,8 @@
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/famfamfam-flags.css">
         <!-- endbuild -->
-        <!-- script src='https://www.google.com/recaptcha/api.js'></script -->
-        <script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <!-- script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script -->
     </head>
     <body ng-app="warnabrodaApp" ng-controller="MainController">       
     	<div id="fb-root"></div>	
@@ -54,21 +54,21 @@
                     <ul class="nav navbar-nav nav-pills navbar-right">                        
 
                         <li>
-                            <a href="#"  data-toggle="modal" data-target="#contato">
+                            <a href="#/contact">
                                 <span class="glyphicon glyphicon-envelope"></span>
                                 <span translate="warning.contact_label">Contato</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" data-toggle="modal" data-target="#ignoreContactModal">
+                            <a ng-href="#/ignore-request" data-toggle="modal" data-target="#ignoreContactModal">
                                 <span class="glyphicon glyphicon-remove"></span>
                                 <span translate="warning.ignore_me_label">Me Ignorar</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#"  data-toggle="modal" data-target="#saibaMaisModal">
+                            <a href="#/about">
                                 <span class="glyphicon glyphicon-flash"></span>
                                 <span translate="warning.about_label">Sobre o Warna A Broda</span>
                             </a>
@@ -84,8 +84,8 @@
             <div class="footer">
                 <p translate="footer">©2014-2014 Warn a Broda. Todos os direitos reservados.</p>
             </div>
-        </div>
-
+        </div>      
+        
         
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.-->
         <script>
@@ -110,9 +110,8 @@
         <script src="bower_components/angular-translate/angular-translate.js"></script>
         <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
         <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-        <script src="bower_components/angular-dynamic-locale/src/tmhDinamicLocale.js"></script>
-        <script src="bower_components/angular-re-captcha/angular-re-captcha.js"></script>
-        <script type="text/javascript" src="scripts/angular-recaptcha.js"></script>
+        <script src="bower_components/angular-dynamic-locale/src/tmhDinamicLocale.js"></script>     
+        <script src="scripts/angular-no-captcha.js"></script>
         <script src="scripts/http-auth-interceptor.js"></script>
         <script src="scripts/truncate.js"></script>
         <script src="scripts/utils.js"></script>
@@ -123,7 +122,8 @@
         <script src="scripts/directives.js"></script>
         <script src="scripts/ng-device-detector.js"></script>
         <script src="scripts/MainController.js"></script>
-        <script src="scripts/IgnoremeController.js"></script>
+        <script src="scripts/IgnoremeConfirmationController.js"></script>
+        <script src="scripts/IgnoremeRequestController.js"></script>
         <script src="scripts/WarningService.js"></script>
         <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/affix.js"></script>
         <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/alert.js"></script>

@@ -1,45 +1,65 @@
-<div class="modal fade" id="ignoreContactModal" tabindex="-1" role="dialog"	aria-labelledby="myAvisoLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<form name="formmodal" role="form" novalidate class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength" ng-submit="ignoreContact(ignore_contact.contact)">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myAvisoLabel">Adicionar Contato à Ignore List.</h4>
-				</div>
-				<div class="modal-body">
-					<p class="h5">
-						A partir do momento que você adicionar seu contato na Ignore List, o Warn A Broda não conseguirá mais lhe avisar nada... :'(						
-					</p>
-					<br>
-					<p class="h5">
-						Você está pronto?						
-					</p>
-					<br>
-						<div class="alert alert-danger" ng-show="ignore_contact_error" translate="warning.ignore_contact_error">
-							<strong>Ups algum erro ocorreu!</strong>
-						</div>
-						<div class="alert alert-warning" ng-show="server_response">
-							<strong>{{server_response}}</strong>
-						</div>
-						
+<div ng-cloak>
+	<div class="row">
+		<div class="col-md-12">
 
-						<div class="form-group">
-							<label translate="warning.ignore_contact">Notificar amigo via: </label> 
-							<input type="text" class="form-control" name="ignore_contact" placeholder="Ex: warnabroda@gmail.com ou 41987654321" 
-								ng-model="ignore_contact.contact" ng-minlength=1 ng-maxlength=100 required>						
-						</div>						
-				</div>
-				<div class="modal-footer">
-					<div class="form-group">
-						<button type="submit" ng-disabled="formmodal.$invalid" class="btn btn-lg btn-danger">
-							<span class="glyphicon glyphicon-ok"></span> Ignorar
-						</button>	
-						<button type="button" class="btn btn-sm btn-success" data-dismiss="modal">
-					<span class="glyphicon glyphicon-remove"></span> Cancelar
-				</button>					
-					</div>					
-				</div>
+			<div class="alert alert-danger" ng-show="error" translate="warning.error">
+				<strong>Ups algum erro ocorreu!</strong>
 			</div>
-		</form>	
+
+			<div class="alert alert-warning" ng-show="captcha_invalid" translate="warning.ignoreme.captcha_invalid">
+				<strong>Captcha invalido!</strong>
+			</div>
+
+			<div class="alert alert-warning" ng-show="invalid_ddd" translate="warning.invalid_ddd">
+				<strong>Captcha invalido!</strong>
+			</div>
+			<div class="alert alert-warning" ng-show="contact_invalid" translate="warning.invalid_contact">
+				<strong>Captcha invalido!</strong>
+			</div>
+
+
+			<div class="alert alert-warning" ng-show="server_msg_danger">
+				<strong>{{server_msg_danger}}</strong>
+			</div>
+			<div class="alert alert-success" ng-show="server_msg_success">
+				<strong>{{server_msg_success}}</strong>
+			</div>
+
+			<div class="panel panel-default">
+            	<div class="panel-heading">
+              		<h3 class="panel-title" translate="warning.ignoreme.add">Add to Ignore me</h3>
+            	</div>
+            	<div class="panel-body">
+            		
+					<form name="form" role="form" novalidate class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength" ng-submit="send()">
+						<p class="h5">
+							A partir do momento que você adicionar seu contato na Ignore List, o Warn A Broda não conseguirá mais lhe avisar nada... :'(						
+						</p>
+						<div class="form-group">							
+							<input type="text" class="form-control" name="ignore_contact" placeholder="Ex: warnabroda@gmail.com ou 41987654321" 
+								ng-model="ignore.contact" ng-minlength=5 ng-maxlength=100 required>						
+						</div>
+
+						<no-captcha
+						    g-recaptcha-response="gRecaptchaResponse"
+						    theme="clean"
+						    site-key="6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB">
+						</no-captcha>
+						<div class="modal-footer">
+							<div class="form-group">
+								<button type="submit" ng-disabled="form.$invalid" class="btn btn-lg btn-danger">
+									<span class="glyphicon glyphicon-ok"></span> Ignorar
+								</button>	
+							</div>					
+						</div>
+					</form>
+              
+            	</div>
+
+          	</div>
+
+
+
+		</div>
 	</div>
 </div>

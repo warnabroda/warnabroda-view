@@ -2,22 +2,22 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 'modalDialog', 
-    function ($scope, $window, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD, modalDialog) {
+warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 
+    function ($scope, $window, $location, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
     		
     	$scope.phone_placeholder = "Ex: (12) 12345-1234";    	
-    	$scope.warning = {}
+    	$scope.warning = {}  	
     	
 		
 		var listMessage = WarningService.getMessages();
 		var listContactType = WarningService.getContactTypes();
 		var countWarnings = WarningService.countWarnings();
 		var browser = $window.navigator.userAgent;
-		var sender_ip = ''; 
-			$.getJSON("http://jsonip.com?callback=?", function (data) {
-				sender_ip = data.ip;
-			});
+		
+		$.getJSON("http://jsonip.com?callback=?", function (data) {
 			
+			$scope.warning.ip = data.ip;
+		});			
 		
 		
 		listMessage.then(function(result) {
@@ -39,24 +39,21 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 	    });
 
 	    
+		$scope.warning.browser = deviceDetector.browser;
+		$scope.warning.operating_system = deviceDetector.os;			
+		$scope.warning.device = deviceDetector.device;
+		$scope.warning.raw = deviceDetector.raw.userAgent;
 		
 		$scope.send = function(){
-			$scope.warning.browser = deviceDetector.browser;
-			$scope.warning.operating_system = deviceDetector.os;
-			$scope.warning.ip = sender_ip;
-			$scope.warning.device = deviceDetector.device;
-			$scope.warning.raw = deviceDetector.raw.userAgent;
 			
 			$scope.handleContactTypeSelect();			
-			var ok = $scope.validateContact();			
 			
-			if (ok){
+			if ($scope.validateContact()){
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {
 					$scope.handleServerResponse(data);	                
 	        	}, function(error) {
-			       $scope.error = error;
-			       $scope.done = null;
+			       $scope.error = error;			       
 			    });
 			} else {				
 		    	$scope.error = null;
@@ -66,13 +63,11 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 
 		$scope.handleServerResponse = function (data){
 			$scope.error = null;
-            $scope.done = null;  	
+             	
 			switch(data.id){
 				case 200:
 					$scope.server_msg_danger = null;
-					$scope.server_msg_sucess = data.name;
-
-					
+					$scope.server_msg_sucess = data.name;					
 					
 	                $scope.warning.id_contact_type = null;
 	                $scope.warning.id_message = null;	                
@@ -85,11 +80,12 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 				break;
 
 				case 403:
-					$scope.server_msg_sucess = null;
 					$scope.server_msg_danger = data.name;
+					$scope.server_msg_sucess = null;
 				break;
 				default:
-
+					$scope.server_msg_danger = null;
+					$scope.server_msg_sucess = null;
 				break;
 			}
 		}		
@@ -143,9 +139,8 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			return true;				
 		}
 
-		$scope.handleContactTypeSelect = function(){
+		$scope.handleContactTypeSelect = function(){			
 			
-			// $scope.notification_alert = true;
 
 			switch($scope.warning.id_contact_type) {
 			    case 1:
@@ -177,37 +172,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', 'deviceDetector
 			}
 
 		}
-
-		$scope.ignoreContact = function(contact){
-			
-			var ignore = {};
-			ignore.browser = deviceDetector.browser;			
-			ignore.operating_system = deviceDetector.os;
-			ignore.ip = sender_ip;
-			ignore.device = deviceDetector.device;
-			ignore.raw = deviceDetector.raw.userAgent;
-			ignore.contact = contact;
-			$scope.ignore_contact_error = null;
-			$scope.server_response = null;
-			
-			if (EMAIL_REGEXP.test(ignore.contact) || (ignore.contact.length === 10 || ignore.contact.length === 11)){
-				if (modalDialog.confirm("Você tem certeza que deseja adicionar o contato '"+ignore.contact+"' na Lista de Ignorados?") == true) {
-					var warnService = WarningService.ignoreContact(ignore);
-					warnService.then(function(data) {							                
-						$scope.server_response = data.name;
-		        	}, function(error) {
-				       $scope.error = error;
-				       $scope.done = null;
-				    });			      
-			      
-			    }
-				
-			} else {
-				$scope.ignore_contact_error = true;
-			}
-
-			
-		}										
+										
 		
     }]);
 

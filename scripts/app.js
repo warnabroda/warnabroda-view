@@ -4,11 +4,11 @@
 var httpHeaders;
 
 var warnabrodaApp = angular.module('warnabrodaApp', ['http-auth-interceptor', 'tmh.dynamicLocale',
-    'ngResource', 'ngRoute', 'ngCookies', 'warnabrodaAppUtils', 'pascalprecht.translate', 'truncate', 'ng.deviceDetector', 'reCAPTCHA', 'vcRecaptcha']);
+    'ngResource', 'ngRoute', 'ngCookies', 'warnabrodaAppUtils', 'pascalprecht.translate', 'truncate', 'ng.deviceDetector', 'noCAPTCHA']); //, 'reCAPTCHA', 'vcRecaptcha'
 
 warnabrodaApp
-    .config(['$routeProvider', '$httpProvider', '$translateProvider',  'tmhDynamicLocaleProvider', 'USER_ROLES', 'reCAPTCHAProvider',
-        function ($routeProvider, $httpProvider, $translateProvider, tmhDynamicLocaleProvider, USER_ROLES, reCAPTCHAProvider) {
+    .config(['$routeProvider', '$httpProvider', '$translateProvider',  'tmhDynamicLocaleProvider', 'USER_ROLES', 'noCAPTCHAProvider',
+        function ($routeProvider, $httpProvider, $translateProvider, tmhDynamicLocaleProvider, USER_ROLES, noCAPTCHAProvider) {
             $routeProvider              
                 .when('/login', {
                     templateUrl: 'views/login.html',
@@ -25,7 +25,28 @@ warnabrodaApp
                 })
                 .when('/ignoreme', {
                     templateUrl: 'views/ignoreme.html',
-                    controller: 'IgnoremeController',
+                    controller: 'IgnoremeConfirmationController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                .when('/contact', {
+                    templateUrl: 'views/modal-contactus.html',
+                    controller: 'MainController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                .when('/about', {
+                    templateUrl: 'views/modal-about.html',
+                    controller: 'MainController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                .when('/ignore-request', {
+                    templateUrl: 'views/modal-ignore.html',
+                    controller: 'IgnoremeRequestController',
                     access: {
                         authorizedRoles: [USER_ROLES.all]
                     }
@@ -53,10 +74,6 @@ warnabrodaApp
             
             httpHeaders = $httpProvider.defaults.headers;
 
-            reCAPTCHAProvider.setPublicKey('6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB');
-
-            // optional: gets passed into the Recaptcha.create call
-            reCAPTCHAProvider.setOptions({
-                theme: 'clean'
-            });
+            noCAPTCHAProvider.setSiteKey('6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB');
+            noCAPTCHAProvider.setTheme('clean');            
         }]);

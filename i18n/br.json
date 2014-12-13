@@ -435,19 +435,22 @@
     	"amigo_avisado": "Broda avisado(a) com sucesso.",
     	"error": "Ups! Algum erro ocorreu.",
     	"notificacao_envio" : "Apenas a notificação via e-mail é imediata.",
-        "invalid_email": "O E-mail informado é invalido.",
-        "invalid_ddd" : "O DDD informado é invalido.", 
-        "invalid_facebook_link" : "O Endereço do Facebook informado é invalido.",
-        "invalid_phone_number" : "O Número do telefone é invalido.",
+        "invalid_email": "O E-mail informado é inválido.",
+        "invalid_ddd" : "O DDD informado é inválido.", 
+        "invalid_contact" : "O Contato informado é inválido.", 
+        "invalid_facebook_link" : "O Endereço do Facebook informado é inválido.",
+        "invalid_phone_number" : "O Número do telefone é inválido.",
         "ignore_contact" : "Contato à ser ignorado:",
-        "ignore_contact_error" : "O Contato informado é invalido.",
+        "ignore_contact_error" : "O Contato informado é inválido.",
         "contact_label" : "Contato",
         "about_label" : "Sobre",
-        "ignore_me_label" : "Me Ignore!",
+        "ignore_me_label" : "Ignore-me!",
         "ignoreme" : {
-            "title" : "Me Ignore pra sempre!",
-            "code" : "Código enviado por SMS/E-mail:"
-
+            "title" : "Ignore-me pra sempre!",
+            "code" : "Código enviado por SMS/E-mail:",
+            "captcha_invalid" : "Captcha inválido.",
+            "add" : "Adicionar à lista de contatos ignorados.",
+            "invalid_confirmation_code" : "Código inválido."
             }
     		
     }
