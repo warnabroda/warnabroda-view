@@ -101,7 +101,7 @@ angular.module('warnabrodaApp')
                 });
             }
         }
-    }).directive('phonenumberDirective', ['$filter', function($filter) {
+    }).directive('phonenumberDirective', ['$filter', function($filter) {        
         /*
         Intended use:
             <phonenumber-directive placeholder='prompt' model='someModel.phonenumber'></phonenumber-directive>
@@ -112,7 +112,7 @@ angular.module('warnabrodaApp')
         */
  
         function link(scope, element, attributes) {
- 
+            
             // scope.inputValue is the value of input element used in template
             scope.inputValue = scope.phonenumberModel;
  
@@ -127,7 +127,7 @@ angular.module('warnabrodaApp')
         
         return {
             link: link,
-            restrict: 'E',
+            restrict: 'E',            
             scope: {
                 phonenumberPlaceholder: '=placeholder',
                 phonenumberModel: '=model',
@@ -139,13 +139,14 @@ angular.module('warnabrodaApp')
     }])
  
     .filter('phonenumber', function() {
+
         /* 
         Format phonenumber as: c (xxx) xxx-xxxx
             or as close as possible if phonenumber length is not 10
             if c is not '1' (country code not USA), does not use country code
         */
         
-        return function (number) {
+        return function (number) {            
             /* 
             @param {Number | String} number - Number that will be formatted as telephone number
             Returns formatted number: (###) ###-####

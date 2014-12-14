@@ -6,16 +6,18 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
     function ($scope, $window, $location, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
     		
     	$scope.phone_placeholder = "Ex: (12) 12345-1234";    	
-    	$scope.warning = {}  	
-    	
+    	$scope.warning = {} 
+    	$scope.warning.browser = deviceDetector.browser;
+		$scope.warning.operating_system = deviceDetector.os;			
+		$scope.warning.device = deviceDetector.device;
+		$scope.warning.raw = deviceDetector.raw.userAgent;   	
 		
 		var listMessage = WarningService.getMessages();
 		var listContactType = WarningService.getContactTypes();
 		var countWarnings = WarningService.countWarnings();
 		var browser = $window.navigator.userAgent;
 		
-		$.getJSON("http://jsonip.com?callback=?", function (data) {
-			
+		$.getJSON("http://jsonip.com?callback=?", function (data) {			
 			$scope.warning.ip = data.ip;
 		});			
 		
@@ -39,13 +41,12 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 	    });
 
 	    
-		$scope.warning.browser = deviceDetector.browser;
-		$scope.warning.operating_system = deviceDetector.os;			
-		$scope.warning.device = deviceDetector.device;
-		$scope.warning.raw = deviceDetector.raw.userAgent;
+		
 		
 		$scope.send = function(){
-			
+
+			console.log($scope.warning);
+
 			$scope.handleContactTypeSelect();			
 			
 			if ($scope.validateContact()){
@@ -63,20 +64,26 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 
 		$scope.handleServerResponse = function (data){
 			$scope.error = null;
+
+			$scope.invalid_facebook = null;
+			$scope.email_error = null;
+			$scope.invalid_phone_number = null;
+			$scope.invalid_ddd = null;	
              	
 			switch(data.id){
 				case 200:
+
 					$scope.server_msg_danger = null;
-					$scope.server_msg_sucess = data.name;					
+					$scope.server_msg_sucess = data.name;
 					
 	                $scope.warning.id_contact_type = null;
-	                $scope.warning.id_message = null;	                
-	                $scope.sms = null;
+	                $scope.warning.id_message = null;
+	                
 	                $scope.email = null;	
 	                $scope.facebook = null;
 	                
-	                $scope.handleContactTypeSelect();                         
-	                					
+	                $scope.handleContactTypeSelect();
+
 				break;
 
 				case 403:
@@ -100,8 +107,8 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 			var contact = $scope.warning.contact?$scope.warning.contact:'';
 					
 			switch($scope.warning.id_contact_type) {
-				case 1:								       
-					if (contact.length > 0 && EMAIL_REGEXP.test(contact)){						
+				case 1:
+					if (contact.length > 0 && EMAIL_REGEXP.test(contact)){
 						$scope.email_error = null;
 					} else {
 						$scope.email_error = true;
@@ -109,7 +116,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 					}
 			        break;
 
-			    case 2:						    	
+			    case 2:
 					if (contact.length === 10 || contact.length === 11){
 						$scope.invalid_phone_number = null;
 					} else {
@@ -118,40 +125,43 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 					}
 
 					if (contact.length > 0 && VALID_DDD.indexOf(contact.substring(0,2)) > -1){
-						$scope.invalid_ddd = null;				
+						$scope.invalid_ddd = null;
 					} else {
 						$scope.invalid_ddd = true;	
-						return false;			
-					}										
+						return false;
+					}
 			        break;
 
-		        case 3:					        	
+		        case 3:
 					if (contact.length > 0 && contact.indexOf("facebook.com") > 0){
 						$scope.invalid_facebook = null;
 					} else {
 						$scope.invalid_facebook = true;
 						return false;
-					}										
+					}
 			        break;		
 
 			}
 
-			return true;				
+			return true;
 		}
 
-		$scope.handleContactTypeSelect = function(){			
+		$scope.handleContactTypeSelect = function(){
+			$scope.server_msg_danger = null;
+			$scope.server_msg_sucess = null;
 			
 
 			switch($scope.warning.id_contact_type) {
 			    case 1:
 			    	$scope.warning.contact = $scope.email;
-			        // $scope.notification_alert = null;			        
+			        // $scope.notification_alert = null;
 					$scope.show_email = true;
 					$scope.show_facebook = null;
-					$scope.show_phone = null;					
+					$scope.show_phone = null;
 					
 			        break;
-			    case 2:								    	
+			    case 2:
+					$scope.warning.contact = $scope.sms;
 					$scope.show_email = null;
 					$scope.show_facebook = null;
 					$scope.show_phone = true;

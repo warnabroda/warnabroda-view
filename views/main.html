@@ -62,12 +62,9 @@
 				<div class="form-group">
 					<label translate="warning.contato">Contato do amigo</label> 
 					<input type="text" class="form-control" name="email" placeholder="Ex: warnabroda@gmail.com" 
-						ng-model="email" ng-minlength=1 ng-maxlength=100 ng-show="show_email" ng-change="updateContact(email)">
+						ng-model="email" ng-minlength=5 ng-maxlength=100 ng-show="show_email" ng-change="updateContact(email)">
 
-					<input type="text" class="form-control" name="facebook" placeholder="https://www.facebook.com/nome_do_usuario" 
-						ng-model="facebook" ng-minlength=1 ng-maxlength=100 ng-show="show_facebook">
-
-					<phonenumber-directive placeholder="phone_placeholder" ng-show="show_phone" model="sms" change="updateContact(sms)"></phonenumber-directive>
+					<phonenumber-directive placeholder="phone_placeholder" ng-show="show_phone" ng-model="sms" model="sms" change="updateContact(sms)"></phonenumber-directive>
 				</div>
 				
 
@@ -77,8 +74,7 @@
 					</button>					
 					<div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">	
 				</div>
-				</div>														
-				<input ng-model="warning.contact" type="hidden" id="dest_contact">	
+				</div>
 				
 			</form>			
 		</div>
