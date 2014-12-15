@@ -61,10 +61,11 @@
 
 				<div class="form-group">
 					<label translate="warning.contato">Contato do amigo</label> 
-					<input type="text" class="form-control" name="email" placeholder="Ex: warnabroda@gmail.com" 
-						ng-model="email" ng-minlength=5 ng-maxlength=100 ng-show="show_email" ng-change="updateContact(email)">
-
-					<phonenumber-directive placeholder="phone_placeholder" ng-show="show_phone" ng-model="sms" model="sms" change="updateContact(sms)"></phonenumber-directive>
+					<input type="text" class="form-control" name="email" 
+						ng-model="email" ng-minlength=5 ng-maxlength=100 ng-show="show_email"
+						placeholder="{{'warning.placeholder.email' | translate}}">
+					
+					<input type="text" ng-model="sms" ng-show="show_phone" class="form-control" placeholder="{{'warning.placeholder.sms' | translate}}"/>
 				</div>
 				
 

@@ -445,6 +445,10 @@
         "contact_label" : "Contato",
         "about_label" : "Sobre",
         "ignore_me_label" : "Ignore-me!",
+        "placeholder" : {
+            "sms" : "(48) 4321-1234 ou (11) 54321-1234",
+            "email" : "Ex: warnabroda@gmail.com"
+        },
         "ignoreme" : {
             "title" : "Ignore-me pra sempre!",
             "code" : "Código enviado por SMS/E-mail:",

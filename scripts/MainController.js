@@ -2,10 +2,9 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 
-    function ($scope, $window, $location, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
-    		
-    	$scope.phone_placeholder = "Ex: (12) 12345-1234";    	
+warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$filter', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 
+    function ($scope, $window, $location, $filter, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
+    	
     	$scope.warning = {} 
     	$scope.warning.browser = deviceDetector.browser;
 		$scope.warning.operating_system = deviceDetector.os;			
@@ -40,14 +39,15 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 	        }
 	    });
 
-	    
+	    $scope.$watch('sms', function(value, oldValue) {
+            
+            value = String(value);
+            var number = value.replace(/[^0-9]+/g, '');  
+            $scope.warning.contact = number;            
+            $scope.sms = $filter('phonenumber')(number);           
+        });		
 		
-		
-		$scope.send = function(){
-
-			console.log($scope.warning);
-
-			$scope.handleContactTypeSelect();			
+		$scope.send = function(){			
 			
 			if ($scope.validateContact()){
 				var warnService = WarningService.send($scope.warning);
@@ -68,7 +68,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 			$scope.invalid_facebook = null;
 			$scope.email_error = null;
 			$scope.invalid_phone_number = null;
-			$scope.invalid_ddd = null;	
+			$scope.invalid_ddd = null;				
              	
 			switch(data.id){
 				case 200:
@@ -78,11 +78,12 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 					
 	                $scope.warning.id_contact_type = null;
 	                $scope.warning.id_message = null;
-	                
+	                $scope.warning.contact = null;
+	                $scope.sms = null;
 	                $scope.email = null;	
 	                $scope.facebook = null;
 	                
-	                $scope.handleContactTypeSelect();
+	                $scope.reRenderView();
 
 				break;
 
@@ -96,11 +97,6 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 				break;
 			}
 		}		
-
-
-		$scope.updateContact = function(temp_contact){
-			$scope.warning.contact = temp_contact;		
-		}	
 
 		$scope.validateContact = function(){
 
@@ -149,19 +145,21 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', 'd
 		$scope.handleContactTypeSelect = function(){
 			$scope.server_msg_danger = null;
 			$scope.server_msg_sucess = null;
+			$scope.reRenderView();
+		}
+
+		$scope.reRenderView = function(){	
 			
 
 			switch($scope.warning.id_contact_type) {
 			    case 1:
-			    	$scope.warning.contact = $scope.email;
-			        // $scope.notification_alert = null;
+			    	$scope.warning.contact = $scope.email;			        
 					$scope.show_email = true;
 					$scope.show_facebook = null;
 					$scope.show_phone = null;
 					
 			        break;
-			    case 2:
-					$scope.warning.contact = $scope.sms;
+			    case 2:					
 					$scope.show_email = null;
 					$scope.show_facebook = null;
 					$scope.show_phone = true;

@@ -6,7 +6,7 @@ warnabrodaApp.controller('IgnoremeRequestController', ['$scope', '$window', 'dev
     function ($scope, $window, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
     	    	
     	$scope.ignore = {};
-		var captcha = {};    		
+		var captcha = {};    			
 		
 		var browser = $window.navigator.userAgent;
 		
@@ -22,8 +22,7 @@ warnabrodaApp.controller('IgnoremeRequestController', ['$scope', '$window', 'dev
 
 		$scope.send = function(){
 
-            captcha.response = $scope.gRecaptchaResponse;       	
-            
+            captcha.response = $scope.gRecaptchaResponse;            
 
             if ($scope.validate()){
             	
@@ -88,7 +87,7 @@ warnabrodaApp.controller('IgnoremeRequestController', ['$scope', '$window', 'dev
 			switch(data.id){
 				case 200:
 					$scope.server_msg_danger = null;
-					$scope.server_msg_success = data.name;	                					
+					$scope.server_msg_success = data.name;					
 				break;
 
 				case 403:
