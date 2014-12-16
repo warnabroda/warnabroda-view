@@ -161,7 +161,7 @@
         }
     },
     "login": {
-        "title": "Autenticação",
+        "title": "Head Quarter",
         "form": {
             "password": "Senha",
             "password.placeholder": "Sua senha",

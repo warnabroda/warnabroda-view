@@ -1,0 +1,35 @@
+<div>
+    <div class="row">
+        <div class="col-md-10">
+            <h1 translate="login.title">Authentication</h1>
+
+            <div class="alert alert-danger" ng-show="authenticationError" translate="login.messages.error.authentication">
+                <strong>Authentication failed!</strong> Please check your credentials and try again.
+            </div>
+            <form name="form" role="form" ng-controller="LoginController" ng-submit="login(credential)" novalidate>            
+                <div class="form-group">
+                    <label for="username" translate="global.form.username">Login</label>
+                    <input type="text" class="form-control" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="credential.username">
+                </div>
+                <div class="form-group">
+                    <label for="password" translate="login.form.password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+                           ng-model="credential.password">
+                </div>
+
+                <div class="form-group">
+                    <no-captcha
+                        g-recaptcha-response="gRecaptchaResponse"
+                        theme="clean"                    
+                        site-key="6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB">
+                    </no-captcha>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" translate="login.form.button">Authenticate</button>
+                </div>
+            </form>            
+            
+        </div>
+    </div>
+</div>

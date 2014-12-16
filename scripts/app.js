@@ -10,7 +10,7 @@ warnabrodaApp
     .config(['$routeProvider', '$httpProvider', '$translateProvider',  'tmhDynamicLocaleProvider', 'USER_ROLES', 'noCAPTCHAProvider',
         function ($routeProvider, $httpProvider, $translateProvider, tmhDynamicLocaleProvider, USER_ROLES, noCAPTCHAProvider) {
             $routeProvider              
-                .when('/login', {
+                .when('/hq', {
                     templateUrl: 'views/login.html',
                     controller: 'LoginController',
                     access: {
