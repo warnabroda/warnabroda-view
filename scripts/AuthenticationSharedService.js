@@ -2,6 +2,47 @@
 
 /* Services */
 
+warnabrodaApp.factory('WarnaAuthService', ['$http', 'WarnaSession',  
+    function ($http, WarnaSession) {
+        var authService = {};
+        
+        authService.login = function(credential){
+            return $http.post('/login', credential).then(function(res){
+                WarnaSession.create(res.id, res.name, res.role, res.last_login);
+                return res;
+            })
+        
+        };
+        authService.isAuthenticated = function () {
+            return !!WarnaSession.id;
+        };
+        authService.isAuthorized = function (authorizedRoles) {
+            if (!angular.isArray(authorizedRoles)) {
+                authorizedRoles = [authorizedRoles];
+            }
+            return (authService.isAuthenticated() &&
+                authorizedRoles.indexOf(WarnaSession.userRole) !== -1);
+            };
+
+        return authService;
+    }]);
+
+
+warnabrodaApp.factory('WarnaSession', function () {
+        this.create = function (id, name, userRole, last_login) {
+            this.id = id;
+            this.name = name;
+            this.userRole = userRole;
+            this.last_login = email;
+        };
+        this.destroy = function () {
+            this.id = null;
+            this.name = null;
+            this.userRole = null;
+            this.last_login = null;
+        };
+        return this;
+    });
 
 warnabrodaApp.factory('Account', function ($resource) {
         return $resource('app/rest/account', {}, {

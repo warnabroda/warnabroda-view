@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('LoginController', ['$scope', '$rootScope', '$window', '$location', '$filter', 'deviceDetector', 'AuthenticationSharedService',
-    function ($scope, $rootScope, $window, $location, $filter, deviceDetector, AuthenticationSharedService) {
+warnabrodaApp.controller('LoginController', ['$scope', '$rootScope', '$window', '$location', '$filter', 'deviceDetector', 'WarnaAuthService', 'AUTH_EVENTS',
+    function ($scope, $rootScope, $window, $location, $filter, deviceDetector, WarnaAuthService, AUTH_EVENTS) {
         var credential = {};
         $scope.authenticationError = null;
 
@@ -26,7 +26,12 @@ warnabrodaApp.controller('LoginController', ['$scope', '$rootScope', '$window', 
         $scope.login = function(login){
             credential.username = login.username;
             credential.password = login.password;
-            console.log(credential);
+            WarnaAuthService.login(credentials).then(function (user) {
+              $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+              $scope.setCurrentUser(user);
+            }, function () {
+              $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+            });
         }
         
     }]);
