@@ -97,25 +97,30 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 					$scope.server_msg_sucess = null;
 				break;
 			}
-		}		
+		}
+
+		$scope.updateContact = function(contact){
+			$scope.warning.contact = contact;
+		}
 
 		$scope.validateContact = function(){
 
-			var contact = '';
+			var contact = $scope.warning.contact;
 					
 			switch($scope.warning.id_contact_type) {
 				case 1:
-					contact = $scope.email;
+					
 					if (contact.length > 0 && EMAIL_REGEXP.test(contact)){
 						$scope.email_error = null;
 					} else {
 						$scope.email_error = true;
 						return false;
 					}
+					$scope.warning.contact = contact;
 			        break;
 
 			    case 2:
-			    	contact = $scope.sms;
+			    	
 					if (contact.length === 10 || contact.length === 11){
 						$scope.invalid_phone_number = null;
 					} else {
@@ -131,8 +136,8 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 					}
 			        break;
 
-		        case 3:
-		        	contact = $scope.facebook;
+		        case 3:		   
+		             	
 					if (contact.length > 0 && contact.indexOf("facebook.com") > 0){
 						$scope.invalid_facebook = null;
 					} else {
@@ -143,7 +148,6 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 
 			}
 
-			$scope.warning.contact = contact;
 
 			return true;
 		}

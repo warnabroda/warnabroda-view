@@ -63,7 +63,7 @@
 					<label translate="warning.contato">Contato do amigo</label> 
 					<input type="email" class="form-control" name="email" 
 						ng-model="email" ng-minlength=5 ng-maxlength=100 ng-show="show_email"
-						placeholder="{{'warning.placeholder.email' | translate}}">
+						placeholder="{{'warning.placeholder.email' | translate}}" ng-change="updateContact(email)"/>
 					
 					<input type="text" ng-model="sms" ng-show="show_phone" class="form-control" placeholder="{{'warning.placeholder.sms' | translate}}"/>
 				</div>
