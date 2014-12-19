@@ -2,11 +2,11 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('ApplicationController', ['$scope', '$window', '$location', 'USER_ROLES', 'WarnaAuthService',
-    function ($scope, $window, $location, USER_ROLES, WarnaAuthService){
+warnabrodaApp.controller('ApplicationController', ['$scope', '$window', '$location', 'USER_ROLES', 'AuthenticationSharedService',
+    function ($scope, $window, $location, USER_ROLES, AuthenticationSharedService){
     	$scope.currentUser = null;
 	  	$scope.userRoles = USER_ROLES;
-	  	$scope.isAuthorized = WarnaAuthService.isAuthorized;
+	  	$scope.isAuthorized = AuthenticationSharedService.isAuthorized;
 	 
 	  	$scope.setCurrentUser = function (user) {
 	    	$scope.currentUser = user;

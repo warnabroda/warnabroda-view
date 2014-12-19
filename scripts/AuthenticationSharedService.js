@@ -1,7 +1,7 @@
 'use strict';
 
 /* Services */
-
+/**
 warnabrodaApp.factory('WarnaAuthService', ['$http', 'WarnaSession',  
     function ($http, WarnaSession) {
         var authService = {};
@@ -43,97 +43,99 @@ warnabrodaApp.factory('WarnaSession', function () {
         };
         return this;
     });
+**/
 
-warnabrodaApp.factory('Account', function ($resource) {
-        return $resource('app/rest/account', {}, {
-        });
-    });
+warnabrodaApp.factory('Account', ['$resource', '$q', '$http',
+   function ($resource, $q, $http) {
+    return {
+        get : function(id) {
+            var deferred = $q.defer();
+            console.log(id);
+            $http.get('warnabroda/account', id).success(function(data) {
+                deferred.resolve(data);
+            }).error(function(data, status, headers, config) {
+                deferred.reject(status);
+            });
+            return deferred.promise;
+        },
+        getAuthenticated : function() {
+            var deferred = $q.defer();
+            $http.get('warnabroda/accountAuthenticated').success(function(data) {
+                deferred.resolve(data);
+            }).error(function(data, status, headers, config) {
+                deferred.reject(status);
+            });
+            return deferred.promise;
+        }
+    };
+}]);
+
 
 warnabrodaApp.factory('Session', function () {
-        this.create = function (login, firstName, lastName, email, userRoles) {
-            this.login = login;
-            this.firstName = firstName;
-            this.lastName = lastName;
+        this.create = function (id, name, user_role, email, last_login) {
+            this.id = id;
+            this.name = name;
+            this.user_role = user_role;
             this.email = email;
-            this.userRoles = userRoles;
+            this.last_login = last_login;
         };
         this.invalidate = function () {
-            this.login = null;
-            this.firstName = null;
-            this.lastName = null;
+            this.id = null;
+            this.name = null;
+            this.user_role = null;
             this.email = null;
-            this.userRoles = null;
+            this.last_login = null;
         };
         return this;
     });
 
-warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http, authService, Session, Account, Base64Service, AccessToken) {
+warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http, authService, Session, Account) {
         return {
             login: function (param) {
-                var data = "username=" + param.username + "&password=" + param.password + "&grant_type=password&scope=read%20write&client_secret=mySecretOAuthSecret&client_id=jhipsterapp";
-                $http.post('oauth/token', data, {
+                //var data ="j_username=" + encodeURIComponent(param.username) +"&j_password=" + encodeURIComponent(param.password) +"&_spring_security_remember_me=" + param.rememberMe +"&submit=Login";
+                $http.post('warnabroda/authentication', param, {
                     headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                        "Accept": "application/json",
-                        "Authorization": "Basic " + Base64Service.encode("jhipsterapp" + ':' + "mySecretOAuthSecret")
+                        "Content-Type": "application/x-www-form-urlencoded"
                     },
                     ignoreAuthModule: 'ignoreAuthModule'
-                }).success(function (data, status, headers, config) {
-                    httpHeaders.common['Authorization'] = 'Bearer ' + data.access_token;
-                    AccessToken.set(data);
-
-                    Account.get(function(data) {
-                        Session.create(data.login, data.firstName, data.lastName, data.email, data.roles);
-                        $rootScope.account = Session;
-                        authService.loginConfirmed(data);
-                    });
+                }).success(function (data, status, headers, config) {                    
+                    
+                    Session.create(data.id, data.name, data.user_hole, data.email, data.last_login);
+                    $rootScope.account = Session;
+                    authService.loginConfirmed(data);
+                    
                 }).error(function (data, status, headers, config) {
-                    $rootScope.authenticated = false;
                     $rootScope.authenticationError = true;
                     Session.invalidate();
-                    AccessToken.remove();
-                    delete httpHeaders.common['Authorization'];
-                    $rootScope.$broadcast('event:auth-loginRequired', data);
-                    
                 });
             },
-            valid: function (authorizedRoles) {
-                if(AccessToken.get() !== null) {
-                    httpHeaders.common['Authorization'] = 'Bearer ' + AccessToken.get();
-                }
+            valid: function(authorizedRoles){
 
-                $http.get('protected/authentication_check.gif', {
-                    ignoreAuthModule: 'ignoreAuthModule'
-                }).success(function (data, status, headers, config) {
-                    if (!Session.login || AccessToken.get() != undefined) {
-                        if (AccessToken.get() == undefined || AccessToken.expired()) {
-                            $rootScope.$broadcast("event:auth-loginRequired");
-                            return;
-                        }
-                        Account.get(function(data) {
-                            Session.create(data.login, data.firstName, data.lastName, data.email, data.roles);
-                            $rootScope.account = Session;
-                            if (!$rootScope.isAuthorized(authorizedRoles)) {
-                                // user is not allowed
-                               $rootScope.$broadcast("event:auth-notAuthorized");
-                            } else {
-                                $rootScope.$broadcast("event:auth-loginConfirmed");
-                            }
-                        });
-                    }else{
+                if (!Session.name){
+
+                    var authUser = Account.get();
+
+                     authUser.then(function(data){
+
+                        $rootScope.$broadcast("event:auth-loginConfirmed");
+                    },
+                    function(error){
                         if (!$rootScope.isAuthorized(authorizedRoles)) {
-                                // user is not allowed
-                                $rootScope.$broadcast("event:auth-notAuthorized");
-                        } else {
-                                $rootScope.$broadcast("event:auth-loginConfirmed");
+                            $rootScope.$broadcast('event:auth-loginRequired', error);
                         }
-                    }
-                }).error(function (data, status, headers, config) {
+                    });
+
+                } else {
                     if (!$rootScope.isAuthorized(authorizedRoles)) {
-                        $rootScope.$broadcast('event:auth-loginRequired', data);
+                            // user is not allowed
+                            $rootScope.$broadcast("event:auth-notAuthorized");
+                    } else {
+                            $rootScope.$broadcast("event:auth-loginConfirmed");
                     }
-                });
-            },
+                }
+                
+               
+            },           
             isAuthorized: function (authorizedRoles) {
                 if (!angular.isArray(authorizedRoles)) {
                     if (authorizedRoles == '*') {
@@ -145,8 +147,8 @@ warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http
 
                 var isAuthorized = false;
                 angular.forEach(authorizedRoles, function(authorizedRole) {
-                    var authorized = (!!Session.login &&
-                        Session.userRoles.indexOf(authorizedRole) !== -1);
+                    var authorized = (!!Session.name &&
+                        Session.user_role.indexOf(authorizedRole) !== -1);
 
                     if (authorized || authorizedRole == '*') {
                         isAuthorized = true;
@@ -159,11 +161,9 @@ warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http
                 $rootScope.authenticationError = false;
                 $rootScope.authenticated = false;
                 $rootScope.account = null;
-                AccessToken.remove();
 
-                $http.get('app/logout');
+                $http.get('warnabroda/logout');
                 Session.invalidate();
-                delete httpHeaders.common['Authorization'];
                 authService.loginCancelled();
             }
         };

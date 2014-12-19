@@ -76,4 +76,52 @@ warnabrodaApp
 
             noCAPTCHAProvider.setSiteKey('6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB');
             noCAPTCHAProvider.setTheme('clean');            
-        }]);
+        }])
+        .run(function($rootScope, $location, $http, AuthenticationSharedService, Session, USER_ROLES) {
+                $rootScope.authenticated = false;
+                $rootScope.$on('$routeChangeStart', function (event, next) {
+                    $rootScope.isAuthorized = AuthenticationSharedService.isAuthorized;
+                    $rootScope.userRoles = USER_ROLES;
+                    AuthenticationSharedService.valid(next.access.authorizedRoles);
+                });
+
+                // Call when the the client is confirmed
+                $rootScope.$on('event:auth-loginConfirmed', function(data) {
+                    $rootScope.authenticated = true;
+                    if ($location.path() === "/hq") {
+                        var search = $location.search();
+                        if (search.redirect !== undefined) {
+                            $location.path(search.redirect).search('redirect', null).replace();
+                        } else {
+                            $location.path('/').replace();
+                        }
+                    }
+                });
+
+                // Call when the 401 response is returned by the server
+                $rootScope.$on('event:auth-loginRequired', function(rejection) {
+                    Session.invalidate();
+                    $rootScope.authenticated = false;
+                    if ($location.path() !== "/" 
+                        && $location.path() !== "" 
+                        && $location.path() !== "/about" 
+                        && $location.path() !== "/contact" 
+                        && $location.path() !== "/ignoreme" 
+                        && $location.path() !== "/ignore-request" 
+                        && $location.path() !== "/hq") {
+                        var redirect = $location.path();
+                        $location.path('/hq').search('redirect', redirect).replace();
+                    }
+                });
+
+                // Call when the 403 response is returned by the server
+                $rootScope.$on('event:auth-notAuthorized', function(rejection) {
+                    $rootScope.errorMessage = 'errors.403';
+                    $location.path('/error').replace();
+                });
+
+                // Call when the user logs out
+                $rootScope.$on('event:auth-loginCancelled', function() {
+                    $location.path('');
+                });
+        });

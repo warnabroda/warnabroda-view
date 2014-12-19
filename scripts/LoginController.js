@@ -2,12 +2,10 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('LoginController', ['$scope', '$rootScope', '$window', '$location', '$filter', 'deviceDetector', 'WarnaAuthService', 'AUTH_EVENTS',
-    function ($scope, $rootScope, $window, $location, $filter, deviceDetector, WarnaAuthService, AUTH_EVENTS) {
+warnabrodaApp.controller('LoginController', ['$scope', '$rootScope', '$window', '$location', '$filter', 'deviceDetector', 'AuthenticationSharedService', 'AUTH_EVENTS', 'sha1',
+    function ($scope, $rootScope, $window, $location, $filter, deviceDetector, AuthenticationSharedService, AUTH_EVENTS, sha1) {
         var credential = {};
-        $scope.authenticationError = null;
-
-        console.log($rootScope);
+        $scope.authenticationError = null;        
 
         var captcha = {};               
         
@@ -24,11 +22,13 @@ warnabrodaApp.controller('LoginController', ['$scope', '$rootScope', '$window', 
         credential.raw = deviceDetector.raw.userAgent;
 
         $scope.login = function(login){
+            
             credential.username = login.username;
-            credential.password = login.password;
-            WarnaAuthService.login(credentials).then(function (user) {
+            credential.password = sha1.encode(login.password);
+            AuthenticationSharedService.login(credential).then(function (user) {
               $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
               $scope.setCurrentUser(user);
+              credential.password = null;
             }, function () {
               $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
             });
