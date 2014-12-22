@@ -49,18 +49,17 @@ warnabrodaApp.factory('Account', ['$resource', '$q', '$http',
    function ($resource, $q, $http) {
     return {
         get : function(id) {
-            var deferred = $q.defer();
-            console.log(id);
+            var deferred = $q.defer();            
             $http.get('warnabroda/account', id).success(function(data) {
                 deferred.resolve(data);
-            }).error(function(data, status, headers, config) {
+            }).error(function(data, status, headers, config) {                
                 deferred.reject(status);
             });
             return deferred.promise;
         },
         getAuthenticated : function() {
             var deferred = $q.defer();
-            $http.get('warnabroda/accountAuthenticated').success(function(data) {
+            $http.get('warnabroda/private').success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -92,34 +91,44 @@ warnabrodaApp.factory('Session', function () {
 warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http, authService, Session, Account) {
         return {
             login: function (param) {
+
+                var req = {
+                        method: 'POST',
+                        url: 'warnabroda/authentication',
+                        headers: {
+                        //'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/json'                        
+                        },
+                        data: param,
+                    }
+
                 //var data ="j_username=" + encodeURIComponent(param.username) +"&j_password=" + encodeURIComponent(param.password) +"&_spring_security_remember_me=" + param.rememberMe +"&submit=Login";
-                $http.post('warnabroda/authentication', param, {
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    ignoreAuthModule: 'ignoreAuthModule'
-                }).success(function (data, status, headers, config) {                    
+                
+                $http(req).success(function (data, status, headers, config) {                    
                     
                     Session.create(data.id, data.name, data.user_hole, data.email, data.last_login);
                     $rootScope.account = Session;
                     authService.loginConfirmed(data);
                     
                 }).error(function (data, status, headers, config) {
+                    
                     $rootScope.authenticationError = true;
                     Session.invalidate();
+                    return data;
                 });
             },
             valid: function(authorizedRoles){
 
                 if (!Session.name){
 
-                    var authUser = Account.get();
+                    var authUser = Account.getAuthenticated();
 
-                     authUser.then(function(data){
-
+                    authUser.then(function(data){
+                        
                         $rootScope.$broadcast("event:auth-loginConfirmed");
                     },
                     function(error){
+                        
                         if (!$rootScope.isAuthorized(authorizedRoles)) {
                             $rootScope.$broadcast('event:auth-loginRequired', error);
                         }
@@ -137,6 +146,7 @@ warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http
                
             },           
             isAuthorized: function (authorizedRoles) {
+                
                 if (!angular.isArray(authorizedRoles)) {
                     if (authorizedRoles == '*') {
                         return true;

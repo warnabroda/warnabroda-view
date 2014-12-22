@@ -2,10 +2,9 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('LoginController', ['$scope', '$rootScope', '$window', '$location', '$filter', 'deviceDetector', 'AuthenticationSharedService', 'AUTH_EVENTS', 'sha1',
-    function ($scope, $rootScope, $window, $location, $filter, deviceDetector, AuthenticationSharedService, AUTH_EVENTS, sha1) {
-        var credential = {};
-        $scope.authenticationError = null;        
+warnabrodaApp.controller('LoginController', ['$scope', '$window', 'deviceDetector', 'AuthenticationSharedService', 'sha1',
+    function ($scope, $window, deviceDetector, AuthenticationSharedService, sha1) {
+        var credential = {};            
 
         var captcha = {};               
         
@@ -25,13 +24,7 @@ warnabrodaApp.controller('LoginController', ['$scope', '$rootScope', '$window', 
             
             credential.username = login.username;
             credential.password = sha1.encode(login.password);
-            AuthenticationSharedService.login(credential).then(function (user) {
-              $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-              $scope.setCurrentUser(user);
-              credential.password = null;
-            }, function () {
-              $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-            });
+            AuthenticationSharedService.login(credential);
         }
         
     }]);
