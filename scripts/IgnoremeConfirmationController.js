@@ -7,6 +7,7 @@ warnabrodaApp.controller('IgnoremeConfirmationController', ['$scope', '$window',
     		
     	$scope.ignore = {};
     	var captcha = {};
+    	$scope.captchaControl = {};
 		var browser = $window.navigator.userAgent;
 		$.getJSON("http://jsonip.com?callback=?", function (data) {
         	captcha.ip = data.ip;
@@ -43,7 +44,7 @@ warnabrodaApp.controller('IgnoremeConfirmationController', ['$scope', '$window',
 	            	}
 	            });
             }            		
-			
+			$scope.captchaControl.reset();
 		}
 
 		$scope.validate = function(){

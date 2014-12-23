@@ -37,3 +37,7 @@ warnabrodaApp.controller('LanguageController', ['$scope', '$translate', 'Languag
 warnabrodaApp.controller('MenuController', ['$scope',
     function ($scope) {
     }]);
+
+warnabrodaApp.controller('LogoutController', function ($location, AuthenticationSharedService) {
+        AuthenticationSharedService.logout();
+    });

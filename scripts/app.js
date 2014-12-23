@@ -51,6 +51,13 @@ warnabrodaApp
                         authorizedRoles: [USER_ROLES.all]
                     }
                 })
+                .when('/logout', {
+                    templateUrl: 'views/main.html',
+                    controller: 'LogoutController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
                 .otherwise({
                     templateUrl: 'views/main.html',
                     controller: 'MainController',
@@ -117,7 +124,7 @@ warnabrodaApp
                 // Call when the 403 response is returned by the server
                 $rootScope.$on('event:auth-notAuthorized', function(rejection) {
                     $rootScope.errorMessage = 'errors.403';
-                    $location.path('/error').replace();
+                    $location.path('/hq').replace();
                 });
 
                 // Call when the user logs out

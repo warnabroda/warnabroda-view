@@ -2,11 +2,13 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('LoginController', ['$scope', '$window', 'deviceDetector', 'AuthenticationSharedService', 'sha1',
-    function ($scope, $window, deviceDetector, AuthenticationSharedService, sha1) {
+warnabrodaApp.controller('LoginController', ['$scope', '$window', 'deviceDetector', 'WarningService', 'AuthenticationSharedService', 'sha1',
+    function ($scope, $window, deviceDetector, WarningService, AuthenticationSharedService, sha1) {
         var credential = {};            
 
-        var captcha = {};               
+        var captcha = {};  
+
+        $scope.captchaControl = {};
         
         var browser = $window.navigator.userAgent;
         
@@ -22,9 +24,23 @@ warnabrodaApp.controller('LoginController', ['$scope', '$window', 'deviceDetecto
 
         $scope.login = function(login){
             
-            credential.username = login.username;
-            credential.password = sha1.encode(login.password);
-            AuthenticationSharedService.login(credential);
+            captcha.response = $scope.gRecaptchaResponse;
+
+            var captchaReturn = WarningService.validateCaptcha(captcha);
+
+            captchaReturn.then(function(data){
+                console.log(data);
+                if (data.success == true){
+                    credential.username = login.username;
+                    credential.password = sha1.encode(login.password);
+                    AuthenticationSharedService.login(credential);                    
+                } else {
+                    $scope.authenticationError = true;
+                }
+
+            });
+
+             $scope.captchaControl.reset();
         }
         
     }]);
