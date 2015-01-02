@@ -4,7 +4,7 @@
 var httpHeaders;
 
 var warnabrodaApp = angular.module('warnabrodaApp', ['http-auth-interceptor', 'tmh.dynamicLocale',
-    'ngResource', 'ngRoute', 'ngCookies', 'warnabrodaAppUtils', 'pascalprecht.translate', 'truncate', 'ng.deviceDetector', 'noCAPTCHA']); //, 'reCAPTCHA', 'vcRecaptcha'
+    'ngResource', 'ngRoute', 'ngCookies', 'warnabrodaAppUtils', 'pascalprecht.translate', 'truncate', 'ng.deviceDetector', 'noCAPTCHA', 'ui.bootstrap']);
 
 warnabrodaApp
     .config(['$routeProvider', '$httpProvider', '$translateProvider',  'tmhDynamicLocaleProvider', 'USER_ROLES', 'noCAPTCHAProvider',
@@ -58,6 +58,13 @@ warnabrodaApp
                         authorizedRoles: [USER_ROLES.all]
                     }
                 })
+                .when('/dashboard', {
+                    templateUrl: 'views/adm/dashboard.html',
+                    controller: 'DashboardController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.admin]
+                    }
+                })
                 .otherwise({
                     templateUrl: 'views/main.html',
                     controller: 'MainController',
@@ -74,10 +81,12 @@ warnabrodaApp
 
             $translateProvider.preferredLanguage('br');
 
-            $translateProvider.useCookieStorage();
+            $translateProvider.useCookieStorage();            
 
-            tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js')
-            tmhDynamicLocaleProvider.useCookieStorage('NG_TRANSLATE_LANG_KEY');
+            tmhDynamicLocaleProvider.localeLocationPattern("bower_components/angular-i18n/angular-locale_br.js");
+            tmhDynamicLocaleProvider.useCookieStorage('NG_TRANSLATE_LANG_KEY_WARNABRODA');
+
+            
             
             httpHeaders = $httpProvider.defaults.headers;
 
@@ -100,7 +109,7 @@ warnabrodaApp
                         if (search.redirect !== undefined) {
                             $location.path(search.redirect).search('redirect', null).replace();
                         } else {
-                            $location.path('/').replace();
+                            $location.path('/dashboard').replace();
                         }
                     }
                 });

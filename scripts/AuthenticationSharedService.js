@@ -7,7 +7,7 @@ warnabrodaApp.factory('Account', ['$resource', '$q', '$http',
     return {
         get : function(id) {
             var deferred = $q.defer();            
-            $http.get('warnabroda/account', id).success(function(data) {
+            $http.get('warnabroda/hq/account', id).success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {                
                 deferred.reject(status);
@@ -16,7 +16,7 @@ warnabrodaApp.factory('Account', ['$resource', '$q', '$http',
         },
         getAuthenticated : function() {
             var deferred = $q.defer();
-            $http.get('warnabroda/authenticated-user').success(function(data) {
+            $http.get('warnabroda/hq/authenticated-user').success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -51,7 +51,7 @@ warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http
 
                 var req = {
                         method: 'POST',
-                        url: 'warnabroda/authentication',
+                        url: 'warnabroda/hq/authentication',
                         headers: {
                         //'Content-Type': 'application/x-www-form-urlencoded'
                         'Content-Type': 'application/json'                        
@@ -73,7 +73,7 @@ warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http
             },
             valid: function(authorizedRoles){
 
-                $http.get('warnabroda/private', {
+                $http.get('warnabroda/hq/private', {
                     ignoreAuthModule: 'ignoreAuthModule'
                 }).success(function (data, status, headers, config) {
                     if (!Session.name){
@@ -138,7 +138,7 @@ warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http
                 $rootScope.authenticated = false;
                 $rootScope.account = null;
 
-                $http.get('warnabroda/logout');
+                $http.get('warnabroda/hq/logout');
                 Session.invalidate();
                 authService.loginCancelled();
             }

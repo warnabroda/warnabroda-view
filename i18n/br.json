@@ -445,6 +445,34 @@
         "contact_label" : "Contato",
         "about_label" : "Sobre",
         "ignore_me_label" : "Ignore-me!",
+        "registered_warnings":"Mensagens registradas",
+        "sent_warnings": "Mensagens enviadas",        
+        "not_sent_warnings": "Mensagens não enviadas",
+        "total": "Total:",
+        "total_by_email": "Total por E-mail:",
+        "total_by_sms": "Total por SMS:",
+        "itens_per_page": "Itens por pagina:",
+        "filter_by": "Filtrar por:",
+        "yes": "Sim",
+        "no": "Não",
+        "id": "Id",
+        "type": "Tipo",
+        "warn": "Warn",        
+        "message": "Mensagem",
+        "contact": "Contato",
+        "sent": "Enviada",
+        "sent_date": "Enviada em",
+        "greet": "E ae {{username}}.",
+        "sent_value": "{{sent && 'Sim' || 'Não'}}",
+        "paging_status" : "Filtradas {{total}} de {{all}} mensagens.",
+        "no_warns_found": "Nenhuma ocorrencia encontrada.",
+        "ignore_list": "Lista de Ignorados",
+        "total_confirmed": "Total de Confirmados: ",
+        "total_unconfirmed": "Total de Não Confirmados: ",
+        "ignore_list_email": "Solicitações de ignore-me por e-mail",
+        "ignore_list_sms": "Solicitações de ignore-me por sms",
+        "dashboard" : "Dashboard Warna A Broda",
+        "dash": "Dashboard",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"
@@ -455,7 +483,8 @@
             "captcha_invalid" : "Captcha inválido.",
             "add" : "Adicionar à lista de contatos ignorados.",
             "invalid_confirmation_code" : "Código inválido."
-            }
+        }
+
     		
     }
     

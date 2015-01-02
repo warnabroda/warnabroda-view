@@ -34,7 +34,7 @@ warnabrodaApp.factory('WarningService', ['$resource', '$q', '$http',
 		},
         countWarnings : function(){
             var deferred = $q.defer();
-            $http.get('warnabroda/count-warnings').success(function(data) {
+            $http.get('warnabroda/count-sent-warnings').success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);

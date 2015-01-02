@@ -30,7 +30,8 @@ angular.module("ngLocale", [], [
 					"mediumDate" : "dd/MM/yyyy",
 					"shortDate" : "dd/MM/yy",
 					"mediumTime" : "HH:mm:ss",
-					"shortTime" : "HH:mm"
+					"shortTime" : "HH:mm",
+					"custom": "EEE, d 'de' MMM 'de' yyyy '@' HH:mm:ss"
 				},
 				"NUMBER_FORMATS" : {
 					"DECIMAL_SEP" : ",",

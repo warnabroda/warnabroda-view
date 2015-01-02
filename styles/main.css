@@ -55,6 +55,7 @@ body {
 
 .hand {
     cursor: pointer;
+    cursor: hand;
 }
 
 .main-well {

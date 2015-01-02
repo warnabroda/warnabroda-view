@@ -69,8 +69,15 @@
 
                         <li>
                             <a href="#/about">
-                                <span class="glyphicon glyphicon-flash"></span>
+                                <span class="glyphicon glyphicon-info-sign"></span>
                                 <span translate="warning.about_label">Sobre o Warna A Broda</span>
+                            </a>
+                        </li>
+
+                        <li  ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)">
+                            <a href="#/dashboard">
+                                <span class="glyphicon glyphicon-tasks"></span>
+                                <span translate="warning.dash">Dashboard</span>
                             </a>
                         </li>
 
@@ -86,7 +93,7 @@
             </div>
         </nav>        
         <div class="container">
-            <div class="well main-well" ng-view=""></div>
+            <div class="well" ng-view=""></div>
 
             <div class="footer">
                 <p translate="footer">©2014-2014 Warn a Broda. Todos os direitos reservados.</p>
@@ -117,7 +124,8 @@
         <script src="bower_components/angular-translate/angular-translate.js"></script>
         <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
         <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-        <script src="bower_components/angular-dynamic-locale/src/tmhDinamicLocale.js"></script>     
+        <script src="bower_components/angular-i18n/angular-locale_br.js"></script>        
+        <script src="bower_components/angular-dynamic-locale/src/tmhDinamicLocale.js"></script>
         <script src="scripts/angular-no-captcha.js"></script>
         <script src="scripts/http-auth-interceptor.js"></script>
         <script src="scripts/truncate.js"></script>
@@ -128,13 +136,16 @@
         <script src="scripts/services.js"></script>
         <script src="scripts/directives.js"></script>
         <script src="scripts/ng-device-detector.js"></script>
+        <script src="scripts/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script src="scripts/ApplicationController.js"></script>
         <script src="scripts/MainController.js"></script>
         <script src="scripts/IgnoremeConfirmationController.js"></script>
         <script src="scripts/IgnoremeRequestController.js"></script>
         <script src="scripts/LoginController.js"></script>
         <script src="scripts/WarningService.js"></script>
-        <script src="scripts/AuthenticationSharedService.js"></script>        
+        <script src="scripts/AuthenticationSharedService.js"></script>
+        <script src="scripts/adm/DashboardController.js"></script>
+        <script src="scripts/adm/DashboardService.js"></script>
         <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/affix.js"></script>
         <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/alert.js"></script>
         <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/dropdown.js"></script>

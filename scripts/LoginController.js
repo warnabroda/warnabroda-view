@@ -29,18 +29,18 @@ warnabrodaApp.controller('LoginController', ['$scope', '$window', 'deviceDetecto
             var captchaReturn = WarningService.validateCaptcha(captcha);
 
             captchaReturn.then(function(data){
-                console.log(data);
+                
                 if (data.success == true){
                     credential.username = login.username;
                     credential.password = sha1.encode(login.password);
-                    AuthenticationSharedService.login(credential);                    
+                    AuthenticationSharedService.login(credential);
                 } else {
                     $scope.authenticationError = true;
                 }
 
             });
 
-             $scope.captchaControl.reset();
+            $scope.captchaControl.reset();
         }
         
     }]);
