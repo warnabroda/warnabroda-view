@@ -1,11 +1,6 @@
 'use strict';
 
 /* Controllers */
-
-warnabrodaApp.controller('AdminController', ['$scope',
-    function ($scope) {
-    }]);
-
 warnabrodaApp.controller('LanguageController', ['$scope', '$translate', 'LanguageService', 'FLAGS',
     function ($scope, $translate, LanguageService, FLAGS) {
         $scope.getFlagClass = function(language) {
@@ -34,10 +29,6 @@ warnabrodaApp.controller('LanguageController', ['$scope', '$translate', 'Languag
         });
     }]);
 
-warnabrodaApp.controller('MenuController', ['$scope',
-    function ($scope) {
-    }]);
-
-warnabrodaApp.controller('LogoutController', function ($location, AuthenticationSharedService) {
+warnabrodaApp.controller('LogoutController', ['$location', 'AuthenticationSharedService', function ($location, AuthenticationSharedService) {
         AuthenticationSharedService.logout();
-    });
+    }]);

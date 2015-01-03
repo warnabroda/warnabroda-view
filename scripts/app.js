@@ -59,7 +59,7 @@ warnabrodaApp
                     }
                 })
                 .when('/dashboard', {
-                    templateUrl: 'views/adm/dashboard.html',
+                    templateUrl: 'views/dashboard.html',
                     controller: 'DashboardController',
                     access: {
                         authorizedRoles: [USER_ROLES.admin]
@@ -83,7 +83,7 @@ warnabrodaApp
 
             $translateProvider.useCookieStorage();            
 
-            tmhDynamicLocaleProvider.localeLocationPattern("bower_components/angular-i18n/angular-locale_br.js");
+            //tmhDynamicLocaleProvider.localeLocationPattern("bower_components/angular-i18n/angular-locale_br.js");
             tmhDynamicLocaleProvider.useCookieStorage('NG_TRANSLATE_LANG_KEY_WARNABRODA');
 
             

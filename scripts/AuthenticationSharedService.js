@@ -45,7 +45,8 @@ warnabrodaApp.factory('Session', function () {
         return this;
     });
 
-warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http, authService, Session, Account) {
+warnabrodaApp.factory('AuthenticationSharedService', ['$rootScope', '$http', 'authService', 'Session', 'Account',
+    function ($rootScope, $http, authService, Session, Account) {
         return {
             login: function (param) {
 
@@ -143,4 +144,4 @@ warnabrodaApp.factory('AuthenticationSharedService', function ($rootScope, $http
                 authService.loginCancelled();
             }
         };
-    });
+    }]);

@@ -221,12 +221,6 @@ module.exports = function (grunt) {
           cwd: '',
           src: ['*.html', 'views/*.html'],
           dest: '<%= yeoman.dist %>'
-        },
-        {
-          expand: true,
-          cwd: '',
-          src: ['*.html', 'views/adm/*.html'],
-          dest: '<%= yeoman.dist %>'
         }]
       }
     },
@@ -243,9 +237,8 @@ module.exports = function (grunt) {
             '.htaccess',
             'images/{,*/}*.{png,gif,webp}',
             'fonts/*',
-            'i18n/*',
-            'bower_components/angular-i18n/angular-locale_br.js',
-            'views/adm/*'
+            'i18n/*'
+            //'bower_components/angular-i18n/angular-locale_br.js'
           ]
         }, {
           expand: true,

@@ -244,7 +244,7 @@ angular.module('warnabrodaAppUtils', [])
             }
         };
     })
-    .factory('StorageService', function ($rootScope) {
+    .factory('StorageService', ['$rootScope', function ($rootScope) {
         return {
 
             get: function (key) {
@@ -263,4 +263,4 @@ angular.module('warnabrodaAppUtils', [])
                 localStorage.clear();
             }
         };
-    });
+    }]);

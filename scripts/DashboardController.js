@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 /* Controllers */
 
 warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'DashboardService', '$timeout', '$filter',

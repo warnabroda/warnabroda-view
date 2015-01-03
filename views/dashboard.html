@@ -286,9 +286,8 @@
 			            <h4 translate="warning.no_warns_found">No warns found</h4>
 			        </div>
 			    </div>
-			    <div class="col-md-12" ng-show="filteredItems > 0">	        
-			        <div pagination="" page="currentPage" max-size="10" on-select-page="setPage(page)" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small hand" previous-text="&laquo;" next-text="&raquo;"></div>			 
-			 
+			    <div class="col-md-12" ng-show="filteredItems > 0">			 		
+			 		<pagination boundary-links="true" total-items="filteredItems" ng-model="currentPage" class="pagination-md" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="10"></pagination>
 			    </div>
 		    </div>
        		
