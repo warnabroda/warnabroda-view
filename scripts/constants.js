@@ -12,7 +12,7 @@ warnabrodaApp.constant('USER_ROLES', {
 // It will be used by the library "http://www.famfamfam.com/lab/icons/flags/"
 // to display the flag
 warnabrodaApp.constant('FLAGS', {
-		br: 'br',
+		    br: 'br',
         da: 'dk',
         en: 'gb',
         es: 'es',

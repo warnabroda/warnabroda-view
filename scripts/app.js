@@ -93,7 +93,8 @@ warnabrodaApp
             noCAPTCHAProvider.setSiteKey('6LfcKP8SAAAAAG04VXizMXdLiaLj4VRQe_VtKAyB');
             noCAPTCHAProvider.setTheme('clean');            
         }])
-        .run(function($rootScope, $location, $http, AuthenticationSharedService, Session, USER_ROLES) {
+        .run(['$rootScope', '$location', '$http', 'AuthenticationSharedService', 'Session', 'USER_ROLES',
+            function($rootScope, $location, $http, AuthenticationSharedService, Session, USER_ROLES) {
                 $rootScope.authenticated = false;
                 $rootScope.$on('$routeChangeStart', function (event, next) {
                     $rootScope.isAuthorized = AuthenticationSharedService.isAuthorized;
@@ -140,4 +141,4 @@ warnabrodaApp
                 $rootScope.$on('event:auth-loginCancelled', function() {
                     $location.path('');
                 });
-        });
+        }]);
