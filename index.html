@@ -56,7 +56,7 @@
                         <li>
                             <a href="#/contact">
                                 <span class="glyphicon glyphicon-envelope"></span>
-                                <span translate="warning.contact_label">Contato</span>
+                                <span translate="warning.contact">Contato</span>
                             </a>
                         </li>
 
@@ -87,7 +87,20 @@
                                 <span translate="global.menu.account.logout">Logout</span>
                             </a>
                         </li>
-                         
+                        <li class="dropdown pointer" ng-controller="LanguageController">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                                <span>
+                                    <span class="glyphicon glyphicon-flag"></span>
+                                    <span class="hidden-tablet" translate="global.menu.language">Language</span>
+                                    <b class="caret"></b>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li active-menu="{{key}}" ng-repeat="(key, language) in languages">
+                                    <a href="" ng-click="changeLanguage(key)">{{language}}</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -124,7 +137,7 @@
         <script src="bower_components/angular-translate/angular-translate.js"></script>
         <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
         <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-        <script src="bower_components/angular-i18n/angular-locale_br.js"></script>        
+        <!-- script src="bower_components/angular-i18n/angular-locale_br.js"></script -->
         <script src="bower_components/angular-dynamic-locale/src/tmhDinamicLocale.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="scripts/angular-no-captcha.js"></script>

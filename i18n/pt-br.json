@@ -1,0 +1,151 @@
+{
+    "global": {
+        "title": "Warn A Broda",
+        "browsehappy": "Você está usando um browser <strong> desatualizados </ strong>. Por favor <a href=\"http://browsehappy.com/?locale=en\"> atualizar </a> seu navegador para melhorar sua experiência.",
+        "loading": "Carregando...",
+        "no": "Não",
+        "yes": "Sim",
+        
+        "menu": {
+            "home": "Home",
+            "admin": "Adminstração",
+            "language": "Linguagem"
+        },
+        "language": {
+             "da": "Dinamarques",
+             "en": "Inglês",
+             "fr": "Francês",
+             "de": "Alemão",
+             "kr": "Coreano",
+             "pl": "Polonês",
+             "br": "Português",
+             "ru": "Russo",
+             "es": "Espanhol",
+             "tr": "Turco"
+        },
+        "form": {
+            "username": "Usuário",
+            "username.placeholder": "Seu login",
+            "actual_password": "Senha Atual",
+            "newpassword": "Nova senha",
+            "newpassword.placeholder": "Nova senha",
+            "confirmpassword": "Confirmação da Nova senha",
+            "confirmpassword.placeholder": "Confirme a nova senha",
+            "email": "E-mail",
+            "email.placeholder": "Seu e-mail",
+            "email.main": "E-mail principal"
+        },
+        "messages": {
+            "info": {
+                "authenticated": "Se você já tem uma conta, <a href=\"#/login\">clique aqui</a> para logar.",
+                "register": "Ainda não tem uma conta? Não perca tempo <a href=\"#/register\">Faça uma conta agora, clicando aqui</a>."
+            },
+            "error": {
+                "dontmatch" : "A confirmação da senha falhou."
+            },
+            "validate": {
+                "newpassword": {
+                    "required": "É necessário informar uma senha.",
+                    "minlength": "Sua senha precisa ter no minimo 5 caracteres",
+                    "maxlength": "Sua senha pode ter no máximo 50 caracteres",
+                    "strength": "Força da Senha: "
+                },
+                "confirmpassword": {
+                    "required": "É necessário confirmar sua senha.",
+                    "minlength": "Sua senha confirmada precisa ter no minimo 5 caracteres",
+                    "maxlength": "Sua senha confirmada pode ter no máximo 50 caracteres"
+                },
+                "email": {
+                    "required": "É necessário informar um e-mail valido.",
+                    "invalid": "O e-mail é invalido.",
+                    "minlength": "Seu e-mail precisa ter no minimo 5 caracteres",
+                    "maxlength": "Sua e-mail pode ter no máximo 50 caracteres"
+                }
+            }
+        },
+        "button": {
+        	"edit": "Editar",
+        	"delete": "Excluir",
+        	"save": "Salvar",
+        	"confirm": "Confirmar",
+        	"add": "Adicionar",
+        	"cancel": "Cancelar"
+        }
+    },
+    "login": {
+        "title": "Head Quarter",
+        "form": {
+            "password": "Senha",
+            "password.placeholder": "Sua senha",
+            "rememberme": "Lembrar dados",
+            "button": "Entrar"
+        },
+        "messages": {
+            "error": {
+                "authentication": "<strong>Autenticação falhou!</strong> Por favor verifique seus dados e tente novamente."
+            }
+        }
+    },
+    "errors": {
+        "title": "Página de erro!",
+        "403": "Você não está autorizado a acessar a página."
+    },
+    "footer": "©2014-2014 Warn a Broda. Todos os direitos reservados. ",
+    "warning" : {
+        "title": "Warn A Broda",
+        "subtitle": "Quem avisa, amigo é.",
+    	"amigo_voce": "Você: ",
+    	"tipo_notificacao": "Notificar Broda via: ",    	
+    	"amigo_avisado": "Broda avisado(a) com sucesso.",
+    	"error": "Ups! Algum erro ocorreu.",
+    	"notificacao_envio" : "Apenas a notificação via e-mail é imediata.",
+        "invalid_email": "O E-mail informado é inválido.",
+        "invalid_ddd" : "O DDD informado é inválido.", 
+        "invalid_contact" : "O Contato informado é inválido.", 
+        "invalid_facebook_link" : "O Endereço do Facebook informado é inválido.",
+        "invalid_phone_number" : "O Número do telefone é inválido.",
+        "ignore_contact" : "Contato à ser ignorado:",
+        "ignore_contact_error" : "O Contato informado é inválido.",        
+        "about_label" : "Sobre",
+        "ignore_me_label" : "Ignore-me!",
+        "registered_warnings":"Mensagens registradas",
+        "sent_warnings": "Mensagens enviadas",        
+        "not_sent_warnings": "Mensagens não enviadas",
+        "total": "Total:",
+        "total_by_email": "Total por E-mail:",
+        "total_by_sms": "Total por SMS:",
+        "itens_per_page": "Itens por pagina:",
+        "filter_by": "Filtrar por:",
+        "yes": "Sim",
+        "no": "Não",
+        "id": "Id",
+        "type": "Tipo",
+        "warn": "Warn",        
+        "message": "Mensagem",
+        "contact": "Contato",
+        "sent": "Enviada",
+        "sent_date": "Enviada em",
+        "greet": "E ae {{username}}.",
+        "sent_value": "{{sent && 'Sim' || 'Não'}}",
+        "paging_status" : "Filtradas {{total}} de {{all}} mensagens.",
+        "no_warns_found": "Nenhuma ocorrencia encontrada.",
+        "ignore_list": "Lista de Ignorados",
+        "total_confirmed": "Total de Confirmados: ",
+        "total_unconfirmed": "Total de Não Confirmados: ",
+        "ignore_list_email": "Solicitações de ignore-me por e-mail",
+        "ignore_list_sms": "Solicitações de ignore-me por sms",
+        "dashboard" : "Dashboard Warna A Broda",
+        "dash": "Dashboard",
+        "placeholder" : {
+            "sms" : "(48) 4321-1234 ou (11) 54321-1234",
+            "email" : "Ex: warnabroda@gmail.com"
+        },
+        "ignoreme" : {
+            "title" : "Ignore-me pra sempre!",
+            "code" : "Código enviado por SMS/E-mail:",
+            "captcha_invalid" : "Captcha inválido.",
+            "add" : "Adicionar à lista de contatos ignorados.",
+            "invalid_confirmation_code" : "Código inválido."
+        }    		
+    }    
+}

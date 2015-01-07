@@ -24,6 +24,13 @@ warnabrodaApp.constant('FLAGS', {
         tr: 'tr'
     });
 
+warnabrodaApp.constant('LANGUAGES', {
+        'en': 'English',
+        'pt-br': 'Português - Brasil',
+        'es': 'Español'
+    });
+
+
 warnabrodaApp.constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',
   loginFailed: 'auth-login-failed',
