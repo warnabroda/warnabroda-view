@@ -32,7 +32,7 @@ warnabrodaApp
                 })
                 .when('/contact', {
                     templateUrl: 'views/modal-contactus.html',
-                    controller: 'MainController',
+                    controller: 'LanguageController',
                     access: {
                         authorizedRoles: [USER_ROLES.all]
                     }

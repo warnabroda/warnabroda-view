@@ -26,7 +26,7 @@
 
 				
 				<div class="form-group">
-					<label translate="warning.ignoreme.code">Contato do amigo</label> 
+					<label translate="warning.ignoreme.code">Codigo</label> 
 					<input type="text" class="form-control" name="code" placeholder="A1B2C3D4E5F6" 
 						ng-model="ignore.Confirmation_code" ng-minlength="4" required>					
 				</div>			
@@ -40,7 +40,8 @@
 
 				<div class="modal-footer">
 					<button type="submit" ng-disabled="formIgnore.$invalid" class="btn btn-success">
-						<span class="glyphicon glyphicon-ok"></span> Confirmar Bloqueio de contato
+						<span class="glyphicon glyphicon-ok"></span> 
+						<span translate="warning.ignoreme.confirm_request">Confirmar Ignorar</span>
 					</button>										
 				</div>
 			</form>			

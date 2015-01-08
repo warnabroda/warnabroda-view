@@ -32,8 +32,8 @@
             	<div class="panel-body">
             		
 					<form name="form" role="form" novalidate class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength" ng-submit="send()">
-						<p class="h5">
-							A partir do momento que você adicionar seu contato na Ignore List, o Warn A Broda não conseguirá mais lhe avisar nada... :'(						
+						<p class="h5" translate="warning.ignoreme.add_to_list_warning">
+							A partir do momento que você adicionar seu contato na Ignore List, o Warn A Broda não conseguirá mais lhe avisar nada... :'(
 						</p>
 						<div class="form-group">							
 							<input type="text" class="form-control" name="ignore_contact" placeholder="Ex: warnabroda@gmail.com ou 41987654321" 
@@ -49,7 +49,8 @@
 						<div class="modal-footer">
 							<div class="form-group">
 								<button type="submit" ng-disabled="form.$invalid" class="btn btn-lg btn-danger">
-									<span class="glyphicon glyphicon-ok"></span> Ignorar
+									<span class="glyphicon glyphicon-ok"></span> 
+									<span translate="warning.ignoreme.add_request">Ignorar</span>
 								</button>	
 							</div>					
 						</div>

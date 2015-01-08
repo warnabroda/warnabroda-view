@@ -2,74 +2,9 @@
     "global": {
         "title": "Warn A Broda",
         "browsehappy": "Você está usando um browser <strong> desatualizados </ strong>. Por favor <a href=\"http://browsehappy.com/?locale=en\"> atualizar </a> seu navegador para melhorar sua experiência.",
-        "loading": "Carregando...",
-        "no": "Não",
-        "yes": "Sim",
-        
-        "menu": {
-            "home": "Home",
-            "admin": "Adminstração",
+        "loading": "Carregando...",        
+        "menu": {            
             "language": "Linguagem"
-        },
-        "language": {
-             "da": "Dinamarques",
-             "en": "Inglês",
-             "fr": "Francês",
-             "de": "Alemão",
-             "kr": "Coreano",
-             "pl": "Polonês",
-             "br": "Português",
-             "ru": "Russo",
-             "es": "Espanhol",
-             "tr": "Turco"
-        },
-        "form": {
-            "username": "Usuário",
-            "username.placeholder": "Seu login",
-            "actual_password": "Senha Atual",
-            "newpassword": "Nova senha",
-            "newpassword.placeholder": "Nova senha",
-            "confirmpassword": "Confirmação da Nova senha",
-            "confirmpassword.placeholder": "Confirme a nova senha",
-            "email": "E-mail",
-            "email.placeholder": "Seu e-mail",
-            "email.main": "E-mail principal"
-        },
-        "messages": {
-            "info": {
-                "authenticated": "Se você já tem uma conta, <a href=\"#/login\">clique aqui</a> para logar.",
-                "register": "Ainda não tem uma conta? Não perca tempo <a href=\"#/register\">Faça uma conta agora, clicando aqui</a>."
-            },
-            "error": {
-                "dontmatch" : "A confirmação da senha falhou."
-            },
-            "validate": {
-                "newpassword": {
-                    "required": "É necessário informar uma senha.",
-                    "minlength": "Sua senha precisa ter no minimo 5 caracteres",
-                    "maxlength": "Sua senha pode ter no máximo 50 caracteres",
-                    "strength": "Força da Senha: "
-                },
-                "confirmpassword": {
-                    "required": "É necessário confirmar sua senha.",
-                    "minlength": "Sua senha confirmada precisa ter no minimo 5 caracteres",
-                    "maxlength": "Sua senha confirmada pode ter no máximo 50 caracteres"
-                },
-                "email": {
-                    "required": "É necessário informar um e-mail valido.",
-                    "invalid": "O e-mail é invalido.",
-                    "minlength": "Seu e-mail precisa ter no minimo 5 caracteres",
-                    "maxlength": "Sua e-mail pode ter no máximo 50 caracteres"
-                }
-            }
-        },
-        "button": {
-        	"edit": "Editar",
-        	"delete": "Excluir",
-        	"save": "Salvar",
-        	"confirm": "Confirmar",
-        	"add": "Adicionar",
-        	"cancel": "Cancelar"
         }
     },
     "login": {
@@ -97,8 +32,7 @@
     	"amigo_voce": "Você: ",
     	"tipo_notificacao": "Notificar Broda via: ",    	
     	"amigo_avisado": "Broda avisado(a) com sucesso.",
-    	"error": "Ups! Algum erro ocorreu.",
-    	"notificacao_envio" : "Apenas a notificação via e-mail é imediata.",
+    	"error": "Ups! Algum erro ocorreu.",    	
         "invalid_email": "O E-mail informado é inválido.",
         "invalid_ddd" : "O DDD informado é inválido.", 
         "invalid_contact" : "O Contato informado é inválido.", 
@@ -121,6 +55,7 @@
         "id": "Id",
         "type": "Tipo",
         "warn": "Warn",        
+        "warn_the_broda": "Avisar",
         "message": "Mensagem",
         "contact": "Contato",
         "sent": "Enviada",
@@ -145,7 +80,10 @@
             "code" : "Código enviado por SMS/E-mail:",
             "captcha_invalid" : "Captcha inválido.",
             "add" : "Adicionar à lista de contatos ignorados.",
-            "invalid_confirmation_code" : "Código inválido."
+            "invalid_confirmation_code" : "Código inválido.",
+            "add_to_list_warning": "A partir do momento que você adicionar seu contato na Ignore List, o Warn A Broda não conseguirá mais lhe avisar nada... :'(",
+            "add_request": "Ignore-me",
+            "confirm_request": "Confirmar"
         }    		
     }    
 }

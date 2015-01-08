@@ -31,6 +31,7 @@
 
 warnabrodaApp.controller('LanguageController', ['$scope', '$translate', 'LanguageService',
     function ($scope, $translate, LanguageService) {
+
         $scope.changeLanguage = function (languageKey) {
             $translate.use(languageKey);
 

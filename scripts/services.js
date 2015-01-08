@@ -23,8 +23,10 @@
 //     }]);
 
 
-warnabrodaApp.factory('LanguageService', ['$http', '$translate', 'LANGUAGES',
-    function ($http, $translate, LANGUAGES) {
+warnabrodaApp.factory('LanguageService', ['$http', '$translate', 'LANGUAGES', '$rootScope',
+    function ($http, $translate, LANGUAGES, $rootScope) {
+        $rootScope.language = "";
+
         return {
             getBy: function(language) {
                 if (language == undefined) {
@@ -33,7 +35,7 @@ warnabrodaApp.factory('LanguageService', ['$http', '$translate', 'LANGUAGES',
                 if (language == undefined) {
                     language = 'pt-br';
                 }
-
+                $rootScope.language = language;
                 var promise =  $http.get('i18n/' + language + '.json').then(function(response) {
                     return LANGUAGES;
                 });
