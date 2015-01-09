@@ -5,6 +5,16 @@
         "loading": "Loading...",
         "menu": {        
             "language": "Language"
+        },
+        "form": {
+            "username": "Login",
+            "username.placeholder": "Your login",
+            "newpassword": "New password",
+            "newpassword.placeholder": "New password",
+            "confirmpassword": "New password confirmation",
+            "confirmpassword.placeholder": "Confirm the new password",
+            "email": "E-mail",
+            "email.placeholder": "Your e-mail"
         }
     },
     "login": {
@@ -42,6 +52,13 @@
         "ignore_contact_error" : "Invalid contact.",        
         "about_label" : "About",
         "about": "About us",
+        "about_title": "The 'Warn A Brotha' mission is to provide you a tool to tell your friend, anonymously, about some embarrassing issues that could cause a awkward moment at the warning.",
+        "about_rules": "Warn A Broda basic rules:",
+        "about_spam_rule": "An e-mail address or phone number can only receive up to 2 identical messages, from different brodas, every 2 hours.",
+        "about_sms_limit_rule": "A same IP Address can only send up to 3 SMS in a 24 hours time span using Warn A Broda",
+        "about_ignoreme": "Our intention with this service is to be as much helpful as it can be, but if you find it rude or offensive and want to be ignored by Warn A Broda there's an Ignore-me area where you can add your contact and never again hear from us",
+        "about_free": "The Warn A Broda service is completely free, this project is developed by 3 friends who believe helping the next is the best payment. This app is developed by heart with the best possible intentions. We would like to evolve this tool even more and keep it free. If you wish to help us all we ask is a bit of your time to comment us about anything you may think is a positive improvement for the Warn A Broda, we would LOVE that. For this, we have a <a href='#/contact'>Contact Us</a> area e an e-mail <a href='mailto:warnabroda@gmail.com'>warnabroda@gmail.com</a>.",
+        "about_this_app": "Made by",
         "ignore_me_label" : "Ignore-me",
         "registered_warnings":"Registered warnings",
         "sent_warnings": "Sent warnings",        

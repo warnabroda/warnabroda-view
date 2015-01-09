@@ -5,6 +5,16 @@
         "loading": "Cargando...",
         "menu": {            
             "language": "Idioma"
+        },
+        "form": {
+            "username": "Usuario",
+            "username.placeholder": "Su usuario",
+            "newpassword": "Nueva contraseña",
+            "newpassword.placeholder": "Nueva contraseña",
+            "confirmpassword": "Confirmación de la nueva contraseña",
+            "confirmpassword.placeholder": "Confirmación de la nueva contraseña",
+            "email": "Correo electrónico",
+            "email.placeholder": "Su correo electrónico"
         }
     },    
     "login": {
@@ -42,6 +52,13 @@
         "ignore_contact_error" : "El contacto no es válido.",        
         "about_label" : "Acerca de WarnABroda",
         "about": "Sobre nosotros", 
+        "about_title": "La misión 'Avisar A Brotha' es proporcionarle una herramienta para decirle a su amigo, de forma anónima, sobre algunas cuestiones embarazosas que podrían causar un momento incómodo en lo aviso.",
+        "about_rules": "Reglas básicas de Warn A Broda:",
+        "about_spam_rule": "Un e-mail o número de teléfono sólo pueden recibir hasta 2 mensajes idénticas, de diferentes Brodas, cada 2 horas.",
+        "about_sms_limit_rule": "Una misma IP sólo se puede enviar hasta 3 SMS en un intervalo de 24 horas con Warn A Broda",
+        "about_ignoreme": "Nuestra intención con este servicio es ser lo más útil, ya que puede ser, pero si le resulta grosero o ofensivo y quiere ser ignorado por Warn A Broda hay un área Ignore-me en el que puede añadir su contacto y nunca más va a oir de nosotros",
+        "about_free": "O serviço do Warn A Broda é completamente grátis e sempre será, este projeto é uma realização de 3 amigos que acreditam que ajudar o próximo é a melhor remuneração. O App foi desenvolvido de coração e tem as melhores intenções possíveis. Gostaríamos de evoluir essa ferramenta de forma gratuita cada vez mais. Se você deseja nos ajudar de alguma forma pedimos que dedique apenas um pouco do seu tempo fazendo uma reclamação, sugestão, elogio ou qualquer outro comentário que você queira. Para isso disponibilizamos nosso <a href='#/contact'>Fale Conosco</a> e o nosso contato <a href='mailto:warnabroda@gmail.com'>warnabroda@gmail.com</a>.",
+        "about_this_app": "App hecho por",
         "ignore_me_label" : "Ignore-me!",
         "registered_warnings":"Avisos registrados",
         "sent_warnings": "Avisos enviados",        

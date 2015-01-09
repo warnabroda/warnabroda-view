@@ -17,6 +17,40 @@ body {
     background-repeat: no-repeat;
 }
 
+.email-icon {
+    
+    width: 50px;
+    height: 50px;   
+    border: 0;
+    z-index: 1000;
+    background-image: url("../images/email-icon-sm.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+}
+
+.sms-icon {
+    
+    width: 50px;
+    height: 50px;
+    border: 0;
+    z-index: 1000;
+    background-image: url("../images/sms-icon-sm.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.whatsapp-icon {
+    
+    width: 50px;
+    height: 50px;
+    border: 0;
+    z-index: 1000;
+    background-image: url("../images/whatsapp-icon-sm.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 .hero-unit {
     margin: 50px auto 0 auto;
     width: 300px;

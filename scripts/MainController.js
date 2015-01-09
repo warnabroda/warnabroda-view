@@ -4,7 +4,7 @@
 
 warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$filter', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 
     function ($scope, $window, $location, $filter, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
-    	
+
     	$scope.warning = {} 
     	$scope.warning.browser = deviceDetector.browser;
 		$scope.warning.operating_system = deviceDetector.os;			
@@ -63,7 +63,8 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 			
 		}
 
-		$scope.handleServerResponse = function (data){
+		$scope.handleServerResponse = function (data){			
+
 			$scope.error = null;
 
 			$scope.invalid_facebook = null;
@@ -153,6 +154,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		}
 
 		$scope.handleContactTypeSelect = function(){
+
 			$scope.server_msg_danger = null;
 			$scope.server_msg_sucess = null;
 			$scope.reRenderView();

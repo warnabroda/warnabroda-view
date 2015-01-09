@@ -5,6 +5,16 @@
         "loading": "Carregando...",        
         "menu": {            
             "language": "Linguagem"
+        },
+        "form": {
+            "username": "Usuário",
+            "username.placeholder": "Seu usuário",
+            "newpassword": "Nova senha",
+            "newpassword.placeholder": "Nova senha",
+            "confirmpassword": "Confirmação de nova senha",
+            "confirmpassword.placeholder": "Confirme a nova senha",
+            "email": "E-mail",
+            "email.placeholder": "Seu e-mail"
         }
     },
     "login": {
@@ -42,6 +52,13 @@
         "ignore_contact_error" : "O Contato informado é inválido.",        
         "about_label" : "Sobre",
         "about": "Sobre o Warn A Broda",
+        "about_title": "A missão do Warn A Broda é ajudar você a avisar, um(a) amigo(a), anonimamente de forma que não fique chato pra você que avisa e pra quem recebe o aviso sem causar aquele momento constrangedor.",
+        "about_rules": "Regras básicas para o uso do Warn A Broda:",
+        "about_spam_rule": "Um e-mail ou celular(SMS) só pode receber até 2 mensagem iguais, mas de brodas diferentes, a cada 2 horas;",
+        "about_sms_limit_rule": "Um mesmo IP só pode enviar até 3 SMS a cada 24 horas pelo Warn A Broda",
+        "about_ignoreme": "O Serviço é inofensivo, mas se você quiser pode adicionar seu contato na <b>ignore list</b> e nunca mais você receberá notificações do Warn A Broda.",
+        "about_free": "O serviço do Warn A Broda é completamente grátis e sempre será, este projeto é uma realização de 3 amigos que acreditam que ajudar o próximo é a melhor remuneração. O App foi desenvolvido de coração e tem as melhores intenções possíveis. Gostaríamos de evoluir essa ferramenta de forma gratuita cada vez mais. Se você deseja nos ajudar de alguma forma pedimos que dedique apenas um pouco do seu tempo fazendo uma reclamação, sugestão, elogio ou qualquer outro comentário que você queira. Para isso disponibilizamos nosso <a href='#/contact'>Fale Conosco</a> e o nosso contato <a href='mailto:warnabroda@gmail.com'>warnabroda@gmail.com</a>.",
+        "about_this_app": "Este aplicativo foi feito por",
         "ignore_me_label" : "Ignore-me!",
         "registered_warnings":"Mensagens registradas",
         "sent_warnings": "Mensagens enviadas",        
