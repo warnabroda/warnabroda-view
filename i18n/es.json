@@ -39,7 +39,7 @@
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "Solo los buenos amigos te abren los ojos.",
-        "amigo_voce": "Usted: ",
+        "amigo_voce": "Aviso para su Broda: ",
         "tipo_notificacao": "Avisar Broda via: ",        
         "amigo_avisado": "Broda notificado(a) con éxito.",
         "error": "Ups! Ha ocurrido algún error.",        

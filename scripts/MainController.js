@@ -9,23 +9,15 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
     	$scope.warning.browser = deviceDetector.browser;
 		$scope.warning.operating_system = deviceDetector.os;			
 		$scope.warning.device = deviceDetector.device;
-		$scope.warning.raw = deviceDetector.raw.userAgent;   	
+		$scope.warning.raw = deviceDetector.raw.userAgent;   			
 		
-		var listMessage = WarningService.getMessages();
 		var listContactType = WarningService.getContactTypes();
 		var countWarnings = WarningService.countWarnings();
 		var browser = $window.navigator.userAgent;
 		
 		$.getJSON("http://jsonip.com?callback=?", function (data) {			
 			$scope.warning.ip = data.ip;
-		});			
-		
-		
-		listMessage.then(function(result) {
-	    	if (result) {
-	    		$scope.messages = result;
-	        }
-	    });
+		});		
 		
 		listContactType.then(function(result) {
 	    	if (result) {
@@ -39,6 +31,17 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 	        }
 	    });
 
+	    $scope.$watch('language', function(value, oldValue) {
+
+            $scope.warning.lang_key = value;
+            var listMessage = WarningService.getMessages(value);  
+            listMessage.then(function(result) {
+		    	if (result) {
+		    		$scope.messages = result;
+		        }
+		    });         
+        });		
+
 	    $scope.$watch('sms', function(value, oldValue) {
             
             value = String(value);
@@ -50,7 +53,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		$scope.send = function(){			
 			
 			if ($scope.validateContact()){
-				console.log($scope.warning);
+				
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {
 					$scope.handleServerResponse(data);	                

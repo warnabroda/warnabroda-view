@@ -39,7 +39,7 @@
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "If you see something, Warn A Broda!",
-        "amigo_voce": "Warn: ",
+        "amigo_voce": "Warn to your Broda: ",
         "tipo_notificacao": "Warn via: ",        
         "amigo_avisado": "Broda has been warned.",
         "error": "Ups! Some error just happened.",        
