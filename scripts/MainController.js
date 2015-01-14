@@ -40,6 +40,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		    		$scope.messages = result;
 		        }
 		    });         
+		    $scope.handleContactTypeSelect();
         });		
 
 	    $scope.$watch('sms', function(value, oldValue) {
