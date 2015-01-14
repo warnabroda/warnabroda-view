@@ -20,6 +20,10 @@ warnabrodaApp.controller('IgnoremeRequestController', ['$scope', '$window', 'dev
 		$scope.ignore.device = deviceDetector.device;
 		$scope.ignore.raw = deviceDetector.raw.userAgent;
 
+		$scope.$watch('language', function(value, oldValue) {
+            $scope.ignore.lang_key = value;                    
+        });
+
 		$scope.send = function(){
 
             captcha.response = $scope.gRecaptchaResponse;            
