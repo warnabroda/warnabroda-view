@@ -46,7 +46,7 @@
         "invalid_email": "O E-mail informado é inválido.",
         "invalid_ddd" : "O DDD informado é inválido.", 
         "invalid_contact" : "O Contato informado é inválido.", 
-        "invalid_facebook_link" : "O Endereço do Facebook informado é inválido.",
+        "invalid_whatsapp" : "O WhatsApp informado é inválido.",
         "invalid_phone_number" : "O Número do telefone é inválido.",
         "ignore_contact" : "Contato à ser ignorado:",
         "ignore_contact_error" : "O Contato informado é inválido.",        

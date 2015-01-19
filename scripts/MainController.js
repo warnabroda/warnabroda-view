@@ -15,7 +15,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		var countWarnings = WarningService.countWarnings();
 		var browser = $window.navigator.userAgent;
 		
-		$.getJSON("http://jsonip.com?callback=?", function (data) {			
+		$.getJSON("http://jsonip.com?callback=?", function (data) {
 			$scope.warning.ip = data.ip;
 		});		
 		
@@ -31,6 +31,10 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 	        }
 	    });
 
+	    /**
+			BEGIN OF WATCHERS: Code block for the angularjs watchers, used by language and contact components
+	    */
+
 	    $scope.$watch('language', function(value, oldValue) {
 
             $scope.warning.lang_key = value;
@@ -43,14 +47,29 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		    $scope.handleContactTypeSelect();
         });		
 
-	    $scope.$watch('sms', function(value, oldValue) {
+	    $scope.$watch('sms', function(value, oldValue) {            
             
-            value = String(value);
-            var number = value.replace(/[^0-9]+/g, '');  
-            $scope.warning.contact = number;            
-            $scope.sms = $filter('phonenumber')(number);           
-        });		
+            
+            $scope.warning.contact = String($("#sms-number").intlTelInput("getNumber"));
+            
+        });
+
+        $scope.$watch('whatsapp', function(value, oldValue) {
+            
+            $scope.warning.contact = String($("#mobile-number").intlTelInput("getNumber"));
+            
+        });
+
+        $scope.$watch('email', function(value, oldValue) {
+            
+            $scope.warning.contact = String(value);
+            
+        });
 		
+		/**
+			END OF WATCHERS
+	    */
+
 		$scope.send = function(){			
 			
 			if ($scope.validateContact()){
@@ -88,6 +107,9 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 	                $scope.sms = null;
 	                $scope.email = null;	
 	                $scope.facebook = null;
+
+	                $("#mobile-number").intlTelInput("setNumber", "");
+	                $("#sms-number").intlTelInput("setNumber", "");
 	                
 	                $scope.reRenderView();
 
@@ -102,10 +124,6 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 					$scope.server_msg_sucess = null;
 				break;
 			}
-		}
-
-		$scope.updateContact = function(contact){
-			$scope.warning.contact = contact;
 		}
 
 		$scope.validateContact = function(){
@@ -126,14 +144,14 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 
 			    case 2:
 			    	
-					if (contact.length === 10 || contact.length === 11){
+					if ($("#sms-number").intlTelInput("isValidNumber")){
 						$scope.invalid_phone_number = null;
 					} else {
 						$scope.invalid_phone_number = true;
 						return false;
 					}
 
-					if (contact.length > 0 && VALID_DDD.indexOf(contact.substring(0,2)) > -1){
+					if (contact.length > 0 && VALID_DDD.indexOf(contact.substring(3,5)) > -1){
 						$scope.invalid_ddd = null;
 					} else {
 						$scope.invalid_ddd = true;	
@@ -141,18 +159,18 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 					}
 			        break;
 
-		        case 3:		   
-		             	
-					if (contact.length > 0 && contact.indexOf("facebook.com") > 0){
-						$scope.invalid_facebook = null;
-					} else {
-						$scope.invalid_facebook = true;
-						return false;
-					}
+		        case 3:	
+		        	if ($("#mobile-number").intlTelInput("isValidNumber")){		        		
+		        		$scope.invalid_whatsapp = null;
+		        	} else {
+		        		$scope.invalid_whatsapp = true;
+		        		return false;
+		        	}		        	
+		        	
 			        break;		
+		        	
 
 			}
-
 
 			return true;
 		}
@@ -169,32 +187,42 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 
 			switch($scope.warning.id_contact_type) {
 			    case 1:
-			    	$scope.warning.contact = $scope.email;			        
 					$scope.show_email = true;
-					$scope.show_facebook = null;
+					$scope.show_whats = null;
 					$scope.show_phone = null;
 					
 			        break;
 			    case 2:					
 					$scope.show_email = null;
-					$scope.show_facebook = null;
+					$scope.show_whats = null;
 					$scope.show_phone = true;
 										
 			        break;
-		        case 3:					
-		        	$scope.warning.contact = $scope.facebook;
+		        case 3:							        	
 					$scope.show_email = null;
-					$scope.show_facebook = true;
+					$scope.show_whats = true;
 					$scope.show_phone = null;
 										
 			        break;
 			    default:					
 					$scope.show_email = null;
-					$scope.show_facebook = null;
+					$scope.show_whats = null;
 					$scope.show_phone = null;
 			        break;
 			}
 
+		}
+
+		$scope.isPhoneNumberIlegal = function(){
+			if ($scope.show_whats != null && !$("#mobile-number").intlTelInput("isValidNumber")){
+				return true;
+			}
+
+			if ($scope.show_phone != null && !$("#sms-number").intlTelInput("isValidNumber")){
+				return true;
+			}
+
+			return null;
 		}
 										
 		

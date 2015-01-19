@@ -30,6 +30,11 @@
 				translate="warning.invalid_phone_number">
 				<strong>Ups algum erro ocorreu!</strong>
 			</div>
+			<div class="alert alert-danger" ng-show="invalid_whatsapp"
+				translate="warning.invalid_whatsapp">
+				<strong>Ups algum erro ocorreu!</strong>
+			</div>
+			
 
 
 			<form name="form" role="form" novalidate
@@ -56,19 +61,26 @@
 				</div>
 
 				<div class="form-group">
-					<div ng-show="show_phone || show_email">
+					<div ng-show="show_email">
 						<label translate="warning.contact">Contato do amigo</label> 
 						<input type="email" class="form-control" name="email" 
 							ng-model="email" ng-minlength=5 ng-maxlength=100 ng-show="show_email"
-							placeholder="{{'warning.placeholder.email' | translate}}" ng-change="updateContact(email)"/>
-						
-						<input type="text" class="form-control" ng-model="sms" ng-show="show_phone" placeholder="{{'warning.placeholder.sms' | translate}}"/>
+							placeholder="{{'warning.placeholder.email' | translate}}"/>
+					</div>
+					<div ng-show="show_phone">
+						<label translate="warning.contact">Contato do amigo</label>
+						<input type="tel" class="form-control" ng-model="sms" id="sms-number" ng-show="show_phone"/>
+					</div>
+					<div ng-show="show_whats">
+						<label translate="warning.contact">Contato do amigo</label> 
+						<br/>
+						<input type="tel" class="form-control" ng-model="whatsapp" ng-show="show_whats" id="mobile-number">
 					</div>
 				</div>
 				
 
 				<div class="modal-footer">
-					<button type="submit" ng-disabled="form.$invalid" class="btn btn-success">
+					<button type="submit" ng-disabled="form.$invalid || isPhoneNumberIlegal()" class="btn btn-success">
 						<span class="glyphicon glyphicon-ok"></span> 
 						<span translate="warning.warn">Avisar</span>
 						
@@ -81,5 +93,29 @@
 		</div>
 	</div>
 </div>
-
+<script>
+  	$("#mobile-number").intlTelInput({
+	    autoFormat: true,
+	    //autoHideDialCode: false,
+	    defaultCountry: "auto",
+	    //ipinfoToken: "yolo",
+	    //nationalMode: false,
+	    numberType: "MOBILE",
+	    //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+	    preferredCountries: ['br', 'us'],
+	    preventInvalidNumbers: true,
+	    utilsScript: "scripts/utils.phone.js"
+  	});
+  	$("#sms-number").intlTelInput({
+	    autoFormat: true,
+	    //autoHideDialCode: false,
+	    defaultCountry: "auto",
+	    //ipinfoToken: "yolo",
+	    //nationalMode: false,
+	    numberType: "MOBILE",
+	    onlyCountries: ['br'],	    
+	    preventInvalidNumbers: true,
+	    utilsScript: "scripts/utils.phone.js"
+  	});
+</script>
 

@@ -46,7 +46,7 @@
         "invalid_email": "Oops, not valid e-mail.",
         "invalid_ddd" : "Invalid area code.", 
         "invalid_contact" : "Invalid Contact.", 
-        "invalid_facebook_link" : "Invalid facebook link.",
+        "invalid_whatsapp" : "Invalid WhatsApp number.",
         "invalid_phone_number" : "Invalid Phone number.",
         "ignore_contact" : "To be ignored:",
         "ignore_contact_error" : "Invalid contact.",        

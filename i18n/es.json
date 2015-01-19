@@ -46,7 +46,7 @@
         "invalid_email": "El correo electrónico no es válido.",
         "invalid_ddd" : "El prefijo telefónico no es válido.", 
         "invalid_contact" : "El Contacto no es válido.", 
-        "invalid_facebook_link" : "El link de Facebook no es válido.",
+        "invalid_whatsapp" : "El WhatsApp no es válido.",
         "invalid_phone_number" : "El Número de teléfono no es válido.",
         "ignore_contact" : "Para ser ignorado:",
         "ignore_contact_error" : "El contacto no es válido.",        
