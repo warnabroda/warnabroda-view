@@ -4,7 +4,23 @@
         "browsehappy": "Você está usando um browser <strong> desatualizados </ strong>. Por favor <a href=\"http://browsehappy.com/?locale=en\"> atualizar </a> seu navegador para melhorar sua experiência.",
         "loading": "Carregando...",        
         "menu": {            
-            "language": "Linguagem"
+            "language": "Linguagem",
+            "account": {
+                "main": "Conta",
+                "settings": "Configuração",
+                "password": "Senha",
+                "sessions": "Sessões",
+                "tracker": "Rastreamento de usuário",
+                "metrics": "Métricas",
+                "health": "Estado do Sistema",
+                "configuration": "Configuration",
+                "logs": "Logs",
+                "audits": "Auditorias",
+                "login": "Entrar",
+                "logout": "Sair",
+                "apidocs": "API",
+                "register": "Registrar"
+            }
         },
         "form": {
             "username": "Usuário",
@@ -35,7 +51,7 @@
         "title": "Página de erro!",
         "403": "Você não está autorizado a acessar a página."
     },
-    "footer": "©2014-2014 Warn a Broda. Todos os direitos reservados. ",
+    "footer": "©2014-2015 Warn a Broda. Todos os direitos reservados. ",
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "Quem avisa, amigo é.",
@@ -67,6 +83,7 @@
         "total": "Total:",
         "total_by_email": "Total por E-mail:",
         "total_by_sms": "Total por SMS:",
+        "total_by_whatsapp":"Total por WhatsApp",
         "itens_per_page": "Itens por pagina:",
         "filter_by": "Filtrar por:",
         "yes": "Sim",
@@ -87,7 +104,7 @@
         "total_confirmed": "Total de Confirmados: ",
         "total_unconfirmed": "Total de Não Confirmados: ",
         "ignore_list_email": "Solicitações de ignore-me por e-mail",
-        "ignore_list_sms": "Solicitações de ignore-me por sms",
+        "ignore_list_sms_whatsapp": "Solicitações de ignore-me por sms / whatsapp",
         "dashboard" : "Dashboard Warna A Broda",
         "dash": "Dashboard",
         "placeholder" : {

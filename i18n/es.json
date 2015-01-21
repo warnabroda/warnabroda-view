@@ -4,7 +4,23 @@
         "browsehappy": "Está usando un navegador <strong>no actualizado</strong>. Por favor <a href=\"http://browsehappy.com/?locale=en\">actualice su navegador</a> para mejorar su experiencia.",
         "loading": "Cargando...",
         "menu": {            
-            "language": "Idioma"
+            "language": "Idioma",
+            "account": {
+                "main": "Cuenta",
+                "settings": "Ajustes",
+                "password": "Contraseña",
+                "sessions": "Sesiones",
+                "tracker": "Rastreador de los usarios",
+                "metrics": "Métricas",
+                "health": "Health",
+                "configuration": "Configuration",
+                "logs": "Logs",
+                "audits": "Auditorías",
+                "login": "Iniciar sesión",
+                "logout": "Cerrar la sesión",
+                "apidocs": "API",
+                "register": "Crear una cuenta"
+            }
         },
         "form": {
             "username": "Usuario",
@@ -35,7 +51,7 @@
         "title": "¡Página de error!",
         "403": "No tiene permisos para acceder a la página."
     },
-    "footer": "©2014-2014 Warn a Broda. Todos los derechos reservados.",
+    "footer": "©2014-2015 Warn a Broda. Todos los derechos reservados.",
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "Solo los buenos amigos te abren los ojos.",
@@ -52,7 +68,7 @@
         "ignore_contact_error" : "El contacto no es válido.",        
         "about_label" : "Acerca de WarnABroda",
         "about": "Sobre nosotros", 
-        "about_title": "La misión 'Avisar A Brotha' es proporcionarle una herramienta para decirle a su amigo, de forma anónima, sobre algunas cuestiones embarazosas que podrían causar un momento incómodo en lo aviso.",
+        "about_title": "La misión 'Warn A Brotha' es proporcionarle una herramienta para decirle a su amigo, de forma anónima, sobre algunas cuestiones embarazosas que podrían causar un momento incómodo en lo aviso.",
         "about_rules": "Reglas básicas de Warn A Broda:",
         "about_spam_rule": "Un e-mail o número de teléfono sólo pueden recibir hasta 2 mensajes idénticas, de diferentes Brodas, cada 2 horas.",
         "about_sms_limit_rule": "Una misma IP sólo se puede enviar hasta 3 SMS en un intervalo de 24 horas con Warn A Broda",
@@ -67,6 +83,7 @@
         "total": "Total:",
         "total_by_email": "Total por E-mail:",
         "total_by_sms": "Total por SMS:",
+        "total_by_whatsapp":"Total por WhatsApp",
         "itens_per_page": "Artículos por pagina:",
         "filter_by": "Filtrar por:",
         "yes": "Sí",
@@ -87,7 +104,7 @@
         "total_confirmed": "Total de Confirmados: ",
         "total_unconfirmed": "Total sin confirmar: ",
         "ignore_list_email": "Ignora-me solicito por correo electrónico",
-        "ignore_list_sms": "Ignora-me solicito por sms",
+        "ignore_list_sms_whatsapp": "Ignora-me solicito por sms / whatsapp",        
         "dashboard" : "Dashboard Warna A Broda",
         "dash": "Dashboard",
         "placeholder" : {

@@ -4,7 +4,23 @@
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
         "loading": "Loading...",
         "menu": {        
-            "language": "Language"
+            "language": "Language",
+            "account": {
+                "main": "Account",
+                "settings": "Settings",
+                "password": "Password",
+                "sessions": "Sessions",
+                "tracker": "User tracker",
+                "metrics": "Metrics",
+                "health": "Health",
+                "configuration": "Configuration",
+                "logs": "Logs",
+                "audits": "Audits",
+                "login": "Authenticate",
+                "logout": "Log out",
+                "apidocs": "API",
+                "register": "Register"
+            }
         },
         "form": {
             "username": "Login",
@@ -35,7 +51,7 @@
         "title": "Error page!",
         "403": "You are not authorized to access the page."
     },
-    "footer": "©2014-2014 Warn a Broda. All rights reserved. ",
+    "footer": "©2014-2015 Warn a Broda. All rights reserved. ",
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "If you see something, Warn A Broda!",
@@ -67,6 +83,7 @@
         "total": "Total:",
         "total_by_email": "Total by E-mail:",
         "total_by_sms": "Total by SMS:",
+        "total_by_whatsapp":"Total by WhatsApp",
         "itens_per_page": "Itens per page:",
         "filter_by": "Filter by:",
         "yes": "Yes",
@@ -87,7 +104,7 @@
         "total_confirmed": "Total of confirmed: ",
         "total_unconfirmed": "Total of non confirmed: ",
         "ignore_list_email": "Ignore-me requests by e-mail",
-        "ignore_list_sms": "Ignore-me requests by sms",
+        "ignore_list_sms_whatsapp": "Ignore-me requests by sms / whatsapp",        
         "dashboard" : "Warna A Broda Dashboard",
         "dash": "Dashboard",
         "placeholder" : {
