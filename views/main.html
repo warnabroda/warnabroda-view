@@ -63,12 +63,14 @@
 				<div class="form-group">
 					<div ng-show="show_email">
 						<label translate="warning.contact">Contato do amigo</label> 
+						<br/>
 						<input type="email" class="form-control" name="email" 
 							ng-model="email" ng-minlength=5 ng-maxlength=100 ng-show="show_email"
 							placeholder="{{'warning.placeholder.email' | translate}}"/>
 					</div>
 					<div ng-show="show_phone">
 						<label translate="warning.contact">Contato do amigo</label>
+						<br/>
 						<input type="tel" class="form-control" ng-model="sms" id="sms-number" ng-show="show_phone"/>
 					</div>
 					<div ng-show="show_whats">
@@ -82,8 +84,7 @@
 				<div class="modal-footer">
 					<button type="submit" ng-disabled="form.$invalid || isPhoneNumberIlegal()" class="btn btn-success">
 						<span class="glyphicon glyphicon-ok"></span> 
-						<span translate="warning.warn">Avisar</span>
-						
+						<span translate="warning.warn">Avisar</span>						
 					</button>					
 					<div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">	
 				</div>
@@ -104,7 +105,7 @@
 	    //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
 	    preferredCountries: ['br', 'us'],
 	    preventInvalidNumbers: true,
-	    utilsScript: "scripts/utils.phone.js"
+	    utilsScript: "scripts/utils.phone.jstxt"
   	});
   	$("#sms-number").intlTelInput({
 	    autoFormat: true,
@@ -115,7 +116,7 @@
 	    numberType: "MOBILE",
 	    onlyCountries: ['br'],	    
 	    preventInvalidNumbers: true,
-	    utilsScript: "scripts/utils.phone.js"
+	    utilsScript: "scripts/utils.phone.jstxt"
   	});
 </script>
 

@@ -237,7 +237,8 @@ module.exports = function (grunt) {
             '.htaccess',
             'images/{,*/}*.{png,gif,webp}',
             'fonts/*',
-            'i18n/*'
+            'i18n/*',
+            'scripts/utils.phone.jstxt'
             //'bower_components/angular-i18n/angular-locale_br.js'
           ]
         }, {
