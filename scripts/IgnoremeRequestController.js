@@ -29,12 +29,15 @@ warnabrodaApp.controller('IgnoremeRequestController', ['$scope', '$window', 'dev
             captcha.response = $scope.gRecaptchaResponse;            
 
             if ($scope.validate()){
+
+
             	
             	var captchaReturn = WarningService.validateCaptcha(captcha);
             	
             	captchaReturn.then(function(data){
             		
 	            	if (data.success == true){
+	            		$scope.ignore.created_date = new Date();
 	            		var warnService = WarningService.ignoreContact($scope.ignore);
 						warnService.then(function(data) {
 							$scope.handleServerResponse(data);

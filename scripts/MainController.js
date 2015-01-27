@@ -73,6 +73,8 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		$scope.send = function(){			
 			
 			if ($scope.validateContact()){
+
+				$scope.warning.created_date = new Date();
 				
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {

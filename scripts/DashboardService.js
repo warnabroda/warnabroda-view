@@ -23,5 +23,14 @@ warnabrodaApp.factory('DashboardService', ['$q', '$http',
             });
             return deferred.promise;
         },
+        get : function(id) {
+            var deferred = $q.defer();
+            $http.get('warnabroda/hq/warning/'+id).success(function(data) {
+                deferred.resolve(data);
+            }).error(function(data, status, headers, config) {
+                deferred.reject(status);
+            });
+            return deferred.promise;   
+        }
 	};
 }]);

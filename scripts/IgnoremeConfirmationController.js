@@ -35,6 +35,7 @@ warnabrodaApp.controller('IgnoremeConfirmationController', ['$scope', '$window',
             	captchaReturn.then(function(data){
             		
 	            	if (data.success == true){
+	            		$scope.ignore.last_modified_date = new Date();
 	            		var warnService = WarningService.confirmIgnore($scope.ignore);
 						warnService.then(function(data) {
 							$scope.gRecaptchaResponse = null;

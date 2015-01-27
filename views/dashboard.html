@@ -301,7 +301,7 @@
 				        <th><span translate="warning.sent_date">Sent date</span>&nbsp;<a ng-click="sort_by('CreatedDate');"><i class="glyphicon glyphicon-sort"></i></a></th>	        
 			        </thead>
 			        <tbody>
-			            <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+			            <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" ng-click="warningDetailShowModal(data.Id, data.ContactType, data.Message)" class="hand">
 			                <td>{{data.Id}}</td>
 			                <td>{{data.ContactType}}</td>
 			                <td>{{data.Message}}</td>
@@ -322,6 +322,43 @@
 			    </div>
 		    </div>
        		
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="warningLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="form" role="form" novalidate
+                  class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                  ng-submit="create()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            ng-click="warningDetailHideModal()">&times;</button>
+                    <h4 class="modal-title" id="warningLabel">{{selectedContactType}}: {{selectedMessage}}</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                    <label>Warning Id: </label>{{warning.id}}<br>
+                    <label>Message Id: </label>{{warning.id_message}}<br>
+                    <label>Contact Type Id: </label>{{warning.id_contact_type}}<br>
+                    <label>Contact: </label>{{warning.contact}}<br>
+                    <label>Sent: </label><span translate="warning.sent_value" translate-values="{sent: {{warning.Sent}}}">{{warning.Sent && 'Sim' || 'Não'}}</span>
+                        
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="warningDetailHideModal()">
+                        <span class="glyphicon glyphicon-ok"></span> Ok
+                    </button>                    
+                </div>
+            </form>
         </div>
     </div>
 </div>

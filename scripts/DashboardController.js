@@ -7,6 +7,7 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
 
     	$scope.warn = {}
     	var warnings = {}
+    	$scope.warning = {}
 
     	$scope.searchFilter = {}
     	
@@ -63,6 +64,25 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
 		}
 
 		$scope.doSearch();
+
+		$scope.warningDetailShowModal = function (id, ct, m) {
+
+			var w = DashboardService.get(id);
+			w.then(function(data){
+				$scope.warning = data;
+				$scope.selectedMessage = m;
+				$scope.selectedContactType = ct;
+			});
+            
+            $('#dataModal').modal('show');
+        };
+
+        $scope.warningDetailHideModal = function(){
+        	$scope.warning = {}
+        	$scope.selectedMessage = null;
+			$scope.selectedContactType = null;
+            $('#dataModal').modal('hide');	
+        }
 
 
     }]);
