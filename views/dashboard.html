@@ -305,7 +305,7 @@
 			                <td>{{data.Id}}</td>
 			                <td>{{data.ContactType}}</td>
 			                <td>{{data.Message}}</td>
-			                <td>{{formatPhone(data.Contact)}}</td>
+			                <td>{{data.Contact}}</td>
 			                <td> <span translate="warning.sent_value" translate-values="{sent: {{data.Sent}}}">{{data.Sent && 'Sim' || 'Não'}}</span></td>
 			                <td>{{formatDate(data.CreatedDate) | date:'custom'}}</td>
 			            </tr>
@@ -342,14 +342,124 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="form-group">
-                    <label>Warning Id: </label>{{warning.id}}<br>
-                    <label>Message Id: </label>{{warning.id_message}}<br>
-                    <label>Contact Type Id: </label>{{warning.id_contact_type}}<br>
-                    <label>Contact: </label>{{warning.contact}}<br>
-                    <label>Sent: </label><span translate="warning.sent_value" translate-values="{sent: {{warning.Sent}}}">{{warning.Sent && 'Sim' || 'Não'}}</span>
-                        
+                    <div class="form-group">	                    
+	                    <div class="row ng-scope">
+	                    	<div class="col-sm-4">
+	                    		<label>Warning Id: </label><br>
+	                    		{{warning.id}} - {{warning.lang_key}}
+	                    	</div>
+	                    </div><br>
+
+	                    <div class="row ng-scope">
+	                    	<div class="col-sm-6">
+	                    		<label>Message: </label><br>
+	                    		{{warning.id_message}} - ({{selectedMessage}})
+	                    	</div>
+	                    	<div class="col-sm-6">
+	                    		<label>Contact Type: </label><br>
+	                    		{{warning.id_contact_type}} - ({{selectedContactType}})
+	                    	</div>
+	                    </div><br>
+
+	                    <div class="row">
+	                    	<div class="col-sm-6">
+	                    		<label>Contact: </label><br>
+	                    		{{warning.contact}}
+	                    	</div>
+	                    	<div class="col-sm-6">
+	                    		<label>Sent: </label><br>	                    		
+	                    		<span ng-show="warning.sent == true">
+	                    			<span translate="warning.yes">Yes</span>
+	                    		</span>
+	                    		<span ng-show="warning.sent == false">
+	                    			<span translate="warning.no">No</span>
+	                    		</span>	                    		
+	                    	</div>	                    	
+	                    </div><br>
+
+	                    <div class="row">
+	                    	<div class="col-sm-12">
+	                    		<label>Return Message: </label><br>
+	                    		<span style="width:300px;">{{formatReturnMessage(warning)}}</span><br>
+	                    	</div>
+	                    </div><br>
+
+						<div class="row">
+	                    	<div class="col-sm-4">
+	                    		<label>Browser: </label><br>
+	                    		{{warning.browser}}
+	                    	</div>
+	                    	<div class="col-sm-4">
+	                    		<label>Operating System: </label><br>
+	                    		{{warning.operating_system}}
+	                    	</div>
+	                    	<div class="col-sm-4">
+	                    		<label>Device: </label><br>
+	                    		{{warning.device}}
+	                    	</div>
+	                    </div><br>
+
+	                    <div class="row">
+	                    	<div class="col-sm-4">
+	                    		<label>City: </label><br>
+	                    		{{ip.city}}
+	                    	</div>
+	                    	<div class="col-sm-4">
+	                    		<label>Region: </label><br>
+	                    		{{ip.region}}
+	                    	</div>
+	                    	<div class="col-sm-4">
+	                    		<label>Country: </label><br>
+	                    		{{ip.country}}
+	                    	</div>
+	                    </div><br>
+
+	                    <div class="row">
+						    <div class="col-sm-6">
+						    	<label>Ip: </label><br>
+						    	{{warning.ip}}
+						    </div>
+						    <div class="col-sm-6">
+						    	<label>HostName: </label><br>
+						    	{{ip.hostname}}
+						    </div>
+						</div><br>
+
+						<div class="row">
+						    <div class="col-sm-6">
+						    	<label>GeoLocation: </label><br>
+						    	{{ip.loc}}
+						    </div>
+						    <div class="col-sm-6">
+						    	<label>Service Provider: </label><br>
+						    	{{ip.org}}
+						    </div>
+						</div><br>
+
+	                    <div class="row">
+						    <div class="col-sm-6">
+						    	<label>Created Date: </label><br>
+						    	{{formatDate(warning.created_date) | date:'custom'}}
+						    </div>
+						    <div class="col-sm-6">
+						    	<label>Last Modified Date: </label><br>
+						    	{{formatDate(warning.last_modified_date) | date:'custom'}}
+						    </div>
+						</div><br>
+
+
+	                     <div class="row">
+	                    	<div class="col-sm-12">
+	                    		<label>Raw: </label><br>
+	                    		{{warning.raw}}
+	                    	</div>
+	                    </div><br>
+
                     </div>
+                    <div style="position: relative">
+				        <img class="map" src="{{googleMapString(ip.loc)}}"/>
+				    </div>
+
 
                 </div>
 
