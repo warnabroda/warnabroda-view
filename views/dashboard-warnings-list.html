@@ -1,0 +1,60 @@
+				<div class="panel panel-primary">
+	    	        <div class="panel-heading">        	
+	    	        	<h3 class="panel-title" translate="warning.registered_warnings">All warns registered</h3>
+	    	        </div>
+	    	        <div class="panel-body">
+	    			    <div class="row">
+	    			    	<div class="col-md-4">
+	    			    		<span translate="warning.itens_per_page">Itens per page: </span>
+	    			    		<select ng-model="entryLimit" class="form-control">
+	    				            <option>5</option>
+	    				            <option>10</option>
+	    				            <option>20</option>
+	    				            <option>50</option>
+	    				            <option>100</option>
+	    				        </select>
+	    			    	</div>
+	    			    	<div class="col-md-4">
+	    			    		<span translate="warning.filter_by">Filter by: </span>
+	    				        <input type="text" ng-model="search" ng-change="filter()" placeholder="Filter" class="form-control" />
+	    				    </div>
+	    				    <div class="col-md-4">
+	    				        <h5 translate="warning.paging_status" translate-values="{total: '{{warn.All}}', all: '{{totalItems}}'}">Filtered {{totalItems}} de {{warn.All}} avisos.</h5>
+	    				    </div>
+	    			    </div>
+	    			    <br/>
+	    			    <div class="row">
+	    			    	<div class="col-md-12" ng-show="filteredItems > 0">
+	    				        <table class="table table-striped table-bordered">
+	    				        <thead>
+	    					        <th><span translate="warning.id">Id</span>&nbsp;<a ng-click="sort_by('Id');"><i class="glyphicon glyphicon-sort"></i></a></th>
+	    					        <th><span translate="warning.type">Type</span>&nbsp;<a ng-click="sort_by('ContactType');"><i class="glyphicon glyphicon-sort"></i></a></th>
+	    					        <th><span translate="warning.message">Message</span>&nbsp;<a ng-click="sort_by('Message');"><i class="glyphicon glyphicon-sort"></i></a></th>
+	    					        <th><span translate="warning.contact">Contact</span>&nbsp;<a ng-click="sort_by('Contact');"><i class="glyphicon glyphicon-sort"></i></a></th>
+	    					        <th><span translate="warning.sent">Sent</span>&nbsp;<a ng-click="sort_by('Sent');"><i class="glyphicon glyphicon-sort"></i></a></th>
+	    					        <th><span translate="warning.sent_date">Sent date</span>&nbsp;<a ng-click="sort_by('CreatedDate');"><i class="glyphicon glyphicon-sort"></i></a></th>	        
+	    				        </thead>
+	    				        <tbody>
+	    				            <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" ng-click="warningDetailShowModal(data.Id, data.ContactType, data.Message)" class="hand">
+	    				                <td>{{data.Id}}</td>
+	    				                <td>{{data.ContactType}}</td>
+	    				                <td>{{data.Message}}</td>
+	    				                <td>{{data.Contact}}</td>
+	    				                <td> <span translate="warning.sent_value" translate-values="{sent: {{data.Sent}}}">{{data.Sent && 'Sim' || 'Não'}}</span></td>
+	    				                <td>{{formatDate(data.CreatedDate) | date:'custom'}}</td>
+	    				            </tr>
+	    				        </tbody>
+	    				        </table>
+	    				    </div>
+	    				    <div class="col-md-12" ng-show="filteredItems == 0">
+	    				        <div class="col-md-12">
+	    				            <h4 translate="warning.no_warns_found">No warns found</h4>
+	    				        </div>
+	    				    </div>
+	    				    <div class="col-md-12" ng-show="filteredItems > 0">			 		
+	    				 		<pagination boundary-links="true" total-items="filteredItems" ng-model="currentPage" class="pagination-md" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="10"></pagination>
+	    				    </div>
+	    			    </div>
+	    	       		
+	    	        </div>
+	    	    </div>

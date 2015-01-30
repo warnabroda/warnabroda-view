@@ -52,6 +52,28 @@
         "403": "No tiene permisos para acceder a la página."
     },
     "footer": "©2014-2015 Warn a Broda. Todos los derechos reservados.",
+    "dashboard" : {
+        "warnabroda": "Warna A Broda Dashboard",
+        "dash": "Dashboard",
+        "general_stats": "Estadísticas Generales",
+        "message_stats": "Estadísticas de Mensajes",
+        "warnings_list": "Lista de Mensajes",
+        "warning_id":"Warning Id",
+        "return_message": "Mensaje de Respuesta",
+        "browser": "Navegador",
+        "operating_system": "Sistema Operativo",
+        "device": "Dispositivo",
+        "city": "Ciudad",
+        "region": "Región",
+        "country": "País",
+        "ip":"IP",
+        "hostname":"Nombre de host",
+        "geo_loc": "Ubicación Geográfica",
+        "service_provider": "Proveedor de Servicios",
+        "created_date": "Fecha de Creación",
+        "last_modified_date": "La última fecha de modificación",
+        "raw": "Request Crudo"
+    },
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "Solo los buenos amigos te abren los ojos.",
@@ -104,9 +126,7 @@
         "total_confirmed": "Total de Confirmados: ",
         "total_unconfirmed": "Total sin confirmar: ",
         "ignore_list_email": "Ignora-me solicito por correo electrónico",
-        "ignore_list_sms_whatsapp": "Ignora-me solicito por sms / whatsapp",        
-        "dashboard" : "Dashboard Warna A Broda",
-        "dash": "Dashboard",
+        "ignore_list_sms_whatsapp": "Ignora-me solicito por sms / whatsapp",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"

@@ -52,6 +52,28 @@
         "403": "Você não está autorizado a acessar a página."
     },
     "footer": "©2014-2015 Warn a Broda. Todos os direitos reservados. ",
+    "dashboard" : {
+        "warnabroda": "Warna A Broda Dashboard",
+        "dash": "Dashboard",
+        "general_stats": "Estatísticas Gerais",
+        "message_stats": "Estatísticas de Mensagens",
+        "warnings_list": "Lista de Warnings",
+        "warning_id":"Warning Id",
+        "return_message": "Mensagem de retorno",
+        "browser": "Navegador",
+        "operating_system": "Sistema Operacional",
+        "device": "Aparelho",
+        "city": "Cidade",
+        "region": "Estado",
+        "country": "País",
+        "ip":"Endereço IP",
+        "hostname":"Nome do Host",
+        "geo_loc": "Geo Localização",
+        "service_provider": "Provedor",
+        "created_date": "Data do envio",
+        "last_modified_date": "Data da última atualização",
+        "raw": "Request não tratado"
+    },
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "Quem avisa, amigo é.",
@@ -105,8 +127,6 @@
         "total_unconfirmed": "Total de Não Confirmados: ",
         "ignore_list_email": "Solicitações de ignore-me por e-mail",
         "ignore_list_sms_whatsapp": "Solicitações de ignore-me por sms / whatsapp",
-        "dashboard" : "Dashboard Warna A Broda",
-        "dash": "Dashboard",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"

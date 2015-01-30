@@ -1,0 +1,258 @@
+<div class="row">
+    
+			    	<div class="col-md-4">
+			            <div class="panel panel-primary">
+					        <div class="panel-heading">
+					        	<h3 class="panel-title" translate="warning.registered_warnings">All warns registered</h3>
+					        </div>
+					        <div class="panel-body">
+					       		<span translate="warning.total">Total:</span> {{warn.All}}	
+					       		<br/><br/>
+
+					       		<span translate="warning.total_by_email">Total by E-mail: </span> ( {{(warn.EmailSent*1+warn.EmailNotSent*1) * 100 / warn.All  | number:2}}% - {{(warn.EmailSent*1+warn.EmailNotSent*1)}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{(warn.EmailSent*1+warn.EmailNotSent*1) | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.All | number:0}}"
+						                 style="width: {{(warn.EmailSent*1+warn.EmailNotSent*1) * 100 / warn.All  | number:0}}%">
+						                {{(warn.EmailSent*1+warn.EmailNotSent*1)}} msgs
+						            </div>
+						        </div>
+						        <span  translate="warning.total_by_sms">Total by SMS: </span> ( {{(warn.SmsSent*1+warn.SmsNotSent*1) * 100 / warn.All  | number:2}}% - {{(warn.SmsSent*1+warn.SmsNotSent*1)}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{(warn.SmsSent*1+warn.SmsNotSent*1) | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.All | number:0}}"
+						                 style="width: {{(warn.SmsSent*1+warn.SmsNotSent*1) * 100 / warn.All  | number:0}}%">
+						                {{(warn.SmsSent*1+warn.SmsNotSent*1)}} msgs
+						            </div>
+						        </div>
+
+						        <span  translate="warning.total_by_whatsapp">Total unique contacts: </span> ( {{warn.UniqueContacts * 100 / warn.All  | number:2}}% - {{warn.UniqueContacts}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.UniqueContacts | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.All | number:0}}"
+						                 style="width: {{warn.UniqueContacts * 100 / warn.All  | number:0}}%">
+						                {{warn.UniqueContacts}} msgs
+						            </div>
+						        </div>
+
+					        </div>
+				        </div>
+			        </div>
+			        <div class="col-md-4">
+			            <div class="panel panel-success">
+					        <div class="panel-heading">
+					        	<h3 class="panel-title" translate="warning.sent_warnings">Sent warnings</h3>
+					        </div>
+					        <div class="panel-body">
+					        	<span translate="warning.total">Total:</span> ( {{warn.Sent * 100 / warn.All  | number:2}}% - {{warn.Sent}} msgs)
+								<div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.Sent | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.All | number:0}}"
+						                 style="width: {{warn.Sent * 100 / warn.All  | number:0}}%">
+						                {{warn.Sent}} msgs
+						            </div>
+						        </div>
+						        <span translate="warning.total_by_email">Total by E-mail: </span> ( {{warn.EmailSent * 100 / warn.Sent  | number:2}}% - {{warn.EmailSent}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.EmailSent | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.Sent | number:0}}"
+						                 style="width: {{warn.EmailSent * 100 / warn.Sent  | number:0}}%">
+						                {{warn.EmailSent}} msgs
+						            </div>
+						        </div>
+						        <span  translate="warning.total_by_sms">Total by SMS: </span> ( {{warn.SmsSent * 100 / warn.Sent  | number:2}}% - {{warn.SmsSent}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.SmsSent | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.Sent | number:0}}"
+						                 style="width: {{warn.SmsSent * 100 / warn.Sent  | number:0}}%">
+						                {{warn.SmsSent}} msgs
+						            </div>
+						        </div>
+						        <span  translate="warning.total_by_whatsapp">Total by WhatsApp: </span> ( {{warn.WhatsappSent * 100 / warn.Sent  | number:2}}% - {{warn.WhatsappSent}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.WhatsappSent | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.Sent | number:0}}"
+						                 style="width: {{warn.WhatsappSent * 100 / warn.Sent  | number:0}}%">
+						                {{warn.WhatsappSent}} msgs
+						            </div>
+						        </div>
+					        </div>
+				        </div>
+			        </div>
+			        <div class="col-md-4">
+			            <div class="panel panel-danger">
+					        <div class="panel-heading">
+					        	<h3 class="panel-title" translate="warning.not_sent_warnings">Not sent warnings</h3>
+					        </div>
+					        <div class="panel-body">
+				        		<span translate="warning.total">Total:</span> ( {{warn.NotSent * 100 / warn.All  | number:2}}% - {{warn.NotSent}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.NotSent | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.All | number:0}}"
+						                 style="width: {{warn.NotSent * 100 / warn.All  | number:0}}%">
+						                {{warn.NotSent}} msgs
+						            </div>
+						        </div>
+						        <span translate="warning.total_by_email">Total by E-mail: </span> ( {{warn.EmailNotSent * 100 / warn.NotSent  | number:2}}% - {{warn.EmailNotSent}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.EmailNotSent | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.NotSent | number:0}}"
+						                 style="width: {{warn.EmailNotSent * 100 / warn.NotSent  | number:0}}%">
+						                {{warn.EmailNotSent}} msgs
+						            </div>
+						        </div>
+						        <span  translate="warning.total_by_sms">Total by SMS: </span> ( {{warn.SmsNotSent * 100 / warn.NotSent  | number:2}}% - {{warn.SmsNotSent}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.SmsNotSent | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.NotSent | number:0}}"
+						                 style="width: {{warn.SmsNotSent * 100 / warn.NotSent  | number:0}}%">
+						                {{warn.SmsNotSent}} msgs
+						            </div>
+						        </div>
+						         <span  translate="warning.total_by_whatsapp">Total by WhatsApp: </span> ( {{warn.WhatsappNotSent * 100 / warn.NotSent  | number:2}}% - {{warn.WhatsappNotSent}} msgs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.WhatsappNotSent | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.Sent | number:0}}"
+						                 style="width: {{warn.WhatsappNotSent * 100 / warn.NotSent  | number:0}}%">
+						                {{warn.WhatsappNotSent}} msgs
+						            </div>
+						        </div>
+					        </div>
+				        </div>
+			        </div>        
+			    </div>
+			    <div class="row">
+				    <div class="col-md-4">
+				        <div class="panel panel-primary">
+					        <div class="panel-heading">
+					        	<h3 class="panel-title" translate="warning.ignore_list">Ignore list</h3>
+					        </div>
+					        <div class="panel-body">
+					       		<span translate="warning.total">Total:</span> {{warn.IgnoreList}}	
+					       		<br/><br/>
+
+					       		<span translate="warning.total_confirmed">Total Confirmed: </span> ( {{warn.Confirmed * 100 / warn.IgnoreList  | number:2}}% - {{warn.Confirmed}} usrs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.Confirmed | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.IgnoreList | number:0}}"
+						                 style="width: {{warn.Confirmed * 100 / warn.IgnoreList  | number:0}}%">
+						                {{warn.Confirmed}} usrs
+						            </div>
+						        </div>
+						        <span  translate="warning.total_unconfirmed">Total Unconfirmed: </span> ( {{warn.Unconfirmed * 100 / warn.IgnoreList  | number:2}}% - {{warn.Unconfirmed}} usrs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.Unconfirmed | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.IgnoreList | number:0}}"
+						                 style="width: {{warn.Unconfirmed * 100 / warn.IgnoreList  | number:0}}%">
+						                {{warn.Unconfirmed}} usrs
+						            </div>
+						        </div>
+
+					        </div>
+				        </div>
+				    </div>
+				    <div class="col-md-4">
+				    	<div class="panel panel-warning">
+				    		 <div class="panel-heading">
+					        	<h3 class="panel-title" translate="warning.ignore_list_email">Ignore list by e-mail</h3>
+					        </div>
+					        <div class="panel-body">
+					        	<span translate="warning.total">Total:</span> ( {{(warn.ConfirmedByEmail*1+warn.UnconfirmedByEmail*1) * 100 / warn.IgnoreList  | number:2}}% - {{(warn.ConfirmedByEmail*1+warn.UnconfirmedByEmail*1)}} usrs)
+					        	<div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{(warn.ConfirmedByEmail*1+warn.UnconfirmedByEmail*1) | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.IgnoreList | number:0}}"
+						                 style="width: {{(warn.ConfirmedByEmail*1+warn.UnconfirmedByEmail*1) * 100 / warn.IgnoreList  | number:0}}%">
+						                {{(warn.ConfirmedByEmail*1+warn.UnconfirmedByEmail*1)}} usrs
+						            </div>
+						        </div>
+						        <span translate="warning.total_confirmed">Total Confirmed: </span> ( {{warn.ConfirmedByEmail * 100 / warn.IgnoreList  | number:2}}% - {{warn.ConfirmedByEmail}} usrs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.ConfirmedByEmail | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.IgnoreList | number:0}}"
+						                 style="width: {{warn.ConfirmedByEmail * 100 / warn.IgnoreList  | number:0}}%">
+						                {{warn.ConfirmedByEmail}} usrs
+						            </div>
+						        </div>
+						        <span  translate="warning.total_unconfirmed">Total UnconfirmedByEmail: </span> ( {{warn.UnconfirmedByEmail * 100 / warn.IgnoreList  | number:2}}% - {{warn.UnconfirmedByEmail}} usrs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.UnconfirmedByEmail | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.IgnoreList | number:0}}"
+						                 style="width: {{warn.UnconfirmedByEmail * 100 / warn.IgnoreList  | number:0}}%">
+						                {{warn.UnconfirmedByEmail}} usrs
+						            </div>
+						        </div>
+					        </div>
+				    	</div>
+				    </div>
+				    <div class="col-md-4">
+				    	<div class="panel panel-warning">
+				    		 <div class="panel-heading">
+					        	<h3 class="panel-title" translate="warning.ignore_list_sms_whatsapp">Ignore list by sms / Whatsapp</h3>
+					        </div>
+					        <div class="panel-body">
+					        	<span translate="warning.total">Total:</span> ( {{(warn.ConfirmedBySms*1+warn.UnconfirmedBySms*1) * 100 / warn.IgnoreList  | number:2}}% - {{(warn.ConfirmedBySms*1+warn.UnconfirmedBySms*1)}} usrs)
+					        	<div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{(warn.ConfirmedBySms*1+warn.UnconfirmedBySms*1) | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.IgnoreList | number:0}}"
+						                 style="width: {{(warn.ConfirmedBySms*1+warn.UnconfirmedBySms*1) * 100 / warn.IgnoreList  | number:0}}%">
+						                {{(warn.ConfirmedBySms*1+warn.UnconfirmedBySms*1)}} usrs
+						            </div>
+						        </div>
+					        	<span translate="warning.total_confirmed">Total ConfirmedNySms: </span> ( {{warn.ConfirmedBySms * 100 / warn.IgnoreList  | number:2}}% - {{warn.ConfirmedBySms}} usrs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.ConfirmedBySms | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.IgnoreList | number:0}}"
+						                 style="width: {{warn.ConfirmedBySms * 100 / warn.IgnoreList  | number:0}}%">
+						                {{warn.ConfirmedBySms}} usrs
+						            </div>
+						        </div>
+						        <span  translate="warning.total_unconfirmed">Total UnconfirmedBySms: </span> ( {{warn.UnconfirmedBySms * 100 / warn.IgnoreList  | number:2}}% - {{warn.UnconfirmedBySms}} usrs)
+						        <div class="progress progress-striped">
+						            <div class="progress-bar progress-bar-success" role="progressbar"
+						                 aria-valuenow="{{warn.UnconfirmedBySms | number:0}}"
+						                 aria-valuemin="0"
+						                 aria-valuemax="{{warn.IgnoreList | number:0}}"
+						                 style="width: {{warn.UnconfirmedBySms * 100 / warn.IgnoreList  | number:0}}%">
+						                {{warn.UnconfirmedBySms}} usrs
+						            </div>
+						        </div>
+					        </div>
+				    	</div>
+				    </div>
+			    </div>

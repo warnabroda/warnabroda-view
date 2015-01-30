@@ -52,6 +52,28 @@
         "403": "You are not authorized to access the page."
     },
     "footer": "©2014-2015 Warn a Broda. All rights reserved. ",
+    "dashboard" : {
+        "warnabroda": "Warna A Broda Dashboard",
+        "dash": "Dashboard",
+        "general_stats": "General Statistics",
+        "message_stats": "Message Statistics",
+        "warnings_list": "Warnings List",
+        "warning_id":"Warning Id",
+        "return_message": "Return Message",
+        "browser": "Browser",
+        "operating_system": "Operating System",
+        "device": "Device",
+        "city": "City",
+        "region": "Region",
+        "country": "Country",
+        "ip":"IP",
+        "hostname":"Host Name",
+        "geo_loc": "Geo Location",
+        "service_provider": "Service Provider",
+        "created_date": "Creation Date",
+        "last_modified_date": "Last Modification Date",
+        "raw": "Raw Client Request"
+    },
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "If you see something, Warn A Broda!",
@@ -105,8 +127,6 @@
         "total_unconfirmed": "Total of non confirmed: ",
         "ignore_list_email": "Ignore-me requests by e-mail",
         "ignore_list_sms_whatsapp": "Ignore-me requests by sms / whatsapp",        
-        "dashboard" : "Warna A Broda Dashboard",
-        "dash": "Dashboard",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"

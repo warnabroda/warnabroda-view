@@ -1,0 +1,147 @@
+
+
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="warningLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="form" role="form" novalidate
+                  class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                  ng-submit="create()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            ng-click="warningDetailHideModal()">&times;</button>
+                    <h4 class="modal-title" id="warningLabel">{{selectedContactType}}: {{selectedMessage}}</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">	                    
+	                    <div class="row ng-scope">
+	                    	<div class="col-sm-4">
+	                    		<label translate="dashboard.warning_id">Warning Id</label> : <br>
+	                    		{{warning.id}} - {{warning.lang_key}}
+	                    	</div>
+	                    </div><br>
+
+	                    <div class="row ng-scope">
+	                    	<div class="col-sm-6">
+	                    		<label translate="warning.message">Message</label> : <br>
+	                    		{{warning.id_message}} - ({{selectedMessage}})
+	                    	</div>
+	                    	<div class="col-sm-6">
+	                    		<label translate="warning.type">Contact Type</label> : <br>
+	                    		{{warning.id_contact_type}} - ({{selectedContactType}})
+	                    	</div>
+	                    </div><br>
+
+	                    <div class="row">
+	                    	<div class="col-sm-6">
+	                    		<label translate="warning.contact">Contact </label> : <br>
+	                    		{{warning.contact}}
+	                    	</div>
+	                    	<div class="col-sm-6">
+	                    		<label translate="warning.sent">Sent</label> : <br>	                    		
+	                    		<span ng-show="warning.sent == true">
+	                    			<span translate="warning.yes">Yes</span>
+	                    		</span>
+	                    		<span ng-show="warning.sent == false">
+	                    			<span translate="warning.no">No</span>
+	                    		</span>	                    		
+	                    	</div>	                    	
+	                    </div><br>
+
+	                    <div class="row">
+	                    	<div class="col-sm-12">
+	                    		<label translate="dashboard.return_message">Return Message </label> : <br>
+	                    		<span style="width:300px;">{{formatReturnMessage(warning)}}</span><br>
+	                    	</div>
+	                    </div><br>
+
+						<div class="row">
+	                    	<div class="col-sm-4">
+	                    		<label translate="dashboard.browser">Browser </label> : <br>
+	                    		{{warning.browser}}
+	                    	</div>
+	                    	<div class="col-sm-4">
+	                    		<label translate="dashboard.operating_system">Operating System </label> : <br>
+	                    		{{warning.operating_system}}
+	                    	</div>
+	                    	<div class="col-sm-4">
+	                    		<label translate="dashboard.device">Device </label> : <br>
+	                    		{{warning.device}}
+	                    	</div>
+	                    </div><br>
+
+	                    <div class="row">
+	                    	<div class="col-sm-4">
+	                    		<label translate="dashboard.city">City </label> : <br>
+	                    		{{ip.city}}
+	                    	</div>
+	                    	<div class="col-sm-4">
+	                    		<label translate="dashboard.region">Region </label> : <br>
+	                    		{{ip.region}}
+	                    	</div>
+	                    	<div class="col-sm-4">
+	                    		<label translate="dashboard.country">Country </label> : <br>
+	                    		{{ip.country}}
+	                    	</div>
+	                    </div><br>
+
+	                    <div class="row">
+						    <div class="col-sm-6">
+						    	<label translate="dashboard.ip">Ip </label> : <br>
+						    	{{warning.ip}}
+						    </div>
+						    <div class="col-sm-6">
+						    	<label translate="dashboard.hostname">HostName </label> : <br>
+						    	{{ip.hostname}}
+						    </div>
+						</div><br>
+
+						<div class="row">
+						    <div class="col-sm-6">
+						    	<label translate="dashboard.geo_loc">GeoLocation </label> : <br>
+						    	{{ip.loc}}
+						    </div>
+						    <div class="col-sm-6">
+						    	<label translate="dashboard.service_provider">Service Provider </label> : <br>
+						    	{{ip.org}}
+						    </div>
+						</div><br>
+
+	                    <div class="row">
+						    <div class="col-sm-6">
+						    	<label translate="dashboard.created_date">Created Date </label> : <br>
+						    	{{formatDate(warning.created_date) | date:'custom'}}
+						    </div>
+						    <div class="col-sm-6">
+						    	<label translate="dashboard.last_modified_date">Last Modified Date </label> : <br>
+						    	{{formatDate(warning.last_modified_date) | date:'custom'}}
+						    </div>
+						</div><br>
+
+
+	                     <div class="row">
+	                    	<div class="col-sm-12">
+	                    		<label translate="dashboard.raw">Raw </label> : <br>
+	                    		{{warning.raw}}
+	                    	</div>
+	                    </div><br>
+
+                    </div>
+                    <div style="position: relative">
+				        <img class="map" src="{{googleMapString(ip.loc)}}"/>
+				    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="warningDetailHideModal()">
+                        <span class="glyphicon glyphicon-ok"></span> Ok
+                    </button>                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

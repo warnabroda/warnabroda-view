@@ -13,6 +13,7 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
     	$scope.searchFilter = {}
     	
 	   	var countAllWarnings = DashboardService.countAllWarnings();  
+	    var listMessage = DashboardService.listMessageStats();
 
 	   	$scope.ipDetails = function (ip){
 	   		
@@ -36,6 +37,14 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
 	    		warnings = result;
 	        }
 	    });
+
+        listMessage.then(function(result) {
+	    	if (result) {
+	    		console.log(result);
+	    		$scope.messages = result;
+	        }
+	    }); 
+
 
 
 	    $scope.setPage = function(pageNo) {
@@ -104,7 +113,7 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
         }
 
         $scope.formatReturnMessage = function(w){
-        	console.log(w);
+        	
         	if (w.id_contact_type === 1){
         		var formatedMessage = w.message.replace(","," , ");
         		formatedMessage 	= formatedMessage.replace("{","{ ");
@@ -114,6 +123,17 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
 
         	return w.message
         }
+
+
+        $scope.tab = 1;
+
+        $scope.setTab = function (tabId) {
+            $scope.tab = tabId;
+        };
+
+        $scope.isSet = function (tabId) {
+            return $scope.tab === tabId;
+        };
 
 
     }]);

@@ -31,6 +31,15 @@ warnabrodaApp.factory('DashboardService', ['$q', '$http',
                 deferred.reject(status);
             });
             return deferred.promise;   
+        },
+        listMessageStats : function(){
+            var deferred = $q.defer();
+            $http.get('warnabroda/hq/messages-stats').success(function(data) {
+                deferred.resolve(data);
+            }).error(function(data, status, headers, config) {
+                deferred.reject(status);
+            });
+            return deferred.promise;
         }
 	};
 }]);
