@@ -140,7 +140,7 @@
             "captcha_invalid" : "Captcha inválido.",
             "add" : "Adicionar à lista de contatos ignorados.",
             "invalid_confirmation_code" : "Código inválido.",
-            "add_to_list_warning": "A partir do momento que você adicionar seu contato na Ignore List, o Warn A Broda não conseguirá mais lhe avisar nada... :'(",
+            "add_to_list_warning": "A partir do momento que você adicionar seu contato na Ignore List, o Warn A Broda não conseguirá mais lhe avisar nada... :'( <br> +CÓDIGO_DO_PAÍS+DDD+NÚMERO",
             "add_request": "Ignore-me",
             "confirm_request": "Confirmar"
         }    		

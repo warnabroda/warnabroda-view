@@ -63,19 +63,20 @@ warnabrodaApp.controller('IgnoremeRequestController', ['$scope', '$window', 'dev
 				$scope.captcha_invalid = null;
 			}
 
-			var contact = $scope.ignore.contact;
-			
+			var contact = $scope.ignore.contact;			
 
 			if (EMAIL_REGEXP.test(contact)){				
 				$scope.contact_invalid = null;
 				$scope.invalid_ddd = null;
-			} else if (contact.replace(/[^0-9+.]/g, '').length === contact.length && (contact.length === 10 || contact.length === 11)){				
-				if (VALID_DDD.indexOf(contact.substring(0,2)) > -1){
-					$scope.invalid_ddd = null;
-				} else {
+			} else if (contact.replace(/[^0-9+.]/g, '').length === contact.length){
+
+				if ((contact.indexOf('+55') > -1) && !(VALID_DDD.indexOf(contact.substring(3,5)) > -1)) {
 					$scope.invalid_ddd = true;	
 					valid = false;			
+				} else {
+					$scope.invalid_ddd = null;
 				}
+				
 			} else {
 				$scope.contact_invalid = true;
 				valid = false;

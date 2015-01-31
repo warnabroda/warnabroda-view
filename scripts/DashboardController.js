@@ -39,8 +39,7 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
 	    });
 
         listMessage.then(function(result) {
-	    	if (result) {
-	    		console.log(result);
+	    	if (result) {	    		
 	    		$scope.messages = result;
 	        }
 	    }); 

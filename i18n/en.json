@@ -140,7 +140,7 @@
             "captcha_invalid" : "Invalid Captcha",
             "add" : "Add to ignore-me list.",
             "invalid_confirmation_code" : "Invalid code.",
-            "add_to_list_warning": "If you add your contact in the Ignore List, the Warn A Broda will not warn you ever again...: '(",
+            "add_to_list_warning": "If you add your contact in the Ignore List, the Warn A Broda will not warn you ever again...: '( <br> +COUNTRY_CODE+AREA_CODE+NUMBER",
             "add_request": "Ignore-me",
             "confirm_request": "Confirm"
 
