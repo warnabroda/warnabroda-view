@@ -72,7 +72,8 @@
         "service_provider": "Provedor",
         "created_date": "Data do envio",
         "last_modified_date": "Data da última atualização",
-        "raw": "Request não tratado"
+        "raw": "Request não tratado",
+        "message_table_title": "Tabela de mensagens"
     },
     "warning" : {
         "title": "Warn A Broda",
@@ -102,7 +103,7 @@
         "sent_warnings": "Mensagens enviadas",        
         "not_sent_warnings": "Mensagens não enviadas",
         "total_warning_sent" : "{{total}} Warns enviados",
-        "total": "Total:",
+        "total": "Total",
         "total_by_email": "Total por E-mail:",
         "total_by_sms": "Total por SMS:",
         "total_by_whatsapp":"Total por WhatsApp",
@@ -127,6 +128,8 @@
         "total_unconfirmed": "Total de Não Confirmados: ",
         "ignore_list_email": "Solicitações de ignore-me por e-mail",
         "ignore_list_sms_whatsapp": "Solicitações de ignore-me por sms / whatsapp",
+        "not_sent": "Não enviada",
+        "lang_key": "Idioma",        
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"

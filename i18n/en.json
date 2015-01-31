@@ -72,7 +72,8 @@
         "service_provider": "Service Provider",
         "created_date": "Creation Date",
         "last_modified_date": "Last Modification Date",
-        "raw": "Raw Client Request"
+        "raw": "Raw Client Request",        
+        "message_table_title": "Message table"
     },
     "warning" : {
         "title": "Warn A Broda",
@@ -100,9 +101,9 @@
         "ignore_me_label" : "Ignore-me",
         "registered_warnings":"Registered warnings",
         "sent_warnings": "Sent warnings",        
-        "not_sent_warnings": "Not sent warnings",
+        "not_sent_warnings": "Not sent warnings",        
         "total_warning_sent" : "{{total}} Warns sent",
-        "total": "Total:",
+        "total": "Total",
         "total_by_email": "Total by E-mail:",
         "total_by_sms": "Total by SMS:",
         "total_by_whatsapp":"Total by WhatsApp",
@@ -126,7 +127,9 @@
         "total_confirmed": "Total of confirmed: ",
         "total_unconfirmed": "Total of non confirmed: ",
         "ignore_list_email": "Ignore-me requests by e-mail",
-        "ignore_list_sms_whatsapp": "Ignore-me requests by sms / whatsapp",        
+        "ignore_list_sms_whatsapp": "Ignore-me requests by sms / whatsapp",
+        "not_sent": "Not Sent",
+        "lang_key": "Language",        
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"

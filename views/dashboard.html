@@ -16,20 +16,20 @@
 		        <div class="slide-animate" ng-include src="'views/dashboard-general-stats.html'"></div>
 		    </div>
 		    <div ng-show="isSet(2)">
-		    	<h2 class="sub-header">Section title</h2>
+		    	<h2 class="sub-header"><label translate="dashboard.message_table_title"> Message table</label></h2>
 	    		<div class="table-responsive">
 	    			<table class="table table-striped">
           				<thead>
             				<tr>
-              					<th>ID</th>
-              					<th>Message</th>
-				                <th>All</th>
-				                <th>Sent</th>
-				                <th>Not Sent</th>
+              					<th translate="warning.id">ID</th>
+              					<th translate="warning.message">Message</th>
+				                <th translate="warning.total">All</th>
+				                <th translate="warning.sent">Sent</th>
+				                <th translate="warning.not_sent">Not Sent</th>
 				                <th>E-mail</th>
 				                <th>Sms</th>
 				                <th>Whatsapp</th>
-				                <th>Lang Key</th>
+				                <th translate="warning.lang_key">Lang Key</th>
 			                </tr>
 		                </thead>
 		                <tbody>
