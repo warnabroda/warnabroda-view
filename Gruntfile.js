@@ -238,8 +238,11 @@ module.exports = function (grunt) {
             'images/{,*/}*.{png,gif,webp}',
             'fonts/*',
             'i18n/*',
-            'scripts/utils.phone.jstxt'
-            //'bower_components/angular-i18n/angular-locale_br.js'
+            'scripts/utils.phone.jstxt',
+            'bower_components/angular-i18n/angular-locale_en.js',
+            'bower_components/angular-i18n/angular-locale_es.js',
+            'bower_components/angular-i18n/angular-locale_br.js',
+            'bower_components/angular-i18n/angular-locale_pt-br.js'
           ]
         }, {
           expand: true,
