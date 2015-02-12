@@ -52,6 +52,7 @@
         "403": "No tiene permisos para acceder a la página."
     },
     "footer": "©2014-2015 Warn a Broda. Todos los derechos reservados.",
+    "usage_terms":"El Warn A Broda es una aplicacio&#769;n web totalmente libre para enviar mensajes ano&#769;nimos a tu amigo, la intencio&#769;n principal de la aplicacio&#769;n es permitir usted avisar a un amigo sin causar ningu&#769;n tipo de vergüenza para usted o para su amigo, pulsando el botón WARN usted está de acuerdo con nuestros términos de uso. La aplicacio&#769;n permite so&#769;lo mensajes predefinidos con la intencio&#769;n de evitar mensajes agresivos y amenazantes. Nos encantari&#769;a recibir de usted, por encima de todo, comentarios para mejorar nuestro servicio cada vez ma&#769;s, para este que tenemos disponible  <a href='mailto:warnabroda@gmail.com'>nuestro correo electro&#769;nico warnabroda@gmail.com</a> y la zona de <a href='#/contact'>contacto con nosotros</a>",
     "dashboard" : {
         "warnabroda": "Warna A Broda Dashboard",
         "dash": "Dashboard",

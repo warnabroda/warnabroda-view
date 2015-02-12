@@ -52,6 +52,7 @@
         "403": "Você não está autorizado a acessar a página."
     },
     "footer": "©2014-2015 Warn a Broda. Todos os direitos reservados. ",
+    "usage_terms":"O Warn A Broda e&#769; um aplicativo web e mobile totalmente gra&#769;tis que envia mensagens de forma a preservar a identidade do remetente, ao clicar no botão WARN você estará concordando com nossos termos de serviço. A ideia do Warn A Broda e&#769; voce&#770; poder avisar aquele colega/amigo de uma situa&ccedil;a&#771;o que e&#769;/seria desconfortavel avisar em publico ou mesmo particular, os unicos tipos de e-mails que voce&#770; recebera&#769; do 'Warn A Broda' sa&#771;o notifica&ccedil;o&#771;es. A equipe Warn A Broda disponibiliza apenas mensagens fixas, na&#771;o permitindo assim amea&ccedil;as ou mensagens agressivas de quaisquer finalidade. No&#769;s adorariamos receber de voce&#770;s sugesto&#771;es, reclama&ccedil;o&#771;es e/ou elogios de qualquer genero. Para isso nos colocamos a inteira disposi&ccedil;a&#771;o atraves do contato:  <a href='mailto:warnabroda@gmail.com'>warnabroda@gmail.com</a>. Ou pelo <a href='#/contact'>fale conosco do Warn A Broda</a>",
     "dashboard" : {
         "warnabroda": "Warna A Broda Dashboard",
         "dash": "Dashboard",
