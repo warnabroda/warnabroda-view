@@ -1,6 +1,7 @@
 <div ng-cloak>
 	<div class="row">
-		<div class="col-md-10">
+		<div class="col-md-12">
+			<div class="logo"><img src="images/logo-warnabroda.png" alt="Warn a Broda"></div>
 			<!-- h1 translate="warning.title">Welcome, Warn A Broda!</h1-->
 			<p class="lead" translate="warning.subtitle">Let your friend know something secretly</p>
 			
@@ -83,11 +84,9 @@
 
 				<div class="modal-footer">
 					<button type="submit" ng-disabled="form.$invalid || isPhoneNumberIlegal()" class="btn btn-success">
-						<span class="glyphicon glyphicon-ok"></span> 
-						<span translate="warning.warn">Avisar</span>						
+						<span translate="warning.warn">Avisar</span>
+						<span class="glyphicon glyphicon-ok"></span> 						
 					</button>					
-					<div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">	
-				</div>
 				</div>
 				
 			</form>			

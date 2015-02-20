@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="styles/intlTelInput.css">
         <!-- endbuild -->
         
+        <link href='http://fonts.googleapis.com/css?family=Raleway:500,600,400' rel='stylesheet' type='text/css'>
         <!-- script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script -->
     </head>
     <body ng-app="warnabrodaApp" ng-controller="ApplicationController">       
@@ -39,85 +40,86 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div class=""></div>
-        <div ng-cloak>        
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                  <a class="navbar-brand" href="#"><span translate="warning.title">Warn A Broda </span></a>
+        <div class="wrapper">
+            <div ng-cloak>        
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                      <a class="navbar-brand" href="#"><span translate="warning.title">Warn A Broda </span></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="authenticated">
+                        <ul class="nav navbar-nav nav-pills navbar-right">                        
+
+                            <li ng-controller="LanguageController">
+                                <a href="#/contact">
+                                    <span class="glyphicon glyphicon-envelope"></span>
+                                    <span translate="warning.contact">Contato</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a ng-href="#/ignore-request" data-toggle="modal" data-target="#ignoreContactModal">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    <span translate="warning.ignore_me_label">Me Ignorar</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#/about">
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                    <span translate="warning.about_label">Sobre o Warna A Broda</span>
+                                </a>
+                            </li>
+
+                            <li  ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)">
+                                <a href="#/dashboard">
+                                    <span class="glyphicon glyphicon-tasks"></span>
+                                    <span translate="dashboard.dash">Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li  ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)">
+                                <a href="#/logout">
+                                    <span class="glyphicon glyphicon-log-out"></span>
+                                    <span translate="global.menu.account.logout">Logout</span>
+                                </a>
+                            </li>
+                            <li class="dropdown pointer" ng-controller="LanguageController">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                                    <span>
+                                        <span class="glyphicon glyphicon-flag"></span>
+                                        <span class="hidden-tablet" translate="global.menu.language">Language</span>
+                                        <b class="caret"></b>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li active-menu="{{key}}" ng-repeat="(key, language) in languages">
+                                        <a href="" ng-click="changeLanguage(key)">{{language}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="authenticated">
-                    <ul class="nav navbar-nav nav-pills navbar-right">                        
-
-                        <li ng-controller="LanguageController">
-                            <a href="#/contact">
-                                <span class="glyphicon glyphicon-envelope"></span>
-                                <span translate="warning.contact">Contato</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a ng-href="#/ignore-request" data-toggle="modal" data-target="#ignoreContactModal">
-                                <span class="glyphicon glyphicon-remove"></span>
-                                <span translate="warning.ignore_me_label">Me Ignorar</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#/about">
-                                <span class="glyphicon glyphicon-info-sign"></span>
-                                <span translate="warning.about_label">Sobre o Warna A Broda</span>
-                            </a>
-                        </li>
-
-                        <li  ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)">
-                            <a href="#/dashboard">
-                                <span class="glyphicon glyphicon-tasks"></span>
-                                <span translate="dashboard.dash">Dashboard</span>
-                            </a>
-                        </li>
-
-                        <li  ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)">
-                            <a href="#/logout">
-                                <span class="glyphicon glyphicon-log-out"></span>
-                                <span translate="global.menu.account.logout">Logout</span>
-                            </a>
-                        </li>
-                        <li class="dropdown pointer" ng-controller="LanguageController">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                                <span>
-                                    <span class="glyphicon glyphicon-flag"></span>
-                                    <span class="hidden-tablet" translate="global.menu.language">Language</span>
-                                    <b class="caret"></b>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li active-menu="{{key}}" ng-repeat="(key, language) in languages">
-                                    <a href="" ng-click="changeLanguage(key)">{{language}}</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            </nav>    
             </div>
-        </nav>    
+            <div class="container main-box">
+                <div class="well" ng-view=""></div> 
+            </div>      
         </div>    
-        <div class="container">
-            <div class="well" ng-view=""></div>
+        <div class="container footer">
+            <p translate="footer">©2014-2014 Warn a Broda. Todos os direitos reservados.</p>
+            <h6><small translate="usage_terms">Usage Terms</small></h6>
 
-            <div class="footer">
-                <p translate="footer">©2014-2014 Warn a Broda. Todos os direitos reservados.</p>
-                <h6><small translate="usage_terms">Usage Terms</small></h6>
-            </div>
-        </div>      
-        
-        
+            <div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"> </div>
+        </div>
+
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.-->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -1,7 +1,71 @@
 body {
     background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-image: url("../images/photosg1.jpg");
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
     color: #333;
+}
+
+/* Background */
+
+/* Navbar */
+.navbar {
+border-radius: 0;
+}
+
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: #fff;
+}
+
+.navbar-default {
+    background-color: #b2be35;
+    border: none;
+}
+
+.navbar-default .navbar-brand {
+    text-indent: -3333px;
+}
+
+.main-box {
+        margin: 40px auto;
+    width: 50%;
+}
+
+.well {
+    background-color: #fff;
+    border-color: #fff;
+    border-radius: 0;
+    padding: 40px;
+}
+
+.logo {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    background-color: #fff;
+}
+
+.nav-pills>li>a {
+    border-radius: 0;
+}
+
+/* Botão */
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+    background-color: #4c2f85;
+    border-color: #4c2f85;
+}
+
+.btn-success.disabled, .btn-success[disabled], fieldset[disabled] .btn-success, .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled:active, .btn-success[disabled]:active, fieldset[disabled] .btn-success:active, .btn-success.disabled.active, .btn-success[disabled].active, fieldset[disabled] .btn-success.active {
+    background-color: #61499a;
+    border-color: #61499a;
+}
+
+.modal-footer {
+    padding: 19px 0 20px 20px;
 }
 
 .development {
