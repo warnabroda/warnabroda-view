@@ -64,6 +64,18 @@ border-radius: 0;
     border-color: #61499a;
 }
 
+/* Logo */
+.logo {
+    display: block;
+    width: 354px;
+    height: 64px;
+    background-image: url("../images/logo-warnabroda.png");
+}
+
+.logo h1 {
+    text-indent: -3333px;
+}
+
 .modal-footer {
     padding: 19px 0 20px 20px;
 }
