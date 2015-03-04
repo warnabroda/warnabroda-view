@@ -37,6 +37,9 @@ padding: 10px 15px;
     border-color: #fff;
     border-radius: 0;
     padding: 40px;
+    -webkit-box-shadow: 1px 0 11px rgba(50,50,50,0.74);
+    -moz-box-shadow: 1px 0 11px rgba(50,50,50,0.74);
+    box-shadow: 1px 0 11px rgba(50,50,50,0.74);
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
