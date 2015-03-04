@@ -1,24 +1,20 @@
-html,
-body {
-    height: 100%;   
-}
-
-body::after {
-    content: "";
-    display: block;
-    height: 5px;
-    background-image: url("../images/warna-border.png");
-    margin-top: 5px;
-}
-
 body {
     background: #fafafa;
     background-image: url("../images/photosg1.jpg");
     background-size: cover;
     font-family: 'Raleway', sans-serif;
     color: #333;
+    padding-bottom: 10px;
+
 }
 
+.warna-borda {
+    height: 5px;
+    background-image: url("../images/warna-border.png");
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
 /* Background */
 
