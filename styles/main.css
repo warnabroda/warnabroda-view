@@ -6,6 +6,14 @@ body {
     color: #333;
 }
 
+body::after {
+    content: "";
+    display: block;
+    height: 5px;
+    background-image: url("../images/warna-border.png");
+    margin-top: 5px;
+}
+
 /* Background */
 
 /* Navbar */
