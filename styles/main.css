@@ -1,9 +1,6 @@
+html,
 body {
-    background: #fafafa;
-    background-image: url("../images/photosg1.jpg");
-    background-size: cover;
-    font-family: 'Raleway', sans-serif;
-    color: #333;
+    height: 100%;   
 }
 
 body::after {
@@ -13,6 +10,15 @@ body::after {
     background-image: url("../images/warna-border.png");
     margin-top: 5px;
 }
+
+body {
+    background: #fafafa;
+    background-image: url("../images/photosg1.jpg");
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+    color: #333;
+}
+
 
 /* Background */
 
@@ -36,11 +42,8 @@ border-radius: 0;
 padding: 10px 15px;
 }
 
-.main-box {
-    margin: 40px auto;
-}
-
 .well {
+    margin: 40px auto;
     background-color: #fff;
     border-color: #fff;
     border-radius: 0;
