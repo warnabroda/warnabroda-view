@@ -236,6 +236,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'images/{,*/}*.{png,gif,webp}',
+            'social_images/*',
             'fonts/*',
             'i18n/*',
             'scripts/utils.phone.jstxt',
