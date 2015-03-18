@@ -40,6 +40,33 @@ warnabrodaApp.factory('DashboardService', ['$q', '$http',
                 deferred.reject(status);
             });
             return deferred.promise;
+        },
+        getMessage : function(id){
+            var deferred = $q.defer();
+            $http.get('warnabroda/hq/messages/'+id).success(function(data) {
+                deferred.resolve(data);
+            }).error(function(data, status, headers, config) {
+                deferred.reject(status);
+            });
+            return deferred.promise; 
+        },
+        getUser : function(id) {
+            var deferred = $q.defer();            
+            $http.get('warnabroda/hq/account/'+id).success(function(data) {
+                deferred.resolve(data);
+            }).error(function(data, status, headers, config) {                
+                deferred.reject(status);
+            });
+            return deferred.promise;
+        },
+        saveMessage : function(message){
+            var deferred = $q.defer();
+            $http.post('warnabroda/hq/messages', message).success(function(data) {
+                deferred.resolve(data);
+            }).error(function(data, status, headers, config) {
+                deferred.reject(status);
+            });
+            return deferred.promise;
         }
 	};
 }]);

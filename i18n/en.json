@@ -31,7 +31,14 @@
             "confirmpassword.placeholder": "Confirm the new password",
             "email": "E-mail",
             "email.placeholder": "Your e-mail"
-        }
+        },
+        "last_modified_date": "Last modified",
+        "last_modified_by": "Last update by",
+        "cancel": " Cancel",
+        "save": " Save",
+        "add": " Add",
+        "save_success": "yeaah, it's saved.",
+        "save_error": "Ups! Holly crap, something happened, it did not save..."
     },
     "login": {
         "title": "Head Quarter",
@@ -74,7 +81,10 @@
         "created_date": "Creation Date",
         "last_modified_date": "Last Modification Date",
         "raw": "Raw Client Request",        
-        "message_table_title": "Message table"
+        "message_table_title": "Message table",
+        "active_message" : "Message status",
+        "enabled": "Enabled",
+        "disabled": "Disabled"
     },
     "warning" : {
         "title": "Warn A Broda",

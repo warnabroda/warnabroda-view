@@ -97,11 +97,9 @@ padding: 10px 15px;
 .logo h1 {
     text-indent: -3333px;
 }
-
-.modal-footer {
-    padding: 19px 0 20px 20px;
+.modal-dialog{
+    width: 35%;
 }
-
 .development {
     position: absolute;
     width: 149px;
@@ -174,15 +172,6 @@ padding: 10px 15px;
 .warn {
     color: #8a6d3b;
     background-color: #fcf8e3;
-}
-
-.hipster {
-  display: inline-block;
-  width: 463px;
-  height: 640px;
-  background-image: url("../images/hipster.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
 }
 
 .hand {

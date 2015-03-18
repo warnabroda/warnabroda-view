@@ -2,18 +2,31 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'DashboardService', '$timeout', '$filter',
-    function ($scope, $rootScope, DashboardService, $timeout, $filter) {
+warnabrodaApp.controller('DashboardController', ['$scope', 'DashboardService', '$timeout', '$filter', 'LANGUAGES',
+    function ($scope, DashboardService, $timeout, $filter, LANGUAGES) {
 
     	$scope.warn = {}
     	var warnings = {}
     	$scope.warning = {}
+    	$scope.message = {}
     	$scope.ip = {}
-
+    	$scope.userName = '';
     	$scope.searchFilter = {}
+    	$scope.server_msg_error = null;
+		$scope.server_msg_success = null;
+		$scope.languages = LANGUAGES;
     	
-	   	var countAllWarnings = DashboardService.countAllWarnings();  
-	    var listMessage = DashboardService.listMessageStats();
+	   	var countAllWarnings = DashboardService.countAllWarnings(); 
+
+	    $scope.loadMessageList = function(){
+	    	var listMessage = DashboardService.listMessageStats();
+	    	listMessage.then(function(result) {
+	    		if (result) {	    		
+	    			$scope.messages = result;
+	        	}
+	    	});
+
+	    }
 
 	   	$scope.ipDetails = function (ip){
 	   		
@@ -38,12 +51,8 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
 	        }
 	    });
 
-        listMessage.then(function(result) {
-	    	if (result) {	    		
-	    		$scope.messages = result;
-	        }
-	    }); 
-
+         
+	    $scope.loadMessageList();
 
 
 	    $scope.setPage = function(pageNo) {
@@ -65,6 +74,8 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
 			
 			if (date && !angular.isUndefined(date) && date != '0000-00-00 00:00:00'){
 				return new Date(date).toISOString();
+			} else {
+				return new Date().toISOString();
 			}
 		}	
 
@@ -134,5 +145,51 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
             return $scope.tab === tabId;
         };
 
+        $scope.messageShowModal = function (id) {
+        	$scope.server_msg_error = null;
+			$scope.server_msg_success = null;
+
+			if (angular.isUndefined(id)){
+				$scope.message = {};
+				$scope.userName = $scope.account.name;
+			} else {
+				var msg = DashboardService.getMessage(id);
+				msg.then(function(data){
+					$scope.message = data;
+					var msgUser = DashboardService.getUser(data.Last_modified_by);
+		        	msgUser.then(function(userData){
+		        		$scope.userName = userData.name;
+		        	});
+				});
+			}
+            
+            $('#messageModal').modal('show');
+        };
+
+        $scope.messageHideModal = function(){
+        	$scope.message = {}
+        	$scope.userName = '';
+        	$scope.server_msg_error = null;
+			$scope.server_msg_success = null;
+        	
+            $('#messageModal').modal('hide');	
+        };
+
+        $scope.saveMessage = function(){
+        	
+        	$scope.message.Last_modified_date = new Date();        	
+        	var savedMsg = DashboardService.saveMessage($scope.message);
+        	savedMsg.then(function(data){
+        		$scope.server_msg_success = true;
+        		$scope.server_msg_error = null;
+        		$scope.message = {};
+        		$scope.loadMessageList();
+        	}, function(error) {
+			   $scope.server_msg_success = null;
+        		$scope.server_msg_error = true;		       
+		    });
+        	$scope.messageHideModal();
+        }
+        
 
     }]);

@@ -2,18 +2,9 @@
 
 /* Services */
 
-warnabrodaApp.factory('Account', ['$resource', '$q', '$http',
-   function ($resource, $q, $http) {
-    return {
-        get : function(id) {
-            var deferred = $q.defer();            
-            $http.get('warnabroda/hq/account', id).success(function(data) {
-                deferred.resolve(data);
-            }).error(function(data, status, headers, config) {                
-                deferred.reject(status);
-            });
-            return deferred.promise;
-        },
+warnabrodaApp.factory('Account', ['$q', '$http',
+   function ($q, $http) {
+    return {        
         getAuthenticated : function() {
             var deferred = $q.defer();
             $http.get('warnabroda/hq/authenticated-user').success(function(data) {
@@ -25,7 +16,6 @@ warnabrodaApp.factory('Account', ['$resource', '$q', '$http',
         }
     };
 }]);
-
 
 warnabrodaApp.factory('Session', function () {
         this.create = function (id, name, user_role, email, last_login) {

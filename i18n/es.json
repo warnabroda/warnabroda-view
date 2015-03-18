@@ -31,7 +31,14 @@
             "confirmpassword.placeholder": "Confirmación de la nueva contraseña",
             "email": "Correo electrónico",
             "email.placeholder": "Su correo electrónico"
-        }
+        },        
+        "last_modified_date": "Última actualización",
+        "last_modified_by": "Ultima actualización por",
+        "cancel": " Cancelar",
+        "save": " Guardar",
+        "add": " Añadir",
+        "save_success": "Bueno ya tá guardado.",
+        "save_error": "Ups! No se ha guardado, inténtalo de nuevo..."
     },    
     "login": {
         "title": "Iniciar la sesión",
@@ -74,7 +81,10 @@
         "created_date": "Fecha de Creación",
         "last_modified_date": "La última fecha de modificación",
         "raw": "Request Crudo",
-        "message_table_title": "Tabla de mensaje"
+        "message_table_title": "Tabla de mensaje",
+        "active_message" : "Status de la mensaje",
+        "enabled": "Activada",
+        "disabled": "Desactivada"
     },
     "warning" : {
         "title": "Warn A Broda",

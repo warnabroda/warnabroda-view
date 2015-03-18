@@ -15,38 +15,8 @@
 		    <div ng-show="isSet(1)" class="slide-animate-container">
 		        <div class="slide-animate" ng-include src="'views/dashboard-general-stats.html'"></div>
 		    </div>
-		    <div ng-show="isSet(2)">
-		    	<h2 class="sub-header"><label translate="dashboard.message_table_title"> Message table</label></h2>
-	    		<div class="table-responsive">
-	    			<table class="table table-striped">
-          				<thead>
-            				<tr>
-              					<th translate="warning.id">ID</th>
-              					<th translate="warning.message">Message</th>
-				                <th translate="warning.total">All</th>
-				                <th translate="warning.sent">Sent</th>
-				                <th translate="warning.not_sent">Not Sent</th>
-				                <th>E-mail</th>
-				                <th>Sms</th>
-				                <th>Whatsapp</th>
-				                <th translate="warning.lang_key">Lang Key</th>
-			                </tr>
-		                </thead>
-		                <tbody>
-			                <tr ng-repeat="message in messages">
-				                <td>{{message.id}}</td>
-				                <td>{{message.name}}</td>
-				                <td>{{message.total}}</td>
-				                <td>{{message.sent}}</td>
-				                <td>{{message.not_sent}}</td>
-				                <td>{{message.email}}</td>
-				                <td>{{message.sms}}</td> 
-				                <td>{{message.whatsapp}}</td>
-				                <td>{{message.lang_key}}</td>
-			                </tr>
-		            	</tbody>
-		            </table>
-		        </div>
+		    <div ng-show="isSet(2)">		    	
+		    	<div class="slide-animate" ng-include src="'views/dashboard-messages-list.html'"></div>
 		    </div>
 		    <div ng-show="isSet(3)">
 		        <div class="slide-animate" ng-include src="'views/dashboard-warnings-list.html'"></div>
@@ -56,3 +26,4 @@
     
 </div>
 <div ng-include src="'views/modal-warning-details.html'"></div>
+<div ng-include src="'views/modal-message-details.html'"></div>

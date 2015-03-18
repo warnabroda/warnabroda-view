@@ -9,7 +9,7 @@ warnabrodaApp.controller('ApplicationController', ['$scope', '$window', '$locati
 	  	$scope.isAuthorized = AuthenticationSharedService.isAuthorized;
 	 
 	  	$scope.setCurrentUser = function (user) {
-	    	$scope.currentUser = user;
+	    	$scope.currentUser = user;	    	
 	  	};
     	
 }]);

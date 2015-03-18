@@ -1,0 +1,42 @@
+<h2 class="sub-header">
+	<label translate="dashboard.message_table_title"> Message table</label>
+	<button class="btn btn-primary" ng-click="messageShowModal()">
+		<span class="glyphicon glyphicon-plus-sign"  translate="global.add">Adicionar</span>
+	</button>
+</h2>
+<div class="table-responsive">
+	<div class="alert alert-success" ng-show="server_msg_success">
+		<strong  translate="global.save_success">Salvo!</strong>
+	</div>
+	<div class="alert alert-danger" ng-show="server_msg_error">
+		<strong translate="global.save_error">Não salvo</strong>
+	</div>
+	<table class="table table-striped">
+			<thead>
+			<tr>
+				<th translate="warning.id">ID</th>
+				<th translate="warning.message">Message</th>
+                <th translate="warning.total">All</th>
+                <th translate="warning.sent">Sent</th>
+                <th translate="warning.not_sent">Not Sent</th>
+                <th>E-mail</th>
+                <th>Sms</th>
+                <th>Whatsapp</th>
+                <th translate="warning.lang_key">Lang Key</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="message in messages" class="hand {{message.active ? '' : 'danger'}}" ng-click="messageShowModal(message.id)">
+                <td>{{message.id}}</td>
+                <td>{{message.name}}</td>
+                <td>{{message.total}}</td>
+                <td>{{message.sent}}</td>
+                <td>{{message.not_sent}}</td>
+                <td>{{message.email}}</td>
+                <td>{{message.sms}}</td> 
+                <td>{{message.whatsapp}}</td>
+                <td>{{message.lang_key}}</td>
+            </tr>
+    	</tbody>
+    </table>
+</div>
