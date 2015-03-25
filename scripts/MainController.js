@@ -13,6 +13,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		$scope.response = {};
 		$scope.response.type = 2;
 		$scope.warning.warning_resp = {};
+		$scope.warning.id_contact_type = 3;
 		
 		var listContactType = WarningService.getContactTypes();
 		var countWarnings = WarningService.countWarnings();
@@ -87,19 +88,14 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 
 		$scope.send = function(){			
 			
-			if ($scope.validateContact()){
-				if ($scope.acceptResponse){					
-					$scope.warning.warning_resp.reply_to = $scope.response.contact;
-				} 
-					console.log($scope.warning);
-					return;
-				
+			if ($scope.validateContact() && $scope.handleReplyData()){
 
 				$scope.warning.created_date = new Date();
+				console.log();
 				
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {
-					$scope.handleServerResponse(data);	                
+					$scope.handleServerResponse(data);
 	        	}, function(error) {
 			       $scope.error = error;			       
 			    });
@@ -107,6 +103,24 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		    	$scope.error = null;
 			}
 			
+		}
+
+		$scope.handleReplyData = function (){
+			
+			$scope.same_contacts_dest_orig = null;
+
+			if ($scope.acceptResponse){
+				$scope.warning.warning_resp.reply_to = $scope.response.contact;
+				$scope.warning.warning_resp.created_date = new Date();
+				$scope.warning.warning_resp.lang_key = $scope.warning.lang_key;
+
+				if ($scope.response.contact == $scope.warning.contact){
+					$scope.same_contacts_dest_orig = true;
+					return false;
+				}
+			}
+
+			return true;
 		}
 
 		$scope.handleServerResponse = function (data){			

@@ -35,7 +35,10 @@
 				translate="warning.invalid_whatsapp">
 				<strong>Ups algum erro ocorreu!</strong>
 			</div>
-			
+			<div class="alert alert-danger" ng-show="same_contacts_dest_orig"
+				translate="warning.same_contacts_dest_orig">
+				<strong>Ups algum erro ocorreu!</strong>
+			</div>
 
 
 			<form name="form" role="form" novalidate
@@ -43,7 +46,7 @@
 				ng-submit="send()">
 
 				<div class="form-group">
-					<label translate="warning.amigo_voce">Amigo você: </label> 
+					<label translate="warning.amigo_voce">Amigo você </label> 
 					<select
 						class="form-control" ng-model="warning.id_message"
 						ng-options="m.id as m.name for m  in messages"
@@ -52,7 +55,7 @@
 				</div>
 
 				<div class="form-group">
-					<label translate="warning.tipo_notificacao">Notificar amigo via: </label> 
+					<label translate="warning.tipo_notificacao">Notificar amigo via </label> 
 					<select class="form-control"
 						ng-model="warning.id_contact_type"	
 						ng-change="handleContactTypeSelect()"				
