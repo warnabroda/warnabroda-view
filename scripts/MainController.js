@@ -9,7 +9,10 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
     	$scope.warning.browser = deviceDetector.browser;
 		$scope.warning.operating_system = deviceDetector.os;			
 		$scope.warning.device = deviceDetector.device;
-		$scope.warning.raw = deviceDetector.raw.userAgent;   			
+		$scope.warning.raw = deviceDetector.raw.userAgent;
+		$scope.response = {};
+		$scope.response.type = 2;
+		$scope.warning.warning_resp = {};
 		
 		var listContactType = WarningService.getContactTypes();
 		var countWarnings = WarningService.countWarnings();
@@ -65,6 +68,18 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
             $scope.warning.contact = String(value);
             
         });
+
+        $scope.$watch('response.whatsapp', function(value, oldValue) {
+            
+            $scope.response.contact = String($("#mobile-number-response").intlTelInput("getNumber"));
+            
+        });
+
+        $scope.$watch('response.email', function(value, oldValue) {
+            
+            $scope.response.contact = String(value);
+            
+        });
 		
 		/**
 			END OF WATCHERS
@@ -73,6 +88,12 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		$scope.send = function(){			
 			
 			if ($scope.validateContact()){
+				if ($scope.acceptResponse){					
+					$scope.warning.warning_resp.reply_to = $scope.response.contact;
+				} 
+					console.log($scope.warning);
+					return;
+				
 
 				$scope.warning.created_date = new Date();
 				

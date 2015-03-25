@@ -140,7 +140,9 @@
         "ignore_list_email": "Ignore-me requests by e-mail",
         "ignore_list_sms_whatsapp": "Ignore-me requests by sms / whatsapp",
         "not_sent": "Not Sent",
-        "lang_key": "Language",        
+        "lang_key": "Language",    
+        "accept_response": "Send me answer and continue anonymous",
+        "blank_note": "If you leave it blank, you will never get the reply",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"

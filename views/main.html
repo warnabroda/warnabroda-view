@@ -80,6 +80,39 @@
 						<input type="tel" class="form-control" ng-model="whatsapp" ng-show="show_whats" id="mobile-number">
 					</div>
 				</div>
+
+				<div class="form-group">
+					
+					<label translate="warning.accept_response">Aceito receber resposta</label>
+					<toggle-switch ng-model="acceptResponse" on-label="{{'warning.yes' | translate}}" off-label="{{'warning.no' | translate}}" knob-label=""/>		
+				</div>
+				<div class="form-group" ng-show="acceptResponse">
+					
+					<div class="hand">
+						<input type="radio" id="responseWhatsapp" ng-model="response.type" ng-value=2><label for="responseWhatsapp">WhatsApp</label>
+					</div>
+					<div class="hand">
+						<input type="radio" id="responseEmail" ng-model="response.type" ng-value=0><label for="responseEmail">E-mail</label>
+					</div>
+
+					<div ng-show="response.type === 0">
+						<label>Seu contato</label> 
+						<br/>
+						<input type="email" class="form-control" name="responseEmail" 
+							ng-model="response.email" ng-minlength=5 ng-maxlength=100 ng-show="response.type === 0"
+							placeholder="{{'warning.placeholder.email' | translate}}"/>						
+						<i><small translate="warning.blank_note">Se você deixar em branco, não será possivel descobrir a resposta</small></i>
+					</div>
+
+					<div ng-show="response.type === 2">
+						<label>Seu contato</label> 
+						<br/>
+						<input type="tel" class="form-control" ng-model="response.whatsapp" ng-show="response.type === 2" id="mobile-number-response"/>
+						<br>
+						<i><small translate="warning.blank_note">Se você deixar em branco, não será possivel descobrir a resposta</small></i>
+					</div>
+				</div>
+
 				
 
 				<div class="modal-footer">
@@ -114,6 +147,18 @@
 	    //nationalMode: false,
 	    numberType: "MOBILE",
 	    onlyCountries: ['br'],	    
+	    preventInvalidNumbers: true,
+	    utilsScript: "scripts/utils.phone.jstxt"
+  	});
+  	$("#mobile-number-response").intlTelInput({
+	    autoFormat: true,
+	    //autoHideDialCode: false,
+	    defaultCountry: "auto",
+	    //ipinfoToken: "yolo",
+	    //nationalMode: false,
+	    numberType: "MOBILE",
+	    //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+	    preferredCountries: ['br', 'us'],
 	    preventInvalidNumbers: true,
 	    utilsScript: "scripts/utils.phone.jstxt"
   	});

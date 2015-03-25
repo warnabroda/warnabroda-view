@@ -140,7 +140,9 @@
         "ignore_list_email": "Ignora-me solicito por correo electrónico",
         "ignore_list_sms_whatsapp": "Ignora-me solicito por sms / whatsapp",
         "not_sent": "No enviada",
-        "lang_key": "Idioma",        
+        "lang_key": "Idioma", 
+        "accept_response": "Acepto recibir respuesta y seguir anónimo",
+        "blank_note": "Si lo deja en blanco, nunca se tiene la respuesta",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"

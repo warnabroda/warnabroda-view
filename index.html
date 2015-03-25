@@ -23,6 +23,8 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- link rel="stylesheet" href="styles/famfamfam-flags.css" -->
         <link rel="stylesheet" href="styles/intlTelInput.css">
+        <link rel="stylesheet" href="bower_components/angular-toggle-switch/angular-toggle-switch.css">
+        <link rel="stylesheet" href="bower_components/angular-toggle-switch/angular-toggle-switch-bootstrap.css">
         <!-- endbuild -->
         
         <link href='http://fonts.googleapis.com/css?family=Raleway:500,600,400' rel='stylesheet' type='text/css'>
@@ -103,8 +105,8 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <div ng-cloak>        
         <div class="wrapper">
-            <div ng-cloak>        
             <nav class="navbar navbar-default" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
@@ -172,8 +174,8 @@
                     </div>
                 </div>
             </nav>    
-            </div>
             <div class="container" ng-view=""></div> 
+        </div>
         </div>    
         <div class="container footer">
             <p translate="footer">©2014-2015 Warn a Broda. Todos os direitos reservados.</p>
@@ -240,6 +242,8 @@
         <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
         <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/collapse.js"></script>
         <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/tab.js"></script>
+        <script src="bower_components/angular-toggle-switch/angular-toggle-switch.min.js"></script>
+        
         <!-- endbuild -->
 </body>
 </html>

@@ -140,7 +140,9 @@
         "ignore_list_email": "Solicitações de ignore-me por e-mail",
         "ignore_list_sms_whatsapp": "Solicitações de ignore-me por sms / whatsapp",
         "not_sent": "Não enviada",
-        "lang_key": "Idioma",        
+        "lang_key": "Idioma",
+        "accept_response": "Aceito receber resposta e continuar anônimo",
+        "blank_note": "Se você deixar em branco, não será possivel descobrir a resposta",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"
