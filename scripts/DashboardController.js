@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('DashboardController', ['$scope', 'DashboardService', '$timeout', '$filter', 'LANGUAGES',
-    function ($scope, DashboardService, $timeout, $filter, LANGUAGES) {
+warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'DashboardService', '$timeout', '$filter', 'LANGUAGES',
+    function ($scope, $rootScope, DashboardService, $timeout, $filter, LANGUAGES) {
 
     	$scope.warn = {}
     	var warnings = {}
@@ -16,7 +16,19 @@ warnabrodaApp.controller('DashboardController', ['$scope', 'DashboardService', '
 		$scope.server_msg_success = null;
 		$scope.languages = LANGUAGES;
     	
-	   	var countAllWarnings = DashboardService.countAllWarnings(); 
+
+	    $scope.generateStatiscts = function(){
+		   	var countAllWarnings = DashboardService.countAllWarnings(); 
+
+		    countAllWarnings.then(function(result) {
+		    	if (result) {
+		    		$scope.warn = result;
+		    		warnings = result;
+		        }
+		    });	    	
+	    }
+
+	    $scope.generateStatiscts();
 
 	    $scope.loadMessageList = function(){
 	    	var listMessage = DashboardService.listMessageStats();
@@ -44,15 +56,6 @@ warnabrodaApp.controller('DashboardController', ['$scope', 'DashboardService', '
 	   		return "https://maps.googleapis.com/maps/api/staticmap?center="+str+"&zoom=13&size=500x400&sensor=true&maptype=hybrid&markers=color:blue%7Clabel:S%7C"+str;
 	   	}
 
-	    countAllWarnings.then(function(result) {
-	    	if (result) {
-	    		$scope.warn = result;
-	    		warnings = result;
-	        }
-	    });
-
-         
-	    $scope.loadMessageList();
 
 
 	    $scope.setPage = function(pageNo) {
@@ -89,8 +92,6 @@ warnabrodaApp.controller('DashboardController', ['$scope', 'DashboardService', '
 				$scope.totalItems = warnings.All;
 	    	});
 		}
-
-		$scope.doSearch();
 
 		$scope.warningDetailShowModal = function (id, ct, m) {
 
@@ -132,17 +133,38 @@ warnabrodaApp.controller('DashboardController', ['$scope', 'DashboardService', '
         	}
 
         	return w.message
-        }
-
-
-        $scope.tab = 1;
+        }     
+        console.log($rootScope);   
 
         $scope.setTab = function (tabId) {
-            $scope.tab = tabId;
+
+
+
+        	if (angular.isUndefined(tabId)){
+        		tabId = 1;
+        	}
+        	
+        	switch (tabId) {
+        		case 1: 
+        			$scope.generateStatiscts();
+        		break;
+        		case 2:
+        			$scope.loadMessageList();
+        		break;
+        		case 3: 
+        			$scope.doSearch();
+        		break;
+        	}
+
+        	
+        	$rootScope.tab = tabId;
+            
         };
 
-        $scope.isSet = function (tabId) {
-            return $scope.tab === tabId;
+        $scope.setTab($rootScope.tab);
+
+        $scope.isSet = function (tabId) {        	
+            return $rootScope.tab === tabId;
         };
 
         $scope.messageShowModal = function (id) {
