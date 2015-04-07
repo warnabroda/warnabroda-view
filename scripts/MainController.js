@@ -50,7 +50,7 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 		    $scope.handleContactTypeSelect();
         });		
 
-	    $scope.$watch('sms', function(value, oldValue) {            
+	    $scope.$watch('sms', function(value, oldValue) {
             
             
             $scope.warning.contact = String($("#sms-number").intlTelInput("getNumber"));
@@ -72,13 +72,11 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
         $scope.$watch('response.whatsapp', function(value, oldValue) {
             
             $scope.response.contact = String($("#mobile-number-response").intlTelInput("getNumber"));
-            
         });
 
         $scope.$watch('response.email', function(value, oldValue) {
             
             $scope.response.contact = String(value);
-            
         });
 		
 		/**
@@ -89,7 +87,7 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 			
 			if ($scope.validateContact() && $scope.handleReplyData()){
 
-				$scope.warning.created_date = new Date();				
+				$scope.warning.created_date = new Date();
 				
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {
@@ -121,14 +119,14 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 			return true;
 		}
 
-		$scope.handleServerResponse = function (data){			
+		$scope.handleServerResponse = function (data){
 
 			$scope.error = null;
 
 			$scope.invalid_facebook = null;
 			$scope.email_error = null;
 			$scope.invalid_phone_number = null;
-			$scope.invalid_ddd = null;				
+			$scope.invalid_ddd = null;
              	
 			switch(data.id){
 				case 200:
@@ -195,14 +193,14 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 			        break;
 
 		        case 3:	
-		        	if ($("#mobile-number").intlTelInput("isValidNumber")){		        		
+		        	if ($("#mobile-number").intlTelInput("isValidNumber")){
 		        		$scope.invalid_whatsapp = null;
 		        	} else {
 		        		$scope.invalid_whatsapp = true;
 		        		return false;
-		        	}		        	
+		        	}
 		        	
-			        break;		
+			        break;
 		        	
 
 			}
@@ -227,19 +225,19 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 					$scope.show_phone = null;
 					
 			        break;
-			    case 2:					
+			    case 2:
 					$scope.show_email = null;
 					$scope.show_whats = null;
 					$scope.show_phone = true;
-										
+
 			        break;
-		        case 3:							        	
+		        case 3:
 					$scope.show_email = null;
 					$scope.show_whats = true;
 					$scope.show_phone = null;
-										
+
 			        break;
-			    default:					
+			    default:
 					$scope.show_email = null;
 					$scope.show_whats = null;
 					$scope.show_phone = null;
@@ -259,7 +257,13 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 
 			return null;
 		}
-										
-		
+
+		$scope.resetReplyContact = function(){			
+			$scope.response.contact = null;
+			$scope.response.email = null;
+			$scope.response.whatsapp = null;
+		}
+
+
     }]);
 

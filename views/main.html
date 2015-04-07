@@ -92,10 +92,10 @@
 				<div class="form-group" ng-show="acceptResponse">
 					
 					<div class="hand">
-						<input type="radio" id="responseWhatsapp" ng-model="response.type" ng-value=2><label for="responseWhatsapp">WhatsApp</label>
+						<input type="radio" id="responseWhatsapp" ng-model="response.type" ng-value=2 ng-click="resetReplyContact()"><label for="responseWhatsapp">WhatsApp</label>
 					</div>
 					<div class="hand">
-						<input type="radio" id="responseEmail" ng-model="response.type" ng-value=0><label for="responseEmail">E-mail</label>
+						<input type="radio" id="responseEmail" ng-model="response.type" ng-value=0 ng-click="resetReplyContact()"><label for="responseEmail">E-mail</label>
 					</div>
 
 					<div ng-show="response.type === 0">
