@@ -58,6 +58,20 @@ warnabrodaApp
                         authorizedRoles: [USER_ROLES.all]
                     }
                 })
+                .when('/reply/:hash', {
+                    templateUrl: 'views/reply.html',
+                    controller: 'ReplyController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                .when('/reply', {
+                    templateUrl: 'views/reply.html',
+                    controller: 'ReplyController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
                 .when('/dashboard', {
                     templateUrl: 'views/dashboard.html',
                     controller: 'DashboardController',

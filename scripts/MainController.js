@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$filter', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 
-    function ($scope, $window, $location, $filter, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
+warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 
+    function ($scope, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
 
     	$scope.warning = {} 
     	$scope.warning.browser = deviceDetector.browser;
@@ -16,8 +16,7 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 		$scope.warning.id_contact_type = 3;
 		
 		var listContactType = WarningService.getContactTypes();
-		var countWarnings = WarningService.countWarnings();
-		var browser = $window.navigator.userAgent;
+		var countWarnings = WarningService.countWarnings();		
 		
 		$.getJSON("http://jsonip.com?callback=?", function (data) {
 			$scope.warning.ip = data.ip;
@@ -90,14 +89,13 @@ warnabrodaApp.controller('MainController', ['$scope', '$window', '$location', '$
 			
 			if ($scope.validateContact() && $scope.handleReplyData()){
 
-				$scope.warning.created_date = new Date();
-				console.log();
+				$scope.warning.created_date = new Date();				
 				
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {
 					$scope.handleServerResponse(data);
 	        	}, function(error) {
-			       $scope.error = error;			       
+			       $scope.error = error;
 			    });
 			} else {				
 		    	$scope.error = null;

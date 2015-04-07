@@ -157,6 +157,20 @@
             "add_to_list_warning": "Si se agrega a su contacto en la lista de ignorados, el Warn A Broda te olvidarás para siempre...: '(  <br> +CÓDIGO_DEL_PAÍS+PREFIJO_TELEFÓNICO+NÚMERO",
             "add_request": "Ignore-me",
             "confirm_request": "Confirmar"
+        },
+        "reply": {
+            "reply_to_broda": "Responder a su Broda anónimo",
+            "message_you_got": "Su warn recibido",
+            "your_reply": "Su respuesta a su Broda anónimo",
+            "reply_now": "Responder ahora",
+            "reply_done": "Usted ya respondió a esta warn",
+            "brodas_reply": "La respuesta de su Broda",
+            "sent_warn": "Warn enviado",
+            "to": "Al",
+            "reply": "Respuesta",
+            "wanna_send_again": "Quiero enviar una más!",
+            "about_reply": "a cerca de la respuesta",
+            "sorry_but": "Sentimos mucho, pero este hash no es válido"
         }
     }
 }

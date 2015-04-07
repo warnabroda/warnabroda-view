@@ -158,7 +158,21 @@
             "add_request": "Ignore-me",
             "confirm_request": "Confirm"
 
-        }           
+        },
+        "reply": {
+            "reply_to_broda": "Reply to your anonymous Broda",
+            "message_you_got": "Your received warn",
+            "your_reply": "Your reply to your anonymous Broda",
+            "reply_now": "Reply now",
+            "reply_done": "You already replied to this warn",
+            "brodas_reply": "Broda's reply",
+            "sent_warn": "Warn sent",
+            "to": "To",
+            "reply": "Reply",
+            "wanna_send_again": "I want to send one more!",
+            "about_reply": "About the reply",
+            "sorry_but": "We are sorry to inform you, but this hash is invalid"
+        }
     }
 }
 

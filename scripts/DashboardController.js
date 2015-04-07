@@ -134,11 +134,8 @@ warnabrodaApp.controller('DashboardController', ['$scope', '$rootScope', 'Dashbo
 
         	return w.message
         }     
-        console.log($rootScope);   
 
         $scope.setTab = function (tabId) {
-
-
 
         	if (angular.isUndefined(tabId)){
         		tabId = 1;

@@ -1,0 +1,104 @@
+<div ng-cloak class="well main-box">
+	<div class="alert alert-danger" ng-show="error" translate="warning.error">
+		<strong>Ups algum erro ocorreu!</strong>
+	</div>
+	<div class="row" ng-show="validHash">
+		<div class="panel panel-success" ng-show="renderMode == 'reply'">
+			<div class="panel-heading" translate="warning.reply.reply_to_broda">Responda ao Broda anonimo</div>
+		  	<div class="panel-body">
+		    	<form name="form" role="form" novalidate class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength" ng-submit="reply()">
+		    		<div class="form-group">
+		    			<label translate="warning.reply.message_you_got">Mensagem que você recebeu</label> 
+						<br/>
+		    			<input type="text" class="form-control" name="msg" ng-model="msg" ng-disabled="true"/>
+		    		</div>
+
+		    		<div class="form-group" ng-hide="isReplyed">
+		    			<label translate="warning.reply.your_reply">Sua resposta para o Broda anonimo</label> 
+						<br/>
+		    			<textarea ng-model="warning_resp.message" name="message" ng-minlength="5" ng-maxlength="500" class="form-control" rows="3" required></textarea>
+		    		</div>
+
+		    		<div class="modal-footer" ng-hide="isReplyed">
+						<button type="submit" ng-disabled="form.$invalid" class="btn btn-success">
+							<span translate="warning.reply.reply_now">Responder</span>
+							<span class="glyphicon glyphicon-ok"></span> 						
+						</button>
+					</div>
+					<div class="form-group" ng-show="isReplyed">
+						<label translate="warning.reply.reply_done">Você já respondeu essa mensagem</label>
+						<div class="well">
+							{{warning.warning_resp.message}}
+						</div>						
+					</div>
+		    	</form>
+		  	</div>
+		</div>
+
+		<div class="panel panel-success" ng-show="renderMode == 'read'">
+			<div class="panel-heading" translate="warning.reply.brodas_reply">Resposta do Broda</div>
+		  	<div class="panel-body">
+		    	
+	    		<div class="form-group">
+	    			<label translate="warning.reply.sent_warn">Mensagem</label>
+					<br/>
+	    			<input type="text" class="form-control" name="msg" ng-model="msg" ng-disabled="true"/>
+	    		</div>
+
+	    		<div class="form-group" ng-show="warning.id_contact_type !== 1" >
+	    			<label translate="warning.reply.to">Para</label>
+	    			<br>
+	    			<input type="tel" class="form-control" ng-model="warning.contact" id="mobile-number-response" ng-disabled="true"/>
+	    		</div>
+	    		<div class="form-group" ng-show="warning.id_contact_type === 1" >
+	    			<label translate="warning.reply.to">Para</label>
+	    			<br>	    			
+	    			<input type="text" class="form-control" name="email-contact" ng-model="warning.contact" ng-disabled="true"/>
+	    		</div>
+
+	    		
+	    		
+				<div class="well">
+					<label translate="warning.reply.reply">Resposta</label>
+					<br>
+					{{warning.warning_resp.message}}
+				</div>
+	    		
+		    	<div class="modal-footer">
+					<button type="submit" class="btn btn-success" ng-click="goHome()">
+						<span translate="warning.reply.wanna_send_again">Quero mandar mais uma!</span>
+						<span class="glyphicon glyphicon-ok"></span> 						
+					</button>
+				</div>
+		  	</div>
+		</div>
+		
+	</div>
+	<div class="row">
+		<div class="panel panel-danger" ng-hide="validHash">
+			<div class="panel-heading" translate="warning.reply.about_reply">Sobre a reposta</div>
+		  	<div class="panel-body">
+		  		<div class="alert alert-danger">
+					<strong translate="warning.reply.sorry_but">Lamentamos informar, mas o hash informado não corresponde à nenhuma mensagem que aceite resposta</strong>
+				</div>
+		    	
+		  	</div>
+		</div>
+	</div>	
+</div>
+
+<script>
+$("#mobile-number-response").intlTelInput({
+	    autoFormat: true,
+	    //autoHideDialCode: false,
+	    defaultCountry: "auto",
+	    //ipinfoToken: "yolo",
+	    //nationalMode: false,
+	    numberType: "MOBILE",
+	    //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+	    preferredCountries: ['br', 'us'],
+	    preventInvalidNumbers: true,
+	    utilsScript: "scripts/utils.phone.jstxt"
+  	});
+</script>
+
