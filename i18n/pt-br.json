@@ -89,8 +89,8 @@
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "Quem avisa, amigo é.",
-    	"amigo_voce": "Mensagem pro(a) seu(sua) Broda ",
-    	"tipo_notificacao": "Notificar Broda via ",    	
+    	"send": "Enviar",
+    	"warn_via": "Warn via ",
     	"amigo_avisado": "Broda avisado(a) com sucesso.",
     	"error": "Ups! Algum erro ocorreu.",    	
         "invalid_email": "O E-mail informado é inválido.",

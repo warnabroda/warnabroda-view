@@ -89,8 +89,8 @@
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "If you see something, Warn A Broda!",
-        "amigo_voce": "Warn to your Broda ",
-        "tipo_notificacao": "Warn via ",        
+        "send": "Send",
+        "warn_via": "Warn via ",
         "amigo_avisado": "Broda has been warned.",
         "error": "Ups! Some error just happened.",        
         "invalid_email": "Oops, not valid e-mail.",

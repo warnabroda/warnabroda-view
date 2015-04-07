@@ -2,21 +2,29 @@
 
 /* Services */
 
-warnabrodaApp.factory('LanguageService', ['$http', '$translate', 'LANGUAGES', '$rootScope', 
-    function ($http, $translate, LANGUAGES, $rootScope) {
-        $rootScope.language = "";
+warnabrodaApp.factory('LanguageService', ['$http', '$translate', 'LANGUAGES', '$rootScope', '$window', 
+    function ($http, $translate, LANGUAGES, $rootScope, $window) {
+        // $rootScope.language = "";
 
         return {
             getBy: function(language) {
-                            
-                if (language == undefined) {
+                                
+                if($rootScope.language != undefined){
+                    language = $rootScope.language
+                } else if (language == undefined) {
                     language = $translate.storage().get('NG_TRANSLATE_LANG_KEY');
-                }
-                if (language == undefined) {
-                    language = 'pt-br';
-                }
-                
+                } 
 
+                if (language == undefined) {
+                    angular.forEach(LANGUAGES, function(flag, flagLanguage){
+                        //since translation is not specific, we use the general language(en,es,pt) insted specific(en-US, es-ES, pt-BR)
+                        if ($window.navigator.language.toLowerCase().substr(0,2) == flagLanguage.toLowerCase().substr(0,2)){
+                            language = flagLanguage;                        
+                        }
+                    });
+                }                
+                
+                $translate.use(language);
                 $rootScope.language = language;
                 var promise =  $http.get('i18n/' + language + '.json').then(function(response) {
                     return LANGUAGES;

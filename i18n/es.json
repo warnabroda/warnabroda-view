@@ -89,8 +89,8 @@
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "Solo los buenos amigos te abren los ojos.",
-        "amigo_voce": "Aviso para su Broda ",
-        "tipo_notificacao": "Avisar Broda via ",        
+        "send": "Enviar",
+        "warn_via": "Warn via ",
         "amigo_avisado": "Broda notificado(a) con éxito.",
         "error": "Ups! Ha ocurrido algún error.",        
         "invalid_email": "El correo electrónico no es válido.",
