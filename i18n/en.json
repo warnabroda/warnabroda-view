@@ -127,7 +127,7 @@
         "warn": "Warn",     
         "warn_the_broda": "Warn",   
         "message": "Message",
-        "contact": "I wanna suggest",
+        "contact": "Contact",
         "sent": "Sent",
         "sent_date": "Sent date",
         "greet": "Wassup {{username}}.",
@@ -144,6 +144,7 @@
         "accept_response": "Send me answer and continue anonymous",
         "blank_note": "If you leave it blank, you will never get the reply",
         "same_contacts_dest_orig" : "Whats the point of letting you know about an anonymous thing of yourself?",
+        "wanna_suggest":"I wanna suggest",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"
