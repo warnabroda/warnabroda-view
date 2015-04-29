@@ -13,7 +13,7 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 		$scope.response = {};
 		$scope.response.type = 2;
 		$scope.warning.warning_resp = {};
-		$scope.warning.id_contact_type = 3;
+		$scope.warning.id_contact_type = 3;		
 		
 		var listContactType = WarningService.getContactTypes();
 		var countWarnings = WarningService.countWarnings();		
@@ -39,7 +39,6 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 	    */
 
 	    $scope.$watch('language', function(value, oldValue) {
-
             $scope.warning.lang_key = value;
             var listMessage = WarningService.getMessages(value);  
             listMessage.then(function(result) {
@@ -88,6 +87,7 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 			if ($scope.validateContact() && $scope.handleReplyData()){
 
 				$scope.warning.created_date = new Date();
+				$scope.warning.timezone = (new Date()).getTimezoneOffset()+"";
 				
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {
@@ -161,7 +161,7 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 
 		$scope.validateContact = function(){
 
-			var contact = $scope.warning.contact;
+			var contact = $scope.warning.contact;			
 					
 			switch($scope.warning.id_contact_type) {
 				case 1:
@@ -255,15 +255,17 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 				return true;
 			}
 
+			if (angular.isUndefined($scope.warning.ip) || $scope.warning.ip.length < 6){
+				return true;
+			}
+
 			return null;
 		}
 
-		$scope.resetReplyContact = function(){			
+		$scope.resetReplyContact = function(){
 			$scope.response.contact = null;
 			$scope.response.email = null;
 			$scope.response.whatsapp = null;
 		}
 
-
     }]);
-

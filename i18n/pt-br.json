@@ -127,7 +127,7 @@
         "warn": "Warn",        
         "warn_the_broda": "Avisar",
         "message": "Mensagem",
-        "contact": "Quero sugerir",
+        "contact": "Contato",
         "sent": "Enviada",
         "sent_date": "Enviada em",
         "greet": "E ae {{username}}.",
@@ -144,6 +144,7 @@
         "accept_response": "Aceito receber resposta e continuar anônimo",
         "blank_note": "Se você deixar em branco, não será possivel descobrir a resposta",
         "same_contacts_dest_orig" : "Qual o sentido de avisar anonimamente você mesmo(a)?",
+        "wanna_suggest": "Quero sugerir",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
             "email" : "Ex: warnabroda@gmail.com"

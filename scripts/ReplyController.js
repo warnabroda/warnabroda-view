@@ -4,10 +4,10 @@
 
 warnabrodaApp.controller('ReplyController', ['$scope', '$window', '$location', '$filter', 'deviceDetector', 'WarningService', '$routeParams', 'ReplyService', 
     function ($scope, $window, $location, $filter, deviceDetector, WarningService, $routeParams, ReplyService) {
+		$scope.validHash = null;
 		$scope.hash = $routeParams.hash;
 		$scope.warning = {};
 		$scope.warning_resp = {};
-		$scope.validHash = null;
 		$scope.msg = "";
 		$scope.renderMode = "";
 		$scope.isReplyed = null;
@@ -63,8 +63,9 @@ warnabrodaApp.controller('ReplyController', ['$scope', '$window', '$location', '
 	    $scope.reply = function(){
 	    	$scope.warning_resp.reply_date = new Date();
 	    	$scope.warning_resp.id = $scope.warning.warning_resp.id;
-	    	$scope.warning_resp.resp_hash = $scope.hash;	    	
-
+	    	$scope.warning_resp.resp_hash = $scope.hash;
+	    	$scope.warning_resp.timezone = (new Date()).getTimezoneOffset()+"";
+	    	
 	    	var replyService = ReplyService.send($scope.warning_resp);
 			replyService.then(function(data) {
 				$scope.isReplyed = true;
