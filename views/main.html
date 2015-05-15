@@ -55,13 +55,36 @@
 				</div>
 
 				<div class="form-group">
-					<label translate="warning.warn_via">Notificar amigo via </label> 
-					<select class="form-control"
-						ng-model="warning.id_contact_type"	
-						ng-change="handleContactTypeSelect()"				
-						ng-options="ct.id as ct.name for ct  in contactTypes"
-						required>
-					</select>					
+					<label class="radio-inline">
+			        	<input type="radio" name="E-mail" value="1" ng-model="warning.id_contact_type" ng-click="sendBy('email')">
+			        	<b>E-mail</b>
+			        </label>
+			        <label class="radio-inline">
+			        	<input type="radio" name="sms" value="2" ng-model="warning.id_contact_type"  ng-click="sendBy('sms')">
+			            <b>SMS</b>
+			       	</label>
+			        <label class="radio-inline">
+			        	<input type="radio" name="whatsapp" value="3" ng-model="warning.id_contact_type"  ng-click="sendBy('whatsapp')">
+			            <b>WhatsApp</b>
+		            </label>			
+				</div>
+
+				<label translate="warning.contact_name" ng-hide="true">Nome do contato</label>
+				<div ng-hide="true">
+					<div class="form-group hand">
+						
+							<input type="radio" id="noMatter" ng-model="warning.enableName" ng-value="false">
+							<label translate="warning.no_matter" for="noMatter">Não interessa</label>
+						
+							<input type="radio" id="toName" ng-model="warning.enableName" ng-value="true">
+							<label translate="warning.inform_broda_name" for="toName">Informar</label>
+						
+					</div>
+
+					<div class="form-group" ng-show="warning.enableName == true">						
+						<input type="text" class="form-control" name="contact_name" 
+								ng-model="warning.toName" ng-minlength=1 ng-maxlength=10 maxlength="10" placeholder="{{'warning.placeholder.contact_name' | translate}}"/>
+					</div>
 				</div>
 
 				<div class="form-group">

@@ -13,7 +13,8 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 		$scope.response = {};
 		$scope.response.type = 2;
 		$scope.warning.warning_resp = {};
-		$scope.warning.id_contact_type = 3;		
+		$scope.warning.id_contact_type = 3;	
+		$scope.warning.enableName = false;
 		
 		var listContactType = WarningService.getContactTypes();
 		var countWarnings = WarningService.countWarnings();		
@@ -83,7 +84,7 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 	    */
 
 		$scope.send = function(){			
-			
+			console.log($scope.warning);
 			if ($scope.validateContact() && $scope.handleReplyData()){
 
 				$scope.warning.created_date = new Date();
@@ -267,5 +268,26 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 			$scope.response.email = null;
 			$scope.response.whatsapp = null;
 		}
+
+		$scope.sendBy = function(send_via){
+ 			$scope.server_msg_danger = null;
+ 			$scope.server_msg_sucess = null;
+			switch(send_via) {
+				case 'email':
+					$scope.warning.id_contact_type = 1;
+					
+				break;
+				case 'sms':
+					$scope.warning.id_contact_type = 2;
+					
+				break;
+				case 'whatsapp':
+					$scope.warning.id_contact_type = 3;
+					
+				break;
+			}
+
+ 			$scope.reRenderView();
+ 		}
 
     }]);

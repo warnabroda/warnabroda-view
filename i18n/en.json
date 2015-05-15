@@ -58,8 +58,8 @@
         "title": "Error page!",
         "403": "You are not authorized to access the page."
     },
-    "footer": "Â©2014-2015 Warn a Broda. All rights reserved. ",
-    "usage_terms":"The Warn A Broda is a web app entirely free to send anonymous messages to your friend, the app main intention is allow you to warn a friend without causing any embarrassment to you or to your friend, by clicking the WARN button you agree with our use terms. The app allows only pre-defined messages with the intention to avoid aggressive and threatening messages. We would love to hear from you, above all, messages to improve our service to the best, for this we have available  <a href='mailto:warnabroda@gmail.com'>our e-mail warnabroda@gmail.com</a> and the <a href='#/contact'>Warn A Broda contact-us</a> area",
+    "footer": "©2014-2015 Warn a Broda. All rights reserved. ",
+    "usage_terms": "Warn A Broda is a anonymous warning service for free, please note that by clicking the button <b>Do it</b> you agree unconditionally to follow and be bound to our terms and conditions of use.  If you (the 'User') do not agree to them, do not use the Website, provide any materials to the Website or download any materials from them. Warn A Broda reserve the right to update or modify these Terms and Conditions at any time without prior notice to User. Warn A Broda uses cookies to save your default language, according to Brazilian legislation all anonymous messages must provide a trace back to the sender somehow, for that reason our service saves your actual IP Address, time and date that you send a message. The Warn A Broda reserves the right to shutdown the service temporary or indefinitely, as a free service there is no guarantee of delivery or any guarantee regarding SLA time of delivery. Warn A Broda may add or remove default messages without prior notice to the user. We have a strong policy against spam, so we control messages being sent in order to avoid multiple messages with the same content. Warn A Broda provide a an ignore-list service in case you do not want to receive messages from Warn A Broda ever again. We would love to hear from you about absolutely anything specially suggestions. Please go to <a href='#/contact'>Contact Us</a> and let us know.",
     "dashboard" : {
         "warnabroda": "Warna A Broda Dashboard",
         "dash": "Dashboard",
@@ -89,7 +89,7 @@
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "If you see something, Warn A Broda!",
-        "send": "Send",
+        "send": "Do it now",
         "warn_via": "Warn via ",
         "amigo_avisado": "Broda has been warned.",
         "error": "Ups! Some error just happened.",        
@@ -128,7 +128,7 @@
         "warn_the_broda": "Warn",   
         "message": "Message",
         "contact": "Contact",
-        "sent": "Sent",
+        "sent": "Warn now",
         "sent_date": "Sent date",
         "greet": "Wassup {{username}}.",
         "sent_value": "{{sent && 'Yes' || 'No'}}",
@@ -145,9 +145,13 @@
         "blank_note": "If you leave it blank, you will never get the reply",
         "same_contacts_dest_orig" : "Whats the point of letting you know about an anonymous thing of yourself?",
         "wanna_suggest":"I wanna suggest",
+        "contact_name" : "Broda's name",
+        "no_matter" : "Does not matter",
+        "inform_broda_name" : "The name is",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
-            "email" : "Ex: warnabroda@gmail.com"
+            "email" : "Ex: warnabroda@gmail.com",
+            "contact_name": "John Doe"
         },
         "ignoreme" : {
             "title" : "Ignore-me forever!",

@@ -89,7 +89,7 @@
     "warning" : {
         "title": "Warn A Broda",
         "subtitle": "Solo los buenos amigos te abren los ojos.",
-        "send": "Enviar",
+        "send": "Dale",
         "warn_via": "Warn via ",
         "amigo_avisado": "Broda notificado(a) con éxito.",
         "error": "Ups! Ha ocurrido algún error.",        
@@ -145,9 +145,13 @@
         "blank_note": "Si lo deja en blanco, nunca se tiene la respuesta",
         "same_contacts_dest_orig" : "¿Cuál es el punto de hacerte saber acerca de una cosa anónima de ti mismo?",
         "wanna_suggest": "Quiero sugerir",
+        "contact_name" : "Nombre del Broda",
+        "no_matter" : "No importa",
+        "inform_broda_name" : "El nombre és",
         "placeholder" : {
             "sms" : "(48) 4321-1234 ou (11) 54321-1234",
-            "email" : "Ex: warnabroda@gmail.com"
+            "email" : "Ex: warnabroda@gmail.com",
+            "contact_name": "Esto y lo otro"
         },
         "ignoreme" : {
             "title" : "Ignorar-me para siempre!",
