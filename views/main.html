@@ -56,15 +56,15 @@
 
 				<div class="form-group">
 					<label class="radio-inline">
-			        	<input type="radio" name="E-mail" value="1" ng-model="warning.id_contact_type" ng-click="sendBy('email')">
+			        	<input type="radio" name="E-mail" ng-value="1" ng-model="warning.id_contact_type" ng-click="sendBy('email')">
 			        	<b>E-mail</b>
 			        </label>
 			        <label class="radio-inline">
-			        	<input type="radio" name="sms" value="2" ng-model="warning.id_contact_type"  ng-click="sendBy('sms')">
+			        	<input type="radio" name="sms" ng-value="2" ng-model="warning.id_contact_type"  ng-click="sendBy('sms')">
 			            <b>SMS</b>
 			       	</label>
 			        <label class="radio-inline">
-			        	<input type="radio" name="whatsapp" value="3" ng-model="warning.id_contact_type"  ng-click="sendBy('whatsapp')">
+			        	<input type="radio" name="whatsapp" ng-value="3" ng-model="warning.id_contact_type"  ng-click="sendBy('whatsapp')">
 			            <b>WhatsApp</b>
 		            </label>			
 				</div>

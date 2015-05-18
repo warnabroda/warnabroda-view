@@ -84,11 +84,11 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 	    */
 
 		$scope.send = function(){			
-			console.log($scope.warning);
+			
 			if ($scope.validateContact() && $scope.handleReplyData()){
 
 				$scope.warning.created_date = new Date();
-				$scope.warning.timezone = (new Date()).getTimezoneOffset()+"";
+				$scope.warning.timezone = (new Date()).getTimezoneOffset()+"";			
 				
 				var warnService = WarningService.send($scope.warning);
 				warnService.then(function(data) {
