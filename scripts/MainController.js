@@ -13,7 +13,7 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 		$scope.response = {};
 		$scope.response.type = 2;
 		$scope.warning.warning_resp = {};
-		$scope.warning.id_contact_type = 3;	
+		$scope.warning.id_contact_type = 2;	
 		$scope.warning.enableName = false;
 		
 		var listContactType = WarningService.getContactTypes();
