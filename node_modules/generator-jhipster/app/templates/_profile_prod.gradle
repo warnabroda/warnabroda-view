@@ -1,7 +1,0 @@
-apply plugin: 'spring-boot'
-
-task setProdProperties(dependsOn: bootRun) << {
-    doFirst {
-        System.setProperty('spring.profiles.active', 'prod')
-    }
-}
