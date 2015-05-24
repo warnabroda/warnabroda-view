@@ -34,7 +34,7 @@ warnabrodaApp.factory('WarningService', ['$resource', '$q', '$http',
 		},
         countWarnings : function(){
             var deferred = $q.defer();
-            $http.get('warnabroda/count-sent-warnings').success(function(data) {
+            $http.get('warnabroda/warnings/counter').success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -52,7 +52,7 @@ warnabrodaApp.factory('WarningService', ['$resource', '$q', '$http',
         },
         confirmIgnore : function(ignore){
             var deferred = $q.defer();
-            $http.post('warnabroda/ignore-list-confirm', ignore).success(function(data) {
+            $http.put('warnabroda/ignore-list', ignore).success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -61,7 +61,7 @@ warnabrodaApp.factory('WarningService', ['$resource', '$q', '$http',
         },
         validateCaptcha : function(captcha) {
             var deferred = $q.defer();
-            $http.post('warnabroda/captcha-validate', captcha).success(function(data) {
+            $http.post('warnabroda/captcha', captcha).success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);

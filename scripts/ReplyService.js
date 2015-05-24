@@ -7,7 +7,7 @@ warnabrodaApp.factory('ReplyService', ['$resource', '$q', '$http',
 	return {
 		getWarnWithReply : function(hash) {
             var deferred = $q.defer();            
-            $http.get('warnabroda/get-reply/'+hash).success(function(data) {
+            $http.get('warnabroda/reply/'+hash).success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -25,7 +25,7 @@ warnabrodaApp.factory('ReplyService', ['$resource', '$q', '$http',
         },
         send : function(reply){
             var deferred = $q.defer();
-            $http.post('warnabroda/set-reply', reply).success(function(data) {
+            $http.post('warnabroda/reply', reply).success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -34,7 +34,7 @@ warnabrodaApp.factory('ReplyService', ['$resource', '$q', '$http',
         },
         setReplyRead : function(reply){
             var deferred = $q.defer();
-            $http.post('warnabroda/read-reply', reply).success(function(data) {
+            $http.put('warnabroda/reply', reply).success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);

@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', 
-    function ($scope, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
+warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', '$routeParams',
+    function ($scope, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD, $routeParams) {
 
     	$scope.warning = {} 
     	$scope.warning.browser = deviceDetector.browser;
@@ -13,8 +13,9 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 		$scope.response = {};
 		$scope.response.type = 2;
 		$scope.warning.warning_resp = {};
-		$scope.warning.id_contact_type = 2;	
-		$scope.warning.enableName = false;
+		$scope.warning.id_contact_type = 2;			
+		
+		$scope.warning.enableName = false;		
 		
 		var listContactType = WarningService.getContactTypes();
 		var countWarnings = WarningService.countWarnings();		
@@ -45,6 +46,7 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
             listMessage.then(function(result) {
 		    	if (result) {
 		    		$scope.messages = result;
+		        	$scope.warning.id_message = $routeParams.id_message*1;
 		        }
 		    });         
 		    $scope.handleContactTypeSelect();
@@ -106,6 +108,8 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 			
 			$scope.same_contacts_dest_orig = null;
 
+			$scope.warning.warning_resp = {};
+
 			if ($scope.acceptResponse){
 				$scope.warning.warning_resp.reply_to = $scope.response.contact;
 				$scope.warning.warning_resp.created_date = new Date();
@@ -128,14 +132,14 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 			$scope.email_error = null;
 			$scope.invalid_phone_number = null;
 			$scope.invalid_ddd = null;
+			$scope.server_msg_danger = null;
+			$scope.server_msg_sucess = null;
              	
 			switch(data.id){
 				case 200:
 
 					$scope.server_msg_danger = null;
 					$scope.server_msg_sucess = data.name;
-					
-	                $scope.warning.id_contact_type = null;
 	                $scope.warning.id_message = null;
 	                $scope.warning.contact = null;
 	                $scope.sms = null;
@@ -149,14 +153,11 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 
 				break;
 
-				case 403:
+				default:
 					$scope.server_msg_danger = data.name;
 					$scope.server_msg_sucess = null;
 				break;
-				default:
-					$scope.server_msg_danger = null;
-					$scope.server_msg_sucess = null;
-				break;
+				
 			}
 		}
 
@@ -165,8 +166,7 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 			var contact = $scope.warning.contact;			
 					
 			switch($scope.warning.id_contact_type) {
-				case 1:
-					
+				case 1:					
 					if (contact.length > 0 && EMAIL_REGEXP.test(contact)){
 						$scope.email_error = null;
 					} else {
@@ -288,6 +288,6 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 			}
 
  			$scope.reRenderView();
- 		}
-
+ 		}		
+		
     }]);

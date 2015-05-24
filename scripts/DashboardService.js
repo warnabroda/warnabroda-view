@@ -7,7 +7,7 @@ warnabrodaApp.factory('DashboardService', ['$q', '$http',
 	return {		        
         countAllWarnings : function(){
             var deferred = $q.defer();
-            $http.get('warnabroda/hq/count-warnings').success(function(data) {
+            $http.get('warnabroda/hq/totals').success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -16,7 +16,7 @@ warnabrodaApp.factory('DashboardService', ['$q', '$http',
         },
         getAll : function(filter){
             var deferred = $q.defer();
-            $http.get('warnabroda/hq/list-warnings', filter).success(function(data) {
+            $http.get('warnabroda/hq/warnings', filter).success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -25,7 +25,7 @@ warnabrodaApp.factory('DashboardService', ['$q', '$http',
         },
         get : function(id) {
             var deferred = $q.defer();
-            $http.get('warnabroda/hq/warning/'+id).success(function(data) {
+            $http.get('warnabroda/hq/warnings/'+id).success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -34,7 +34,7 @@ warnabrodaApp.factory('DashboardService', ['$q', '$http',
         },
         listMessageStats : function(){
             var deferred = $q.defer();
-            $http.get('warnabroda/hq/messages-stats').success(function(data) {
+            $http.get('warnabroda/hq/stats').success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);

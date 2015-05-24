@@ -79,6 +79,13 @@ warnabrodaApp
                         authorizedRoles: [USER_ROLES.admin]
                     }
                 })
+                .when('/:id_message', {
+                    templateUrl: 'views/main.html',
+                    controller: 'MainController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
                 .otherwise({
                     templateUrl: 'views/main.html',
                     controller: 'MainController',

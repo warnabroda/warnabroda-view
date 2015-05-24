@@ -7,7 +7,7 @@ warnabrodaApp.factory('Account', ['$q', '$http',
     return {        
         getAuthenticated : function() {
             var deferred = $q.defer();
-            $http.get('warnabroda/hq/authenticated-user').success(function(data) {
+            $http.get('warnabroda/hq/auth-on').success(function(data) {
                 deferred.resolve(data);
             }).error(function(data, status, headers, config) {
                 deferred.reject(status);
@@ -42,10 +42,9 @@ warnabrodaApp.factory('AuthenticationSharedService', ['$rootScope', '$http', 'au
 
                 var req = {
                         method: 'POST',
-                        url: 'warnabroda/hq/authentication',
+                        url: 'warnabroda/hq/login',
                         headers: {
-                        //'Content-Type': 'application/x-www-form-urlencoded'
-                        'Content-Type': 'application/json'                        
+                            'Content-Type': 'application/json'                        
                         },
                         data: param,
                     }                
@@ -64,7 +63,7 @@ warnabrodaApp.factory('AuthenticationSharedService', ['$rootScope', '$http', 'au
             },
             valid: function(authorizedRoles){
 
-                $http.get('warnabroda/hq/private', {
+                $http.get('warnabroda/hq/user/private', {
                     ignoreAuthModule: 'ignoreAuthModule'
                 }).success(function (data, status, headers, config) {
                     if (!Session.name){
