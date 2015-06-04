@@ -238,7 +238,7 @@ module.exports = function (grunt) {
             'social_images/*',
             'fonts/*',
             'i18n/*',
-            'scripts/utils.phone.jstxt',
+            'js/tel-utils.js',
             'bower_components/angular-i18n/angular-locale_en.js',
             'bower_components/angular-i18n/angular-locale_es.js',
             'bower_components/angular-i18n/angular-locale_br.js',
