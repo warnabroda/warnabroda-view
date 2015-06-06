@@ -2,10 +2,10 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('IgnoremeRequestController', ['$scope', '$window', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD',
-    function ($scope, $window, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD) {
+warnabrodaApp.controller('IgnoremeRequestController', ['$scope', '$window', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', '$routeParams',
+    function ($scope, $window, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD, $routeParams) {
     	    	
-    	$scope.ignore = {};
+    	$scope.ignore = { contact: $routeParams.contact };
 		var captcha = {};    			
 		$scope.captchaControl = {};
 		var browser = $window.navigator.userAgent;

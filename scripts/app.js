@@ -51,6 +51,13 @@ warnabrodaApp
                         authorizedRoles: [USER_ROLES.all]
                     }
                 })
+                .when('/ignore-request/:contact', {
+                    templateUrl: 'views/modal-ignore.html',
+                    controller: 'IgnoremeRequestController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
                 .when('/logout', {
                     templateUrl: 'views/main.html',
                     controller: 'LogoutController',
