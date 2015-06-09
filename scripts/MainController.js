@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', '$routeParams',
-    function ($scope, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD, $routeParams) {
+warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'WarningService', 'EMAIL_REGEXP', 'VALID_DDD', '$routeParams', '$translate', 'LanguageService',
+    function ($scope, deviceDetector, WarningService, EMAIL_REGEXP, VALID_DDD, $routeParams, $translate, LanguageService) {
 
     	$scope.warning = {} 
     	$scope.warning.browser = deviceDetector.browser;
@@ -36,6 +36,16 @@ warnabrodaApp.controller('MainController', ['$scope', 'deviceDetector', 'Warning
 	        }
 	    });
 
+
+	    if (!angular.isUndefined($routeParams.id_message)){
+	    	
+	    	WarningService.getMessage($routeParams.id_message*1).then(function(result){
+				$translate.use(result.lang_key);
+	            LanguageService.getBy(result.lang_key).then(function(languages) {
+	                $scope.languages = languages;
+	            });
+	    	});			
+	    }
 	    /**
 			BEGIN OF WATCHERS: Code block for the angularjs watchers, used by language and contact components
 	    */

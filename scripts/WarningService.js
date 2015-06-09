@@ -5,6 +5,15 @@
 warnabrodaApp.factory('WarningService', ['$resource', '$q', '$http',
    function ($resource, $q, $http) {
 	return {
+        getMessage : function(id) {
+            var deferred = $q.defer();
+            $http.get('warnabroda/hq/messages/'+id).success(function(data) {
+                deferred.resolve(data);
+            }).error(function(data, status, headers, config) {
+                deferred.reject(status);
+            });
+            return deferred.promise;
+        },
 		getMessages : function(language) {
 			var deferred = $q.defer();
             $http.get('warnabroda/messages/'+language).success(function(data) {
