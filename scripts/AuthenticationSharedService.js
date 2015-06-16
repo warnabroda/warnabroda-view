@@ -51,7 +51,7 @@ warnabrodaApp.factory('AuthenticationSharedService', ['$rootScope', '$http', 'au
                 
                 $http(req).success(function (data, status, headers, config) {                    
                 
-                    Session.create(data.id, data.name, data.user_hole, data.email, data.last_login);
+                    Session.create(data.id, data.name, data.user_role, data.email, data.last_login);
                     $rootScope.account = Session;
                     authService.loginConfirmed(data);
                     
@@ -70,7 +70,7 @@ warnabrodaApp.factory('AuthenticationSharedService', ['$rootScope', '$http', 'au
                         
                         var authUser = Account.getAuthenticated();
                         authUser.then(function(data){
-                            Session.create(data.id, data.name, data.user_hole, data.email, data.last_login);
+                            Session.create(data.id, data.name, data.user_role, data.email, data.last_login);
                             $rootScope.account = Session;
                             if (!$rootScope.isAuthorized(authorizedRoles)) {
                                 // user is not allowed

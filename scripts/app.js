@@ -162,7 +162,7 @@ warnabrodaApp
                 // Call when the 403 response is returned by the server
                 $rootScope.$on('event:auth-notAuthorized', function(rejection) {
                     $rootScope.errorMessage = 'errors.403';
-                    $location.path('/hq').replace();
+                    $location.path('/').replace();
                 });
 
                 // Call when the user logs out

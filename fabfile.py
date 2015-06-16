@@ -2,8 +2,6 @@ from fabric.api import *
 import cuisine
 import os
 
-project_path = "src/bi"
-
 def deploy_view():
 	with cd("warnabrodaview"):
 		run("git pull")
@@ -12,6 +10,7 @@ def deploy_view():
 		run("git submodule foreach git checkout master")
 		run("npm install")
 		run("bower install")
+		run("bower update")
 		run("grunt build")
 		run("rm -rf /opt/warnabroda/project/view/dist_new")
 		run("mv dist/ /opt/warnabroda/project/view/dist_new")
