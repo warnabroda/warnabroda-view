@@ -80,13 +80,18 @@ padding: 10px 15px;
 }
 
 @media(min-width: 768px){
-    .main-box {
+    .main-box,
+    .home-comments {
         width: 50%;
+        margin: 0 auto;
     }
     
     .logo {
         height: 64px;
     }
+
+    
+
 }
 
 .logo {
@@ -183,6 +188,12 @@ padding: 10px 15px;
     width: 600px;
 }
 
+.home-comments {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
 #threadDump .popover, #healthCheck .popover {
     top: inherit;
     display: block;
@@ -230,4 +241,8 @@ ul#strength {
     margin-right:1px;
     width:20px;
 }
+   .fb_iframe_widget iframe,
+   .fb_iframe_widget span {
+    width: 100% !important;
+    }
 /* end Password strength bar style */

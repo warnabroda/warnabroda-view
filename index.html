@@ -95,13 +95,23 @@
     </head>
     <body ng-app="warnabrodaApp" ng-controller="ApplicationController">       
     	<div id="fb-root"></div>	
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
+		<script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '1622221521322971',
+              xfbml      : true,
+              version    : 'v2.3'
+            });
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -117,7 +127,8 @@
                             <span class="icon-bar"></span>
                         </button>
                       <a class="navbar-brand" href="#">
-<img src="images/logo-warnabroda-navbar.png" alt="Warn a broda"></a>
+                        <img src="images/logo-warnabroda-navbar.png" alt="Warn a broda">
+                      </a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="authenticated">
                         <ul class="nav navbar-nav nav-pills navbar-right">                        
@@ -173,15 +184,23 @@
                         </ul>
                     </div>
                 </div>
-            </nav>    
+            </nav>
+
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55705c4858cbcce3" async="async"></script>
+
             <div class="container" ng-view=""></div> 
         </div>
-        </div>    
+        </div>
+        <!-- Comentários do Facebook -->
+        <div class="home-comments">
+            <div class="fb-comments" data-href="http://www.warnabroda.com" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+        </div>
+
         <div class="container footer">
             <p translate="footer">©2014-2015 Warn a Broda. Todos os direitos reservados.</p>
             <h6><small translate="usage_terms">Usage Terms</small></h6>
 
-            <div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"> </div>
         </div>
         <div class="warna-borda"></div>
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.-->
