@@ -94,10 +94,13 @@ warnabrodaApp.controller('IgnoremeRequestController', ['$scope', '$window', 'dev
             	
 			switch(data.id){
 				case 200:
+				case 201:
 					$scope.server_msg_danger = null;
 					$scope.server_msg_success = data.name;					
 				break;
 
+				case 400:
+				case 401:
 				case 403:
 					$scope.server_msg_danger = data.name;
 					$scope.server_msg_success = null;
