@@ -42,10 +42,6 @@ padding: 10px 15px;
   float: none;
 }
 
-.lead {
-  text-align: center;
-}
-
 .well {
     margin: 40px auto;
     background-color: #fff;
@@ -87,6 +83,22 @@ padding: 10px 15px;
     background-position-x: center;
 }
 
+@media(min-width: 768px){
+    .main-box,
+    .home-comments {
+        width: 50%;
+        margin: 0 auto;
+    }
+    
+    .logo {
+        height: 64px;
+    }
+
+    .nav-pills>li {
+        float: left;
+    }
+
+}
 
 .logo {
     margin-bottom: 40px;
@@ -113,19 +125,19 @@ padding: 10px 15px;
 }
 
 .email-icon {
-
+    
     width: 50px;
-    height: 50px;
+    height: 50px;   
     border: 0;
     z-index: 1000;
     background-image: url("../images/email-icon-sm.png");
     background-position: center center;
     background-repeat: no-repeat;
-
+    
 }
 
 .sms-icon {
-
+    
     width: 50px;
     height: 50px;
     border: 0;
@@ -136,7 +148,7 @@ padding: 10px 15px;
 }
 
 .whatsapp-icon {
-
+    
     width: 50px;
     height: 50px;
     border: 0;
@@ -184,6 +196,13 @@ padding: 10px 15px;
 
 .home-comments {
     text-align: center;
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+}
+
+.fb-like {
+    text-align: center;
+    margin-bottom: 30px;
     margin: 30px 0;
 }
 
@@ -235,24 +254,5 @@ ul#strength {
     margin-right:1px;
     width:20px;
 }
-   .fb_iframe_widget iframe,
-   .fb_iframe_widget span {
-    width: 100% !important;
-    }
+
 /* end Password strength bar style */
-
-@media(min-width: 768px){
-    .main-box,
-    .home-comments {
-        width: 50%;
-        margin: 0 auto;
-    }
-
-    .logo {
-        height: 64px;
-    }
-
-    .nav-pills>li {
-      float: left;
-    }
-}
