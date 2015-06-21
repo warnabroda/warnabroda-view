@@ -94,130 +94,94 @@
         
     </head>
     <body ng-app="warnabrodaApp" ng-controller="ApplicationController">       
-    	<div id="fb-root"></div>
-        <script>(function(d, s, id){
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) {return;}
-             js = d.createElement(s); js.id = id;
-             //js.src = "//connect.facebook.net/en_US/sdk.js";
-             js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3";
-             fjs.parentNode.insertBefore(js, fjs);
-           }(document, 'script', 'facebook-jssdk'));
-        // (function(d, s, id) {
-        //   var js, fjs = d.getElementsByTagName(s)[0];
-        //   if (d.getElementById(id)) return;
-        //   js = d.createElement(s); js.id = id;
-        //   js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3";
-        //   fjs.parentNode.insertBefore(js, fjs);
-        // }(document, 'script', 'facebook-jssdk'));
-        
-          window.fbAsyncInit = function() {
-            FB.init({
-              appId      : '1622221521322971',
-              xfbml      : true,
-              version    : 'v2.3'
-            });
-          }; 
-          
-        
-        </script>
+    	<div id="fb-root"></div>	
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div ng-cloak>        
-            <div class="wrapper">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="#">
-                                <img src="images/logo-warnabroda-navbar.png" alt="Warn a broda">
-                            </a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="authenticated">
-                            <ul class="nav navbar-nav nav-pills navbar-right">                        
-
-                                <li ng-controller="LanguageController">
-                                    <a href="#/contact">
-                                        <span class="glyphicon glyphicon-envelope"></span>
-                                        <span translate="warning.wanna_suggest">Contato</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a ng-href="#/ignore-request" data-toggle="modal" data-target="#ignoreContactModal">
-                                        <span class="glyphicon glyphicon-remove"></span>
-                                        <span translate="warning.ignore_me_label">Me Ignorar</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#/about">
-                                        <span class="glyphicon glyphicon-info-sign"></span>
-                                        <span translate="warning.about_label">Sobre o Warna A Broda</span>
-                                    </a>
-                                </li>
-
-                                <li  ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)">
-                                    <a href="#/dashboard">
-                                        <span class="glyphicon glyphicon-tasks"></span>
-                                        <span translate="dashboard.dash">Dashboard</span>
-                                    </a>
-                                </li>
-
-                                <li  ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)">
-                                    <a href="#/logout">
-                                        <span class="glyphicon glyphicon-log-out"></span>
-                                        <span translate="global.menu.account.logout">Logout</span>
-                                    </a>
-                                </li>
-                                <li class="dropdown pointer" ng-controller="LanguageController">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                                        <span>
-                                            <span class="glyphicon glyphicon-flag"></span>
-                                            <span class="hidden-tablet" translate="global.menu.language">Language</span>
-                                            <b class="caret"></b>
-                                        </span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li active-menu="{{key}}" ng-repeat="(key, language) in languages">
-                                            <a href="" ng-click="changeLanguage(key)">{{language}}</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+        <div class="wrapper">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+                        <img src="images/logo-warnabroda-navbar.png" alt="Warn a broda"></a>
                     </div>
-                </nav>
+                    <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="authenticated">
+                        <ul class="nav navbar-nav nav-pills navbar-right">                        
 
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55705c4858cbcce3" async="async">
-                </script>
-                <div class="container" ng-view=""></div> 
-            </div>
+                            <li ng-controller="LanguageController">
+                                <a href="#/contact">
+                                    <span class="glyphicon glyphicon-envelope"></span>
+                                    <span translate="warning.wanna_suggest">Contato</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a ng-href="#/ignore-request" data-toggle="modal" data-target="#ignoreContactModal">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    <span translate="warning.ignore_me_label">Me Ignorar</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#/about">
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                    <span translate="warning.about_label">Sobre o Warna A Broda</span>
+                                </a>
+                            </li>
+
+                            <li  ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)">
+                                <a href="#/dashboard">
+                                    <span class="glyphicon glyphicon-tasks"></span>
+                                    <span translate="dashboard.dash">Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li  ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)">
+                                <a href="#/logout">
+                                    <span class="glyphicon glyphicon-log-out"></span>
+                                    <span translate="global.menu.account.logout">Logout</span>
+                                </a>
+                            </li>
+                            <li class="dropdown pointer" ng-controller="LanguageController">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                                    <span>
+                                        <span class="glyphicon glyphicon-flag"></span>
+                                        <span class="hidden-tablet" translate="global.menu.language">Language</span>
+                                        <b class="caret"></b>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li active-menu="{{key}}" ng-repeat="(key, language) in languages">
+                                        <a href="" ng-click="changeLanguage(key)">{{language}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>    
+            <div class="container" ng-view=""></div> 
         </div>
-        
-        <div    class="fb-like" 
-                data-href="https://facebook.com/daumtoque" 
-                data-layout="standard" 
-                data-action="like" 
-                data-show-faces="true" 
-                data-share="true">
-        </div>
-        <!-- Comentários do Facebook -->
-        <div class="home-comments">
-            <div class="fb-comments" data-href="http://www.warnabroda.com" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
-        </div>
-        
+        </div>    
         <div class="container footer">
             <p translate="footer">©2014-2015 Warn a Broda. Todos os direitos reservados.</p>
             <h6><small translate="usage_terms">Usage Terms</small></h6>
 
+            <div class="fb-like" data-href="https://www.facebook.com/daumtoque" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"> </div>
         </div>
         <div class="warna-borda"></div>
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.-->
