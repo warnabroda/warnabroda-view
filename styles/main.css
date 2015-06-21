@@ -241,8 +241,6 @@ ul#strength {
     margin-right:1px;
     width:20px;
 }
-   .fb_iframe_widget iframe,
-   .fb_iframe_widget span {
-    width: 100% !important;
-    }
+
+
 /* end Password strength bar style */
