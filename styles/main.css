@@ -38,6 +38,10 @@ border-radius: 0;
 padding: 10px 15px;
 }
 
+.nav-pills>li {
+  float: none;
+}
+
 .lead {
   text-align: center;
 }
@@ -83,17 +87,6 @@ padding: 10px 15px;
     background-position-x: center;
 }
 
-@media(min-width: 768px){
-    .main-box,
-    .home-comments {
-        width: 50%;
-        margin: 0 auto;
-    }
-
-    .logo {
-        height: 64px;
-    }
-}
 
 .logo {
     margin-bottom: 40px;
@@ -247,3 +240,19 @@ ul#strength {
     width: 100% !important;
     }
 /* end Password strength bar style */
+
+@media(min-width: 768px){
+    .main-box,
+    .home-comments {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .logo {
+        height: 64px;
+    }
+
+    .nav-pills>li {
+      float: left;
+    }
+}
