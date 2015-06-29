@@ -198,13 +198,21 @@ padding: 10px 15px;
     text-align: center;
     margin-bottom: 30px;
     background-color: #FFFFFF;
+
 }
 
 .fb-like {
     text-align: center;
     margin-bottom: 30px;
     margin: 30px 0;
-    overflow: scroll;
+    /*overflow: scroll;*/
+}
+.fb-components-align {
+    text-align: center;
+}
+
+.fb-overflow-class {
+    overflow: scroll;   
 }
 
 

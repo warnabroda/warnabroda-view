@@ -187,10 +187,11 @@
             </nav>
 
             <div class="container" ng-view=""></div>
-        </div>
+        
         </div>
                 
-        <div class="fb-like">
+                
+        <div class="fb-components-align" ng-class="{true:'fb-overflow-class', false: ''}[deviceDetectorTest.raw.os.android == true || deviceDetectorTest.raw.os.ios == true]">
             <br/>
             <div    class="fb-like" 
                 data-href="https://facebook.com/warnabroda" 
