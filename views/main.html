@@ -54,44 +54,44 @@
 					</select>
 				</div>
 
-				<div class="form-group">
-					<label class="radio-inline">
-			        	<input type="radio" name="E-mail" ng-value="1" ng-model="warning.id_contact_type" ng-click="sendBy('email')">
-			        	<b>E-mail</b>
-			        </label>
-			        <label class="radio-inline">
-			        	<input type="radio" name="sms" ng-value="2" ng-model="warning.id_contact_type"  ng-click="sendBy('sms')">
-			            <b>SMS</b>
-			       	</label>
-			        <label class="radio-inline">
-			        	<input type="radio" name="whatsapp" ng-value="3" ng-model="warning.id_contact_type"  ng-click="sendBy('whatsapp')">
-			            <b>WhatsApp</b>
-		            </label>
-				</div>
+				<ul class="send-methods form-group">
+						<li class="send-method email">
+							<input id="email" type="radio" name="E-mail" ng-value="1" ng-model="warning.id_contact_type" ng-click="sendBy('email')">
+							<label for="email" class="radio-inline"><b>E-mail</b></label>
+						</li>
+						<li class="send-method sms">
+							<input id="sms" type="radio" name="sms" ng-value="2" ng-model="warning.id_contact_type"  ng-click="sendBy('sms')">
+							<label for="sms" class="radio-inline"><b>SMS</b></label>
+						</li>
+						<li class="send-method whatsapp">
+							<input  id="whatsapp" type="radio" name="whatsapp" ng-value="3" ng-model="warning.id_contact_type"  ng-click="sendBy('whatsapp')">
+							<label for="whatsapp" class="radio-inline"><b>WhatsApp</b></label>
+						</li>
+				</ul>
 
 				<label translate="warning.contact_name" ng-hide="true">Nome do contato</label>
 				<div ng-hide="true">
 					<div class="form-group hand">
-						
+
 							<input type="radio" id="noMatter" ng-model="warning.enableName" ng-value="false">
 							<label translate="warning.no_matter" for="noMatter">Não interessa</label>
-						
+
 							<input type="radio" id="toName" ng-model="warning.enableName" ng-value="true">
 							<label translate="warning.inform_broda_name" for="toName">Informar</label>
-						
+
 					</div>
 
-					<div class="form-group" ng-show="warning.enableName == true">						
-						<input type="text" class="form-control" name="contact_name" 
+					<div class="form-group" ng-show="warning.enableName == true">
+						<input type="text" class="form-control" name="contact_name"
 								ng-model="warning.toName" ng-minlength=1 ng-maxlength=10 maxlength="10" placeholder="{{'warning.placeholder.contact_name' | translate}}"/>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="contact-info form-group">
 					<div ng-show="show_email">
-						<label translate="warning.contact">Contato do amigo</label> 
+						<label translate="warning.contact">Contato do amigo</label>
 						<br/>
-						<input type="email" class="form-control" name="email" 
+						<input type="email" class="form-control" name="email"
 							ng-model="email" ng-minlength=5 ng-maxlength=100 ng-show="show_email"
 							placeholder="{{'warning.placeholder.email' | translate}}"/>
 					</div>
@@ -101,16 +101,16 @@
 						<input type="tel" class="form-control" ng-model="sms" id="sms-number" ng-show="show_phone"/>
 					</div>
 					<div ng-show="show_whats">
-						<label translate="warning.contact">Contato do amigo</label> 
+						<label translate="warning.contact">Contato do amigo</label>
 						<br/>
 						<input type="tel" class="form-control" ng-model="whatsapp" ng-show="show_whats" id="mobile-number">
 					</div>
 				</div>
 
 				<div class="form-group">
-					
+
 					<label translate="warning.accept_response">Aceito receber resposta</label>
-					<toggle-switch ng-model="acceptResponse" on-label="{{'warning.yes' | translate}}" off-label="{{'warning.no' | translate}}" knob-label=""/>		
+					<toggle-switch ng-model="acceptResponse" on-label="{{'warning.yes' | translate}}" off-label="{{'warning.no' | translate}}" knob-label=""/>
 				</div>
 				<div ng-show="acceptResponse">
 					<div  class="form-group">
@@ -122,21 +122,21 @@
 						<label class="radio-inline">
 				        	<input type="radio" id="responseWhatsapp" ng-model="response.type" ng-value=2 ng-click="resetReplyContact()">
 				        	<b>WhatsApp</b>
-				        </label>				        
+				        </label>
 				    </div>
 
 
 					<div ng-show="response.type === 0">
-						<label>Seu contato</label> 
+						<label>Seu contato</label>
 						<br/>
-						<input type="email" class="form-control" name="responseEmail" 
+						<input type="email" class="form-control" name="responseEmail"
 							ng-model="response.email" ng-minlength=5 ng-maxlength=100 ng-show="response.type === 0"
-							placeholder="{{'warning.placeholder.email' | translate}}"/>						
+							placeholder="{{'warning.placeholder.email' | translate}}"/>
 						<i><small translate="warning.blank_note">Se você deixar em branco, não será possivel descobrir a resposta</small></i>
 					</div>
 
 					<div ng-show="response.type === 2">
-						<label>Seu contato</label> 
+						<label>Seu contato</label>
 						<br/>
 						<input type="tel" class="form-control" ng-model="response.whatsapp" ng-show="response.type === 2" id="mobile-number-response"/>
 						<br>
@@ -144,16 +144,16 @@
 					</div>
 				</div>
 
-				
+
 
 				<div class="modal-footer">
 					<button type="submit" ng-disabled="form.$invalid || isPhoneNumberIlegal()" class="btn btn-success btn-block">
 						<span translate="warning.send">Avisar</span>
-						<span class="glyphicon glyphicon-ok"></span> 						
-					</button>					
+						<span class="glyphicon glyphicon-ok"></span>
+					</button>
 				</div>
-				
-			</form>			
+
+			</form>
 		</div>
 	</div>
 </div>
@@ -177,8 +177,8 @@
 	    //ipinfoToken: "yolo",
 	    //nationalMode: false,
 	    numberType: "MOBILE",
-	    onlyCountries: ['br'],	   
-	    preferredCountries: ['br'], 
+	    onlyCountries: ['br'],
+	    preferredCountries: ['br'],
 	    preventInvalidNumbers: true,
 	    utilsScript: "js/tel-utils.js"
   	});

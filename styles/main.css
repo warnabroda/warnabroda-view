@@ -212,7 +212,7 @@ padding: 10px 15px;
 }
 
 .fb-overflow-class {
-    overflow: scroll;   
+    overflow: scroll;
 }
 
 
@@ -262,6 +262,94 @@ ul#strength {
     height:5px;
     margin-right:1px;
     width:20px;
+}
+
+/* Send Method */
+.send-methods {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.send-methods:after {
+  content: "";
+  clear: both;
+}
+
+.send-method {
+  box-sizing: border-box;
+  float: left;
+  height: 60px;
+  position: relative;
+  width: 60px;
+  border-radius: 4px;
+}
+
+.contact-info {
+  clear: both;
+}
+
+.send-method label {
+  background: #fff no-repeat center center;
+  bottom: 1px;
+  cursor: pointer;
+  display: block;
+  font-size: 0;
+  left: -1px;
+  position: absolute;
+  right: -1px;
+  text-indent: 100%;
+  top: 1px;
+  white-space: nowrap;
+
+}
+
+.send-method + .send-method {
+  margin-left: 25px;
+}
+
+.email label {
+  background-image: url("../images/email.png");
+}
+
+.sms label {
+  background-image: url("../images/sms.png");
+}
+
+.whatsapp label {
+  background-image: url("../images/whatsapp.png");
+}
+
+/* .send-methods input:focus + label {
+  outline: 2px solid #b2be35;
+  border-radius: 4px;
+} */
+
+.send-methods input:checked + label:after {
+  background-image: url("../images/checked.png");
+  background-repeat: no-repeat;
+  bottom: -5px;
+  content: "";
+  display: inline-block;
+  height: 20px;
+  position: absolute;
+  right: -5px;
+  width: 20px;
+}
+
+.send-methods input:focus + .email label {
+  background-image: url("../images/email-hover.png");
+}
+
+.send-methods input:focus + .sms label {
+  background-image: url("../images/sms-hover.png");
+}
+
+.send-methods input:focus + .whatsapp label {
+  background-image: url("../images/whatsapp-hover.png");
 }
 
 /* end Password strength bar style */
